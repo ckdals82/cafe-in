@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여기가 제목들어가는 부분</title>
+</head>
+<body>
+
+<!-- 이미지출력해보기 -->
+
+<img src= "image/사진.png" width="120">
+</body>
+</html>
