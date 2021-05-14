@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	dt{
+		font-weight: bold;
+		color: blue;
+	}
+	
+	dd{
+		color: #6666ff;
+	}
+</style>
+</head>
+<body>
+
+	<hr>
+	ordered List( ol ) : 순서가 있는 목록
+	<hr>
+		<ol style="list-style: lower-roman;">
+			<li>하나</li>
+			<li>둘</li>
+			<li>셋</li>
+			<li>넷</li>
+			<li>다섯</li>
+		</ol>
+		
+	<hr>
+		Unordered List( ul ) : 순서가 없는 목록
+	<hr>	
+		<!-- inline방식 css적용 -->
+		<ul style="list-style: circle">
+			<li>사과</li>
+			<li>참외</li>
+			<li>수박</li>
+			<li>포도</li>
+			<li>딸기</li>
+			
+		</ul>
+		<p style="color:red;"> ol 이나 ul에 구분이 없으므로 아무거나 사용해도 된다</p>
+		<hr>
+		dictionary List(dl) : 사전목록
+		<dl>
+			<!-- dictionary title  -->
+			<dt>HTML이란? </dt> 
+			<dd>HyperText Markup Language의 약어로 다양한 내용을 표현할 수 있는tag 언어다</dd>
+			
+			<dt>CSS란? </dt>
+			<dd>Cascade StyleSheet의 약어로 문서내의 모양/크기를 설정하는 언어</dd>
+			
+			<dt>Javascript란?</dt>
+			<dd>Browser제어용 언어(이벤트나 Element를 동적으로 제어할 수 있다) </dd>
+			
+		</dl>
+		<input type="button"value="숨기기" onclick=" document.getElementByld('dl_1').style.display='none';">
+		<input type="button"value="보이기" onclick=" document.getElementByld('dl_1').style.display='block';">
+		
+		<br>
+		<br>
+		<br>
+		
+		<input type="button"value="제목 바꾸기" onclick="javascript:document.title='Chnaged Title';">
+		
+		<input type="button"value="닫기" onclick="javascript:self.close()">
+		
+		<hr>
+</body>
+</html>
