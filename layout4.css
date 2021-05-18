@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+* { margin: 0; padding: 0;}
+
+#main_box{
+	width: 800px;
+	height: 600px;
+	background-color: #cccccc;
+	
+	margin: auto;
+}
+
+#header{
+	
+	width: 100%; /* 부모기준 : 생략시 부모크기를 그대로 물려받는다 */
+	height: 100px;
+	background: #ffcccc;
+}
+
+#aside {
+	width: 30%;
+	min-height: 400px;
+	background: #ffffcc;
+	
+	float: left;
+}
+
+#content{
+	width: 70%;
+	min-height: 400px; /* 최소크기 */
+	height: auto;
+	background: #ccffcc;
+	
+	float: right;
+	
+}
+/* 클래스 셀렉터 같은 모양 만들려면 클래스사용하는선택 */ 
+.mini_box {
+	width: 40%;
+	height: 100px;
+	border: 1px solid black;
+	margin: 10px;
+	box-shadow: 2px 2px 3px black;
+	float: left;	
+	
+	
+}
+
+#footer{
+	
+	/* 부유속성 해제 */
+	clear: both;	/* left,right 둘다 해제 */
+	
+	height: 100px;
+	background: #ccccff;
+}
+
+

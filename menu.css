@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/* *{margin: 0; padding: 0;} */
+
+/* id selector */
+ul#main_menu{
+	list-style: none;
+	
+}
+
+/* 자식요소 selector
+   부모요소 > 자식요소 : 바로 밑에 요소만 적용
+   부모요소   자식요소 : 하위 모든요소 적용 */
+ul#main_menu > li {
+	display: inline-block;
+}
+
+/* a inline 요소 
+	 inline -> block변경  display 옵션으로 변경
+	
+*/
+
+ul#main_menu > li > a{
+	display: block;
+	text-decoration: none;
+	width: 120px;
+	border: 1px solid #2e312f;
+	text-align: center;
+	margin-right: 50px;
+	font-size: 18pt;
+	font-weight: bold; 
+	color: #2e312f;
+	box-shadow: 1px 1px 1px black; 
+	
+}
+
+/* a tag에 마우스가 올라가면 */
+ul#main_menu > li > a:hover{
+	border: 1px solid #ff0080; 
+	color: #ff0080;	
+	
+	
+	
+}
