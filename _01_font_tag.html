@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- <tag>
+명칭 : 1. html tag
+	   2. element(요소)
+	   
+	  1.block  element(블럭요소) : 1칸을 차지하는 요소
+	  							   자동줄바꾸기된다
+	  							   크기(폭) 부모크기를 그대로 물려받는다
+	  							   크기조절이 가능하다
+	  							   hr , h1 ~ h6, p
+	  
+	  2.inline element(인라인요소) : 1줄에 표현되는 요소
+	  								 자동줄바꾸기 안된다
+	  								 크기지정을 할 수 없다
+ -->
+
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	h1,h2,h3,h4,h5,h6{
+	/* border: 1px solid red; */
+	background: #ffffff;
+	
+	}
+	
+	p{
+		/* #rrggbb <= Oxrrggbb */
+	color: #8888ff; 
+	
+	/*block요소 : 크기지정이 가능 */
+	width: 600px;
+	height: 100px;
+	border: 2px solid blue;
+	
+	font-family: 굴림체,궁서체,휴먼옛체;
+	font-size: 15pt;	/* px(pixel) : 가변크기   pt(point) : 고정크기 */
+	font-weight: bold; /* 굵게 */
+	
+/* 	padding : 안쪽들여쓰기 */
+	padding: 10px;
+	}
+	
+	p:hover{
+	color:blue;
+	}
+	</style>
+	</head>
+<body>
+	<hr>
+		<h1>HeadLine Tag(h1~h6)</h1>
+	<hr>
+		<h1>HeadLine H1</h1>
+		<h2>HeadLine H2</h2>
+		<h3>HeadLine H3</h3>
+		<h4>HeadLine H4</h4>
+		<h5>HeadLine H5</h5>
+		<h6>HeadLine H6</h6>
+	
+	<hr>
+		<h1>font tag(size=1~7)</h1>
+	<hr>
+		<!--  attribute(속성) size를 이용해서 크기지정 -->
+		<font size="1">font size=1</font><br>
+		<font size="2">font size=2</font><br>
+		<font size="3">font size=2</font><br>
+		<font size="4">font size=2</font><br>
+		<font size="5">font size=2</font><br>
+		<font size="6">font size=2</font><br>
+		<font size="7">font size=2</font><br>
+		<font size="8">font size=2</font><br>
+		<!-- pargraph(문단 tag) -->
+		<p>웹표준에서는 font tah을 이용한 크기지정을 하지 말것을 권장한다
+			이유: 브라우져마다 크기가 다르게 나온다<br>
+			**웨뷰표준 : 모양/크기 모든 브라우져에서 동일하게 나오게끔 코드를 작성<br>
+			**해결방안 : CSS이용해라
+		</p>
+		
+</body>
+</html>

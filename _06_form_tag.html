@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+		<!-- 
+		1.용도 : 서버(지정된 action)로 form데이터를 일괄적으로 전송 
+		2.속성
+				action="서버의 처리객체" <=전송시킬 서블릿 또는 jsp
+						생략되면 자신의 페이지로 전송됨
+				method= "전송방식"
+						get : QueryString방식(URL에 전송데이터를 붙여서 전송)
+						/member_register.do?name=홍길동&id=홍
+										   ?변수=값&변수=값&변수=값  <=Query라 부른다
+						전송량의 크기제한(2048글자)
+						
+						
+						POST : 전송데이터를 내부 요청 헤더에 숨겨서 전송(보안성이 좋다)
+							   전송량의 제한없다
+							   파일업로드시에는 무조건 POST를 사용해야된다
+						
+		3.지원함수
+			submit() : 서버로 전송
+			reset()  : 입력값취소(초기화)
+							
+				-->
+<body>
+	<form action="" method="GET">
+	
+		<label>이름:</label><input type="text" name="name"><br>
+		<!-- input type속성이 생략되면 기본값 text -->
+		아이디:<input name= "id"><br>
+		비밀번호:<input type="password" name="pwd" placeholder="6~8자리 영숫자조합"><br>
+		
+		<!-- radio button : name을 동일한 이름으로 사용-->
+		성별:<input type="radio" name="gender" value="남자" checked="checked">남자
+			 <input type="radio" name="gender" value="여자">여자
+			 <br>
+		<!-- check box name을 동일하게 줘야 작업이 편해진다-->
+		취미:<input type="checkbox" name="hobby" value="독서">독서
+			 <input type="checkbox" name="hobby" value="영화">영화
+			 <input type="checkbox" name="hobby" value="운동">운동
+			 <input type="checkbox" name="hobby" value="낚시">낚시
+			 <br>	
+		<!-- 값을 입력하지 않아도 서버로 넘어간다 -->
+		친구1:<input type="text" name= "friend"><br>
+		친구2:<input type="text" name= "friend"><br>
+		친구3:<input type="text" name= "friend"><br>
+		
+		<!-- select : combobox기능 -->
+		혈액형: <select name="blood">
+					<option value="A">A형</option>
+					<option value="B">B형</option>
+					<option value="O">O형</option>
+					<option value="AB">AB형</option>
+				</select>
+		<br>
+		자기소개 <br>
+		<textarea rows="5" cols="40" name="profile"></textarea>
+		<br>
+	
+		<!-- 파일 업로드시에 전송방식은 POST로 해야한다 
+		multiple = "multiple" 사진 여러개 올릴시-->	
+		첨부파일:<input type="file" name="photo"><br>
+		
+		<hr>
+			웹표준을 준수하지 않는 기능(모든 브라우져에서 적용되지 않는다는 뜻)
+		<hr>
+		생년월일:<input type="date" name="birthday"> <br>	
+		좋아하는색상<input type="color" name="color"><br>
+			
+			 
+		<input type="submit" value= "서버로전송">
+		<input type="reset"  value ="초기화">
+		
+		
+	</form>
+
+</body>
+</html>

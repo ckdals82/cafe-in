@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+			<!-- css(cascade-연속적인  styleSheet)
+			적용방법
+			1. inline 방식
+			2. 선언적 방식
+			3. 외부파일 link방식 
+			
+			형식)
+			Selector { property: value; property: value; }
+			
+			셀렉터(Selector) 적용대상을 찾는 기
+			1.Element name
+			2.id selector
+			3.class selector
+			4.group(multi) selector
+			5. * : All Elements
+			6.attribute를 이용한
+			
+			
+			-->
+<!--2. 선언적 방식 : 현재 문서(document)의 위쪽에 선언을 하는 방식 -->
+<style type="text/css">
+	
+	* {margin: 0; padding: 0;}
+	
+	/* /*multi-selector*/ 엘리멘트 이자 멀티 활용 한 것 */
+	p,body{
+		color: blue;
+		/* border: 1px solid yellow; */
+	}
+
+	/* id selector : #id */
+	#p1{ color:red;}  /* 아이디가 p1인 거 적용 */
+	
+	/* class selector : .class명 */
+	.ptype { color: pink; }
+	
+	
+	/* Attribute selector */
+	input[type='type']{
+	
+			border: 1px solid red;
+	}
+	
+	input[type='button']{
+		width: 80px;
+		height: 25px;
+		background: black;
+		color: white;
+	}
+	
+	
+</style>
+</head>
+<body>
+	
+	<!-- <input name="name" id="name">
+				name속성: 서버전송용
+				id  속성: 클라이언트식별용	
+	 -->
+	<p id="p1"> 동해물과 백두산이 마르고 닳도록</p>
+	<p class="ptype"> 하느님이 보우하사 우리나라 만세</p>
+	<p class="ptype"> (후렴)</p>
+	
+	<!-- css 1.	inline 방식으로 처리 -->
+	<p style="color:green;"> 무궁화 삼천리 화려강산</p>
+	<p style="color:green;"> 대한사람 대한으로 길이 보전하세</p>
+	
+	
+	<input type="text" name="msg"> <br>
+	
+	<input type="button" value= "전송">
+	<input type="button" value= "취소"> <br>
+	
+	
+	
+	
+</body>
+</html>

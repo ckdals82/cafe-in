@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+* { margin: 0; padding: 0;}
+
+#main_box{
+	width: 800px;
+	height: 600px;
+	background-color: #cccccc;
+	
+	margin: auto;
+}
+
+#header{
+	
+	width: 100%; /* 부모기준 : 생략시 부모크기를 그대로 물려받는다 */
+	height: 100px;
+	background: #ffcccc;
+}
+
+#aside1 {
+	width: 15%;
+	min-height: 400px;
+	background: #ffffcc;
+	
+	float: left;
+}
+
+#content{
+	width: 70%;
+	min-height: 400px; /* 최소크기 */
+	height: auto;
+	background: #ccffcc;
+	
+	float: left;
+}
+
+#aside2 {
+	width: 15%;
+	min-height: 400px;
+	background: #ffffcc;
+	
+	float: right;
+}
+	
+#footer{
+	
+	/* 부유속성 해제 */
+	clear: both;	/* left,right 둘다 해제 */
+	
+	height: 100px;
+	background: #ccccff;
+}
+
+
