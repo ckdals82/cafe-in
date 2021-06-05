@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+  * { margin: 0; }
+  #my_canvas {
+      background: #eeeeee;
+      
+      /* background-image: url('../image/캐로로_off.jpg') */
+  }
+</style>
+
+
+<!-- 자바스크립트 외부화일 참조 : <script>아무것도 코딩하지 말것</script>  -->
+<script type="text/javascript"  src="../js/block.js"></script>
+<script type="text/javascript"  src="../js/ball.js"></script>
+
+<script type="text/javascript">
+   
+   //상수개념
+   var WIDTH = 800;
+   var HEIGHT= 600;
+   
+   //키상수
+   var LEFT  = 37;
+   var RIGHT = 39;
+   var START = 83;
+   var STOP  = 88;
+   
+   //키상태 상수
+   var KEY_NONE		= 0;
+   var KEY_LEFT_DOWN = 1;
+   var KEY_RIGHT_DOWN = 2;
+   
+   var key_state = KEY_NONE;
+   
+   
+   var ctx = null;
+   var timer = null;
+   
+   //바
+   var bar = null;
+   
+   //공
+   var ball = null;
+   
+   
+   //블럭배열
+   var block_array = new Array();
+   
+   var block_count = 0;
+   
+   
+   function init_block(){
+      
+      //블럭크기
+      var w = 100;
+      var h = 50;
+      
+      var color_array = ['red','green','blue','yellow','cyan','magenta'];
+      
+      for(var i=0;i< 6;i++){ //행수
+         
+         var im_array = new Array();
+      
+         for(var k=0; k< 8 ; k++ ){//열수
+            var color = color_array[(i+k)%6];   
+            var block = new Block(k*w,i*h,w,h,color,true);
+            im_array[k] = block;
+            
+            if(k==0 || k==7 || i==0) {
+            	block.show=false;
+            }else
+            	block_count++;
+         }
+         
+         //2차원 배열
+         block_array[i] = im_array;
+      }
+      //전체블럭 갯수 = 행갯수		*  열갯
+      block_count = block_array.length * block_array[0].length;
+   }
+   
+   function init_bar(){
+      
+      var w = 150;
+      var h = 30;
+      var x = (WIDTH/2)-(w/2);
+      var y = HEIGHT - h - 5;
+      var color = 'rgb(100,150,500)';
+      bar = new Block(x,y,w,h,color,true);
+      
+   }
+   
+   
+   function init_ball(){
+      
+      var r = 10;
+      
+      //bar기준 설정
+      var x = (bar.x + bar.w/2);
+      var y = bar.y - r;
+      
+      var color = 'red';
+      
+      
+      ball = new Ball(x,y,r,color,WIDTH,HEIGHT,true,false);
+      
+   }
+   
+   
+   //윈도우 초기화 이벤트
+   window.onload = function(){
+      
+      var my_canvas = document.getElementById("my_canvas");
+      
+      if(my_canvas.getContext){
+         ctx = my_canvas.getContext("2d");
+         //블럭초기화
+         init_block();
+         //바 초기화
+         init_bar();
+         //공 초기화
+         init_ball();
+         
+         draw();
+         
+      }else{
+         alert('현재 브라우져는 canvas를 지원하지 않습니다');   
+      }
+   };
+
+   //키이벤트
+   window.onkeydown = function(event){
+      
+      var key = event.keyCode;
+      //console.log(key);
+      if(key==LEFT){
+         key_state = key_state | KEY_LEFT_DOWN;
+      }else if(key==RIGHT){
+    	  key_state = key_state | KEY_RIGHT_DOWN;
+      }
+      
+      //시작 :  s
+      if(key==START){
+         if(timer==null)
+            timer = setInterval(timer_proc,10);
+      }
+      
+      //종료 : x
+      if(key==STOP){
+         //타이머 정지
+         clearInterval(timer);
+         timer=null;
+      }
+      
+      
+   };
+   //키이벤트 떼었을때
+   window.onkeyup = function(event){
+	   var key = event.keyCode;
+	      //console.log(key);
+	      if(key==LEFT){
+	         key_state = key_state ^ KEY_LEFT_DOWN;
+	      }else if(key==RIGHT){
+	    	  key_state = key_state ^ KEY_RIGHT_DOWN;
+	      }
+   };
+   
+   
+   function timer_proc(){
+      
+      console.log('----');
+      //위치이동
+      process();
+      
+      //모든아이템을 그려라
+      draw();
+   }
+   
+   
+   function move_bar(){
+	   if((key_state & KEY_LEFT_DOWN)==KEY_LEFT_DOWN){
+		   bar.x -= 5;
+	   }else if((key_state & KEY_RIGHT_DOWN)==KEY_RIGHT_DOWN){
+		   bar.x +=5;
+   }
+   }
+   function collision_ball_bar(){
+	   //공의 충돌좌표
+	var cx = ball.x;
+	var cy=	 ball.y + ball.r;
+	
+	//bar의 x영역안에 있냐?
+	/* if(cx >= bar.x && cx <=(bar.x+bar.w)){
+		
+		if(cy > bar.y){
+			ball.y = bar.y - ball.r - 1;
+			ball.bDown = false;
+		}
+	} */
+	if(bar.contains(cx,cy)){
+		ball.y = bar.y - ball.r - 1;
+		ball.bDown = false;
+	}
+	
+	if(cy >= HEIGHT){
+		console.log('---kill ball--');
+		clearInterval(timer);
+		timer=null;
+		
+		init_bar();
+		init_ball();
+		draw();
+		
+		
+	}
+   }
+   
+   function end_check(){
+	   block_count--;
+	   
+	   if(block_count==0){
+		   alert('Game Over');
+		   clearInterval(timer);
+		   timer=null;
+		   
+		   init_block();
+		   init_ball();
+		   init_bar();
+	   }
+   }
+  
+   function collision_ball_block_bottom(){
+	   
+	   var cx = ball.x;
+	   var cy = ball.y - ball.r;
+	   
+	   var rows = block_array.length;//전체 행수(6)
+	   var cols = block_array[0].length;//전체 열수(8)
+	   
+	   //블럭배열의 첨자를 구하는 식
+	   var row = Math.floor(cy / block_array[0][0].h);
+	   var col = Math.floor(cx / block_array[0][0].w);
+	   
+	   //블럭 아래쪽에 있으면 끝내라
+	   if(row >= rows) return;
+	   
+	  if(col<0 || col>=cols)return;// 첨자 유효범위를 벗어나면 끝내라
+	  
+	  var block = block_array[row][col];
+	  
+	  //이미 깨진 블럭으면 끝내라
+	  if(block.show==false)return;
+	  
+	  //블럭을 깨진 상태로 
+	  block.show = false;
+	  
+	  //공의 방향 아래로 
+	  ball.bDown = true;
+	  
+	 //종료체크
+	  end_check();
+   }
+   function collision_ball_block_left(){
+	   var cx = ball.x + ball.r;
+	   var cy = ball.y; 
+	   
+	   var rows = block_array.length;//전체 행수(6)
+	   var cols = block_array[0].length;//전체 열수(8)
+	   
+	   //블럭배열의 첨자를 구하는 식
+	   var row = Math.floor(cy / block_array[0][0].h);
+	   var col = Math.floor(cx / block_array[0][0].w);
+	   
+	   //블럭 아래쪽에 있으면 끝내라
+	   if(row >= rows) return;
+	   
+	  if(col<0 || col>=cols)return;// 첨자 유효범위를 벗어나면 끝내라
+	  
+	  var block = block_array[row][col];
+	  
+	  //이미 깨진 블럭으면 끝내라
+	  if(block.show==false)return;
+	  
+	  //블럭을 깨진 상태로 
+	  block.show = false;
+	  
+	  //공의 방향 아래로 
+	  ball.bRight = false;
+	  
+	//종료체크
+	  end_check();
+	   
+   }
+   function collision_ball_block_right(){
+	   var cx = ball.x - ball.r;
+	   var cy = ball.y 
+	   
+	   var rows = block_array.length;//전체 행수(6)
+	   var cols = block_array[0].length;//전체 열수(8)
+	   
+	   //블럭배열의 첨자를 구하는 식
+	   var row = Math.floor(cy / block_array[0][0].h);
+	   var col = Math.floor(cx / block_array[0][0].w);
+	   
+	   //블럭 아래쪽에 있으면 끝내라
+	   if(row >= rows) return;
+	   
+	  if(col<0 || col>=cols)return;// 첨자 유효범위를 벗어나면 끝내라
+	  
+	  var block = block_array[row][col];
+	  
+	  //이미 깨진 블럭으면 끝내라
+	  if(block.show==false)return;
+	  
+	  //블럭을 깨진 상태로 
+	  block.show = false;
+	  
+	  //공의 방향 아래로 
+	  ball.bRight = true;
+	  
+	//종료체크
+	  end_check();
+   }
+   function collision_ball_block_top(){
+	   var cx = ball.x;
+	   var cy = ball.y + ball.r;
+	   
+	   var rows = block_array.length;//전체 행수(6)
+	   var cols = block_array[0].length;//전체 열수(8)
+	   
+	   //블럭배열의 첨자를 구하는 식
+	   var row = Math.floor(cy / block_array[0][0].h);
+	   var col = Math.floor(cx / block_array[0][0].w);
+	   
+	   //블럭 아래쪽에 있으면 끝내라
+	   if(row >= rows) return;
+	   
+	  if(col<0 || col>=cols)return;// 첨자 유효범위를 벗어나면 끝내라
+	  
+	  var block = block_array[row][col];
+	  
+	  //이미 깨진 블럭으면 끝내라
+	  if(block.show==false)return;
+	  
+	  //블럭을 깨진 상태로 
+	  block.show = false;
+	  
+	  //공의 방향 아래로 
+	 ball.bDown  = false;
+	  
+	//종료체크
+	  end_check();
+   }
+   
+   
+   
+   function process(){
+      //공움직이기
+      ball.move();
+      
+      //바움직이기
+      move_bar();
+      //console.log(ball.x);
+      //충돌체크...
+      
+      //ball and bar
+      
+      collision_ball_bar();
+      
+      //ball and block
+      if(ball.bDown==false)//윗쪽방향으로 이동시에만 체크
+      collision_ball_block_bottom();//블럭의 하단에 맞는경우
+      
+     if(ball.bDown==true) collision_ball_block_top();
+     	
+    if(ball.bRight==true)  collision_ball_block_left();
+    
+    if(ball.bRight==false) collision_ball_block_right();
+   }
+   
+   function draw(){
+      
+      ctx.clearRect(0,0,WIDTH,HEIGHT);
+      //블럭그리기
+      draw_block();
+      //공그리기
+      ball.draw(ctx);
+      
+      //바 그리기
+      bar.draw(ctx);
+   }
+   
+   
+   function draw_block(){
+      
+      for(var i=0;i< block_array.length ;i++){ //행첨자
+         
+         for(var k=0;k< block_array[i].length ;k++){//열첨자
+            
+            var block = block_array[i][k];
+            
+            block.draw(ctx);
+            //console.log("x:" + block.x + " y:" + block.y);
+             
+         }
+      }
+   }
+      
+   
+
+</script>
+
+
+</head>
+<body>
+
+<canvas id="my_canvas"  width="800" height="600"></canvas>
+  
+
+
+</body>
+</html>

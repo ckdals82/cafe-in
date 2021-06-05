@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+
+	class Person{
+		
+		constructor(name,age,tel){
+			//멤버변수선언			
+			this._name = name;
+			this._age = name;
+			this._tel = name;
+			
+		}
+		set name(name){
+			this._name = name;
+		}
+		get name(){
+			return this._name;
+		}
+		//_age,_tel에 대한 getter/setter
+		
+		info(){
+			return "[" + this._name + "," + this._age + "," + this._tel + "]";
+		}
+	}
+	
+	var p = new Person("홍길동",30,"010-111-1234");
+	
+	document.write(p.info()+"<br>");
+	
+	p.name("일길동");
+	
+	document.write(p.info()+"<br>");
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

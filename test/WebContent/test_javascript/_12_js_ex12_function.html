@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	
+	<script type="text/javascript">
+	/* 함수생성방법 3가지 */
+	
+	//1.선언적방식
+	function func1(){
+		
+		console.log("---call func1()---");
+	}
+	
+	//2.리터럴방식
+	var func2 = function(){
+		console.log("---call func1()---");	
+	}
+	
+	//cf) java문법:	final static double PI = 3.141592	;
+	//				constant(상수) => PI
+	//				literal		   => 3.14152
+	
+	//3.익명함수방식(이벤트성 함수에서 사용)
+	window.onload = function(){
+		
+		console.log("---초기화 완료---")
+	};
+	
+	//키가 눌렸을때
+	window.onkeydown = function(event){
+		console.log(event.keyCode);
+	};
+	
+	window.onmousedown = function(event){
+		
+		console.log("x"+ event.x + "y=" + event.y);
+	};
+	
+	
+	func1();
+	func2();
+	
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
