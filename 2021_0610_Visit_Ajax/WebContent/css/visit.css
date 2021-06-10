@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+* {margin: 0;} 
+
+
+#box{
+
+	width: 700px;
+	margin: auto;
+}
+
+#title{
+	text-align: center;
+	font-size: 26pt;
+	font-weight: bold;
+	color: #004080;
+	text-shadow: 1px 1px 3px black;
+}
+
+#type_btn{
+	
+	text-align: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+#empty_message{
+	
+	text-align: center;
+	margin-top: 100px;
+	color: red;
+	font-size: 16pt;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px black;
+}
+
+.type_name{
+	font-weight: bold;
+	font-size: 13pt;
+		
+}
+
+.type_content{
+	min-height: 80px;
+	height: auto;
+	/* background: #dbffe3; */
+	box-shadow: -1px -1px 1px #cccccc;
+}
+
+.type_regdate {
+	color: #0080c0;
+}
+
+.type_pwd{
+	color: #0080c0;
+}
+
+.my_btn{ 
+	height: 30px;
+	
+}
