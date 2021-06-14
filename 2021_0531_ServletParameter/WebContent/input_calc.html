@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var regular_number=/^[0-9]+$/;
+	function send(f){
+		
+		//su1,su2 숫자체크 ..(정규식)
+		var su1 = f.su1.value.trim();
+		var su2 = f.su2.value.trim();
+		
+		
+		
+		
+		
+		
+		if(regular_number.test(su1)==false){
+		      alert('수1을 입력하세요!!');
+		      f.su1.value='';//값지우기
+		      f.su1.focus();
+		      return;
+		   }
+		   if(regular_number.test(su2)==false){
+		      alert('수2를 입력하세요!!');
+		      f.su2.value='';//값지우기
+		      f.su2.focus();
+		      return;
+		   
+	}
+		   //이상없으면 전송
+			f.action="calc.do"
+			f.submit();
+	}
+	 
+</script>
+</head>
+<body>
+	<form action="clac.do">
+		<table border="1">
+			<tr>
+				<th>수1: </th>
+			<td><input name ="su1"></td>
+			</tr>
+			
+			<tr>
+				<th>수2: </th>
+			<td><input name ="su2"></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+						<input type= "button" value="결과보기" onclick="send(this.form);">
+	
+				</td>
+			</tr>
+		</table>
+	
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+   a{
+      text-decoration: none;
+      color: #8888ff;
+   }
+   a:hover{
+      color: blue;
+   }
+
+</style>
+</head>
+<body>
+<hr>
+   국가선택(Anchor tag이용)
+<hr>
+   <a href="hello.do?nation=kor">한국</a><br>
+   <a href="hello.do?nation=jpn">일본</a><br>
+   <a href="hello.do?nation=chn">중국</a><br>
+   <a href="hello.do?nation=eng">미국</a><br>
+   <a href="hello.do?nation=ger">독일</a><br>
+
+
+<hr>
+   국가선택(Radio 이용)
+<hr>
+
+<form action="hello.do">
+   <!-- Radio 버튼 -->
+   <input type="radio" name="nation" value="kor" checked="checked">한국<br>
+   <input type="radio" name="nation" value="jpn">일본<br>
+   <input type="radio" name="nation" value="chn">중국<br>
+   <input type="radio" name="nation" value="eng">미국<br>
+   <input type="radio" name="nation" value="ger">독일<br>
+   
+   <input type="submit" value="결과보기">
+   
+</form>
+
+<hr>
+   국가선택(select 이용)
+<hr>
+
+<form>
+   <!-- <Select> -->
+   <select name="nation">
+      <option value="kor">한국</option>
+      <option value="jpn">일본</option>
+      <option value="chn">중국</option>
+      <option value="eng">미국</option>
+      <option value="ger">독일</option>
+   </select>
+   
+   <input type="submit" value="결과보기">
+   
+</form>
+
+</body>
+</html>

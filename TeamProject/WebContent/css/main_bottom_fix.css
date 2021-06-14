@@ -1,0 +1,159 @@
+@charset "UTF-8";
+#body {
+  height: 1300px;
+}
+#bx_main_bottom {
+  margin: auto;
+  margin-top: 100px;
+  margin-left: 150px;
+  margin-right: 150px;
+  min-height: 500px;
+  min-width: 1000px;
+}
+
+#rcm_cafe {
+  width: 70px;
+  background: #0080c0;
+  color: white;
+}
+
+#more_view {
+  margin-left: 300px;
+}
+
+#photo1 {
+  border: 1px solid black;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-top: 10px;
+  margin-right: 20px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo2 {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-right: 20px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo3 {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-right: 20px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo4 {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-bottom: 30px;
+
+  float: left;
+}
+
+#photo5 {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-right: 20px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo6 {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-right: 20px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo7 {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-right: 20px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo8 {
+  border: 1px solid black;
+  margin-top: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  margin-right: 30px;
+  float: left;
+  margin-bottom: 30px;
+}
+
+#photo9 {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+
+  float: left;
+  margin-bottom: 30px;
+}
+#photo10 {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  float: left;
+}
+#photo11 {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  float: left;
+}
+#photo12 {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  float: left;
+}
+#photo8 {
+  border: 1px solid black;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 350px;
+  height: 200px;
+  background: white;
+  float: left;
+}

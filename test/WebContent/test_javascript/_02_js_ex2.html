@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	
+	/*
+	자료형
+	1.숫자형 : Number =>  10 , 10.5
+	2.문자형 : string => 'ABC' or "ABC"
+	3.날짜형 : Date	  =>  new Date()
+	4.객체형 : Array(),외 사용자 자료형 => new Array()
+	5.논리형 : boolean => true , false
+	
+	
+	*/
+	//변수선언
+	// var 변수명;	<= 자료형을 붙이는것이 아니라 var을 붙인다
+	
+	var today = new Date(); //전역변수
+	
+	function fn1() {
+		//지역변수(local variable)
+		var su1 = 10;
+		
+		//함수내부에서 선언시 var생략되면 전역변수
+		global_su2 = 100;
+	}
+	
+	document.title='제목바꾸기'
+	
+	/*body영역에 출력해라..*/
+	document.write("Body영역에 출력을합니다");
+	
+	//document.write("fn1's su1=" + su1 +"<br>")
+	fn1();
+	document.write("global_su2=" + global_su2 +"<br>")
+	
+	//가변형으로 인식 : 가급적이면 이렇게 사용하지 말 것
+	var imsi = 10; 		// <=	Number type
+	imsi = '안녕?';		// <=	string
+	imsi = true;   		// <=	boolean
+	imsi = new Date();  // <= 	Date
+	
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

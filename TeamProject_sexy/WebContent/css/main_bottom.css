@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+#bx_main_bottom{
+	margin:auto;
+	margin-top: 150px;
+	margin-left:150px;
+	margin-right:150px;
+	min-height: 500px;
+	min-width: 1500px;
+	
+}
+
+#rcm_cafe{
+	width:60px;
+	background: #0080c0;
+	color: white;
+}
+
+#more_view{
+	margin-right: 150px;
+}
+
+
+
+#photo1{
+	border: 1px solid black;
+	width: 350px;
+	height: 200px;
+	background: white;
+	margin-top: 10px;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo2{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo3{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo4{
+	border: 1px solid black;
+	margin-top: 10px;
+	margin-right: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	float:left;
+}
+
+#photo5{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo6{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo7{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo8{
+	border: 1px solid black;
+	margin-top: 10px;
+	margin-right: 10px;
+	width: 350px;
+	height: 200px;
+	background: white;
+	float:left;
+}
+

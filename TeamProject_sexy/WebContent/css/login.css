@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.lbl_login_title{
+	margin-top:300px;
+	text-align: center;
+	font-size: 30pt;
+	font-weight: bold;
+}
+
+.table_login{
+	margin: auto;
+	margin-top: 50px;
+}
+
+.clear_icon {
+    border: 1px solid transparent;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: text-bottom;
+    cursor: pointer;
+}
+
+/* .clear_icon:after {
+	content: 'x';
+	display: block;
+	width: 15px;
+	height: 23px;
+	position: absolute;
+	right: 25px;
+	top: 5px;
+	bottom: 0px;
+	margin: auto;
+	text-align: center;
+	color: #555C54;
+	cursor: pointer;
+	font-family: 'Major Mono Display';
+	font-weight: 800;
+	font-size: 10px;
+} */
+
+.button_tot{
+	text-align: center;
+}
+
+.button_login{
+	width: 140px;
+}
+
+.label_title{
+	text-align: right;
+}

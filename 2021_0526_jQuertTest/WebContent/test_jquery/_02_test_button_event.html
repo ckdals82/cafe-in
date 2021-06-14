@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#disp{
+	width: 200px;
+	height: 20px;
+	padding: 10px;
+	background: black;
+	color: white;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+
+//jquert초기화
+$(document).ready(function(){
+	
+	//한국어인사말 버튼 클릭시
+	$('#bt_kor').click(function(){
+		$('#disp').html("한국 : 안녕하세요!!")
+	});
+	
+	$('#bt_jpn').click(function(){
+		$('#disp').html("일본 : 안녕데스까!!")
+	});
+	
+	$('#bt_chn').click(function(){
+		$('#disp').html("중국 : 니하오데스까!!")
+	});
+	
+	$('#bt_ger').click(function(){
+		$('#disp').html("독일 : 구텐탁탁탁!!")
+	});
+	
+	$('#bt_fra').click(function(){
+		$('#disp').html("프랑스 : 프랑스인데예!!")
+	});
+	
+});
+
+</script>
+
+
+
+
+</head>
+<body>
+
+	<div id="disp">각나라인사말</div> <br>
+	<input type="button" value="한국어인사말" id="bt_kor">
+	<input type="button" value="일본어인사말" id="bt_jpn">
+	<input type="button" value="중국어인사말" id="bt_chn">
+	<input type="button" value="독일어인사말" id="bt_ger">
+	<input type="button" value="프랑스어인사말" id="bt_fra">
+</body>
+</html>

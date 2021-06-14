@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>로그인</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/login.css" />
+
+    <!-- js -->
+    <link rel="stylesheet" href="../javascript/login.js" />
+  </head>
+  <body>
+    <div class="login_tot">
+      <div class="login_title">
+        <div class="lbl_login_title">로그인</div>
+      </div>
+
+      <div class="login_account">
+        <table class="table_login" cellpadding="10">
+          <tr>
+            <td class="label_title">아이디</td>
+            <td>
+              <form>
+                <input
+                  type="text"
+                  class="input _lgn"
+                  placeholder="LoginID"
+                  id="usr_id"
+                />
+                <button class="clear_icon" type="reset">x</button>
+              </form>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label_title">비밀번호</td>
+            <td>
+              <form>
+                <input
+                  type="password"
+                  class="input _lgn"
+                  placeholder="Password"
+                  id="lgn_pwd"
+                />
+                <button class="clear_icon" type="reset">x</button>
+              </form>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="button_tot">
+              <input
+                type="button"
+                value="로그인"
+                id="bt_login"
+                class="button_login"
+              />
+              <a href="signup.html">
+                <input
+                  type="button"
+                  a
+                  value="회원가입"
+                  id="bt_new"
+                  class="button_login"
+              /></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

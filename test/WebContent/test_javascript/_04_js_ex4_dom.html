@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	
+	/* DOM(Docunent Object Model)
+		: document이용해서 element를 제어하는 API
+		document.getElementByld("id")
+		
+		Regular Expression(정규표현식)
+	
+		##Pattern check
+		
+		^ : 시작문자	=>	^A		: A로 시작되는 문자
+		$ : 끝문자		=>	T$		: T로 끝나는 문자
+		[]: 범위		=>	[a-z]	: 소문자만 허용
+							[a-zA-Z]: 알파벳만 허용
+							[0-9]	: 숫자만 허용
+							[a-zA-Z0-9] : 알파벳 + 숫자만 허용
+		{}: 자릿수		=>	{3}		: 3자리
+							{3,}	: 3자리이상
+							{3,6}	: 3~6자리
+		? : 0 or 1
+		+ : 1 이상
+		* : 0 이상
+				
+		
+							
+	*/	
+	var regular_number = /^[0-9]{1,}$/;
+	
+	function plus() {
+		
+		//alert('더하기');
+		//각입(출)력 컨트롤 정보 얻어온다
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var result_ctrl = document.getElementById("result");
+		//su1_ctrl.value=100;
+		//su1_ctrl.style.display='none'; //hide
+		
+		//각 입력컨트롤의 값을 얻어온다 + 공백제거(trim())
+		var su1 = su1_ctrl.value.trim();
+		var su2 = su2_ctrl.value.trim();
+		
+		//정규식 패턴체크(test())
+		if(regular_number.test(su1)==false){
+			alert('수1의 값을 숫자만 입력하세요');
+			su1_ctrl.value='';//값비우기
+			su1_ctrl.focus();
+			return;
+		}
+		
+		if(regular_number.test(su2)==false){
+			alert("수2의 값을 숫자만 입력하세요")
+			su2_ctrl.value='';//값비우기
+			su2_ctrl.focus();
+			return;
+		}
+		
+		
+		
+		//2개의 값을 더하기
+		//1.방법 : 문자열->정수 : parselnt("숫자형문자")
+		//	pareInt("")=> NaN
+		//	0 + NaN -> NaN
+		var result = parseInt(su1) + parseInt(su2);
+		
+		//cf)Nan(Not a Number)
+		
+		//2.방법 : 문자열 => 정수변환
+		//Number('숫자형문자')=>숫자
+		//var result = Number(su1) + Number(su2);
+		
+		//연산결과값을 결과창에 넣는다
+		result_ctrl.value = result;
+		
+	}
+	
+function minus() {
+		
+		//alert('더하기');
+		//각입(출)력 컨트롤 정보 얻어온다
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var result_ctrl = document.getElementById("result");
+		//su1_ctrl.value=100;
+		//su1_ctrl.style.display='none'; //hide
+		//각 입력컨트롤의 값을 얻어온다 + 공백제거(trim())
+		var su1 = su1_ctrl.value.trim();
+		var su2 = su2_ctrl.value.trim();
+		
+		//정규식 패턴체크(test())
+		if(regular_number.test(su1)==false){
+			alert('수1의 값을 숫자만 입력하세요');
+			su1_ctrl.value='';//값비우기
+			su1_ctrl.focus();
+			return;
+		}
+		
+		if(regular_number.test(su2)==false){
+			alert("수2의 값을 숫자만 입력하세요")
+			su2_ctrl.value='';//값비우기
+			su2_ctrl.focus();
+			return;
+		}
+		
+		
+		
+		//2개의 값을 더하기
+		//1.방법 : 문자열->정수 : parselnt("숫자형문자")
+		//	pareInt("")=> NaN
+		//	0 + NaN -> NaN
+		var result = parseInt(su1) - parseInt(su2);
+		
+		//cf)Nan(Not a Number)
+		
+		//2.방법 : 문자열 => 정수변환
+		//Number('숫자형문자')=>숫자
+		//var result = Number(su1) + Number(su2);
+		
+		//연산결과값을 결과창에 넣는다
+		result_ctrl.value = result;
+		
+	}
+function multiply() {
+	
+	//alert('더하기');
+	//각입(출)력 컨트롤 정보 얻어온다
+	var su1_ctrl = document.getElementById("su1");
+	var su2_ctrl = document.getElementById("su2");
+	var result_ctrl = document.getElementById("result");
+	//su1_ctrl.value=100;
+	//su1_ctrl.style.display='none'; //hide
+	//각 입력컨트롤의 값을 얻어온다 + 공백제거(trim())
+	var su1 = su1_ctrl.value.trim();
+	var su2 = su2_ctrl.value.trim();
+	
+	//정규식 패턴체크(test())
+	if(regular_number.test(su1)==false){
+		alert('수1의 값을 숫자만 입력하세요');
+		su1_ctrl.value='';//값비우기
+		su1_ctrl.focus();
+		return;
+	}
+	
+	if(regular_number.test(su2)==false){
+		alert("수2의 값을 숫자만 입력하세요")
+		su2_ctrl.value='';//값비우기
+		su2_ctrl.focus();
+		return;
+	}
+	
+	
+	
+	//2개의 값을 더하기
+	//1.방법 : 문자열->정수 : parselnt("숫자형문자")
+	//	pareInt("")=> NaN
+	//	0 + NaN -> NaN
+	var result = parseInt(su1) * parseInt(su2);
+	
+	//cf)Nan(Not a Number)
+	
+	//2.방법 : 문자열 => 정수변환
+	//Number('숫자형문자')=>숫자
+	//var result = Number(su1) + Number(su2);
+	
+	//연산결과값을 결과창에 넣는다
+	result_ctrl.value = result;
+	
+}
+
+function divide() {
+	
+	//alert('더하기');
+	//각입(출)력 컨트롤 정보 얻어온다
+	var su1_ctrl = document.getElementById("su1");
+	var su2_ctrl = document.getElementById("su2");
+	var result_ctrl = document.getElementById("result");
+	//su1_ctrl.value=100;
+	//su1_ctrl.style.display='none'; //hide
+	//각 입력컨트롤의 값을 얻어온다 + 공백제거(trim())
+	var su1 = su1_ctrl.value.trim();
+	var su2 = su2_ctrl.value.trim();
+	
+	//정규식 패턴체크(test())
+	
+	
+	if(regular_number.test(su1)==false){
+		alert('수1의 값을 숫자만 입력하세요');
+		su1_ctrl.value='';//값비우기
+		su1_ctrl.focus();
+		return;
+	}
+	
+	if(regular_number.test(su2)==false){
+		alert("수2의 값을 숫자만 입력하세요")
+		su2_ctrl.value='';//값비우기
+		su2_ctrl.focus();
+		return;
+	}
+	if(su2==0){
+		alert('수2의 값에 0을 입력하지마세요');
+		su2_ctrl.value='';//값비우기
+		su2_ctrl.focus();
+		return;
+	}
+	
+	
+	
+	
+	//2개의 값을 더하기
+	//1.방법 : 문자열->정수 : parselnt("숫자형문자")
+	//	pareInt("")=> NaN
+	//	0 + NaN -> NaN
+	var result = parseInt(su1) / parseInt(su2);
+	
+	//cf)Nan(Not a Number)
+	
+	//2.방법 : 문자열 => 정수변환
+	//Number('숫자형문자')=>숫자
+	//var result = Number(su1) + Number(su2);
+	
+	//연산결과값을 결과창에 넣는다
+	result_ctrl.value = result;
+	
+}
+function remain() {
+	
+	//alert('더하기');
+	//각입(출)력 컨트롤 정보 얻어온다
+	var su1_ctrl = document.getElementById("su1");
+	var su2_ctrl = document.getElementById("su2");
+	var result_ctrl = document.getElementById("result");
+	//su1_ctrl.value=100;
+	//su1_ctrl.style.display='none'; //hide
+	//각 입력컨트롤의 값을 얻어온다 + 공백제거(trim())
+	var su1 = su1_ctrl.value.trim();
+	var su2 = su2_ctrl.value.trim();
+	
+	//정규식 패턴체크(test())
+	
+	
+	if(regular_number.test(su1)==false){
+		alert('수1의 값을 숫자만 입력하세요');
+		su1_ctrl.value='';//값비우기
+		su1_ctrl.focus();
+		return;
+	}
+	
+	if(regular_number.test(su2)==false){
+		alert("수2의 값을 숫자만 입력하세요")
+		su2_ctrl.value='';//값비우기
+		su2_ctrl.focus();
+		return;
+	}
+	if(su2==0){
+		alert('수2의 값에 0을 입력하지마세요');
+		su2_ctrl.value='';//값비우기
+		su2_ctrl.focus();
+		return;
+	}
+	
+	
+	
+	
+	//2개의 값을 더하기
+	//1.방법 : 문자열->정수 : parselnt("숫자형문자")
+	//	pareInt("")=> NaN
+	//	0 + NaN -> NaN
+	var result = parseInt(su1) % parseInt(su2);
+	
+	//cf)Nan(Not a Number)
+	
+	//2.방법 : 문자열 => 정수변환
+	//Number('숫자형문자')=>숫자
+	//var result = Number(su1) + Number(su2);
+	
+	//연산결과값을 결과창에 넣는다
+	result_ctrl.value = result;
+	
+}
+
+
+
+	
+	
+	
+	
+</script>
+
+</head>
+<body>
+
+<!-- id	: 클라이언트용도
+ 	name: 서버전송용도	
+ -->
+수1:<input id="su1" name="su1" value=""><br>
+수2:<input id="su2" value=""><br>
+
+<input type="button" value="+" onclick="plus();">
+<input type="button" value="-" onclick="minus();">
+<input type="button" value="*" onclick="multiply();">
+<input type="button" value="/" onclick="divide();">
+<input type="button" value="%" onclick="remain();">
+<br>
+
+결과:<input id="result" value="">
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	
+/* 	
+	json(javascript Object Notation) notation : 표기법
+	: 자바스크립트에서 객체 표현 방법
+	
+	형식)
+						 key	 value	 	key:	value
+		var 객체명 = { '속성명' : 값  , '속성명2': 값2... }
+		참고사이트 : json.org
+ */
+ 
+ 	var p = { "name" : "황창민" , "age":29 , "addr": "서울시 구로구 개봉동" }
+ 	
+ 	var property_name='age';//age가 변수로 들어감
+ 	// dot방식
+ 	document.write("p.name=" + p.name + "<br>");
+ 	
+ 	//연관배열
+ 	document.write("p.age=" + p["age"] + "<br>"); 
+ 	
+ 	document.write("p.name=" + p.property + "<br>");
+ 	//속성명이 변수일경우 연관배열방식을 사용
+ 	document.write("p.name=" + p[property_name] + "<br>");
+ 	
+ 	var p2 = {"name": {"family_name":"홍","given_name":"길동"},
+ 			"gender" : "남자",
+ 			"hobby": ["낚시","독서","영화"]
+ 	};
+ 	
+ 	document.write("이름:" + p2.name.family_name + p2.name.given_name + "<br>");
+ 	
+ 	document.write("성별:" + p2.gender + "<br>");
+ 	
+ 	
+ 	for(var i=0;i< p2.hobby.length;i++){
+ 		document.write("취미[" + i +"]=" + p2.hobby[i] + "<br>")
+ 	}
+ 	document.write("성별:")
+ 	for(var i=0;i< p2.hobby.length;i++){
+ 		document.write( p2.hobby[i] + "")
+ 	}
+ 	document.write("<br>");
+ 	//json array
+ 	var p_array =[	{ "name" : "황창민" , "age":29 , "addr": "서울시 구로구 개봉동" },//0
+ 					{ "name" : "황창용" , "age":22 , "addr": "서울시 구로구 개봉1동" },//1
+ 					{ "name" : "황창수" , "age":23 , "addr": "서울시 구로구 개봉2동" },//2
+ 					{ "name" : "황창놈" , "age":25 , "addr": "서울시 구로구 개봉3동" },//3
+ 					{ "name" : "황창맨" , "age":21 , "addr": "서울시 구로구 개봉4동" }//4
+ 	]
+	document.write(p_array[0].name)
+	
+	document.write("<hr><h2>p_array 출력해보기</h2><hr>")
+	
+	var html = "<table border='1'width='500'>";
+		html += "<tr><th>이름</th><th>나이</th><th>주소</th></tr>";
+		//데이터 채우기
+		for(var i=0; i<p_array.length;i++){
+			var p = p_array[i];
+			html += "<tr>";
+			html += "<td>" + p.name +"</td>"; //이름
+			html += "<td>" + p.age +"</td>"; //이름
+			html += "<td>" + p.addr +"</td>"; //이름
+			html += "<tr>"; 
+		}
+		html += "</table>";
+		
+		document.write(html);
+ </script>
+
+</head>
+<body>
+
+</body>
+</html>

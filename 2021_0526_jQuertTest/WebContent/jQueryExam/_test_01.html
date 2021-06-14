@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery사용 설정 -->
+<!-- off-line참조 -->
+<script src="js/jquery-1.10.2.js"></script>
+
+<!-- on-line참조 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script type="text/javascript">
+
+/* 함수생성방법 */
+
+//1.선언적방식
+function myfunc1(){}
+function init(){ alert('Element 배치 완료'); }
+
+//2.리터럴방식
+var myfunc2 = function(){}
+var init2   = function(){ alert('리터럴:Element 배치 완료'); }
+//3.익명함수
+//function(){}
+
+
+/* javascript 초기화 방법 */
+window.onload=function(){ 
+    console.log('4.Javascript 익명함수:Element 배치 완료');
+}
+
+/* jQuery 초기화 */
+//jQuery(selector).event(처리함수);
+
+
+jQuery(document).ready(function(){
+	console.log('1.jQuery(document).ready :Element 배치 완료');
+});
+
+/* jQuery =>  $ 기호사용 */
+
+$(document).ready(function(){
+	console.log('2.$(document).ready :Element 배치 완료');
+});
+
+
+/* 초기화 처리에만 해당 : selector / event생략 */
+
+$(function(){
+	console.log('3.$(처리함수) :Element 배치 완료');
+});
+
+
+
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	#out_box{
+		width: 500px;
+		height: 500px;
+		border : 1px solid blue;
+	}
+	
+	#box{
+		width:  100px;
+		height: 100px;
+		background: black;
+		
+		
+		margin-left: 0px;
+		margin-top: 0px;
+		
+	}
+	
+	input[type="button"]{
+		width: 50px;
+		height: 50px;
+	
+	}
+</style>
+
+<script type="text/javascript">
+	
+	function show_box(){
+		var box = document.getElementById("box");
+		//자바스크립에서 css설정
+		box.style.display = 'block';
+	}
+	
+	function hide_box(){
+		var box = document.getElementById("box");
+		//자바스크립에서 css설정
+		box.style.display = 'none';
+	}
+	
+	function move_right(){
+		var box = document.getElementById("box");
+		//css 		 : margin-left
+		//javascript : marginLeft
+		//alert(box.style.marginLeft);
+		var left = box.style.marginLeft;
+		var width = box.style.width;
+		//	left = '0px'
+		left = parseInt(left.replace('px',''));//문자열함수(replace())
+												//형변환함수(parseInt())
+		width = parseInt(width.replace('px',''));
+		left = left + 50;
+		
+		//오른쪽 벗어나지 못하도록
+		if((left+width)>500)
+				left = 500-width;
+		
+		
+		box.style.marginLeft = left + 'px';
+	}
+	
+	function move_left(){
+		var box = document.getElementById("box");
+		//css 		 : margin-left
+		//javascript : marginLeft
+		//alert(box.style.marginLeft);
+		var left = box.style.marginLeft;
+		//	left = '0px'
+		left = left.replace('px','');//문자열함수
+		left = left - 50;
+		box.style.marginLeft = left + 'px';
+		
+		if((left-width)>500)
+			left = 500+width;
+	}
+	function move_up(){
+		var box = document.getElementById("box");
+		//css 		 : margin-left
+		//javascript : marginLeft
+		//alert(box.style.marginLeft);
+		var hetght = box.style.height;
+		var left = box.style.marginLeft;
+		//	left = '0px'
+		top = parseInt(top.replace('px',''));//문자열함수
+		top = top + 50;
+		
+		if(top < 0)
+			top= 0;
+		
+		
+		box.style.marginTop= top+ 'px';
+	}
+	
+	
+	function move_down(){
+		var box = document.getElementById("box");
+		//css 		 : margin-left
+		//javascript : marginLeft
+		//alert(box.style.marginLeft);
+		var height = box.style.height;
+		var left = box.style.marginLeft;
+		//	left = '0px'
+		height = parseInt(top.replace('px',''));//문자열함수
+		top = parseInt(top.replace('px',''));//문자열함수
+		
+		top = top + 50;
+		
+		if((top+height)>500){
+			top= 500-height;
+		}
+		
+		box.style.marginTop= top+ 'px';
+	}
+	
+</script>
+
+</head>
+<body>
+<table>
+	<tr>
+		<td><input type = "button" value= "show" onclick="show_box();"></td>
+		<td><input type = "button" value= "↑"	 onclick="move_up()"> </td>
+		<td><input type = "button" value= "hide" onclick="hide_box();"> </td>
+	</tr>
+	
+	<tr>
+		<td><input type = "button" value="←" 	onclick="move_left();"></td>
+		<td><input type = "button" value="⌾"	onclick="move_original();" > </td>
+		<td><input type = "button" value="→"	onclick="move_right();"> </td>
+	</tr>
+	
+	<tr>
+		<td><input type = "button" value="작게"	onclick="move_smaller();"></td>
+		<td><input type = "button" value="↓"	onclick="move_down();"> </td>
+		<td><input type = "button" value="크게"	onclick="move_big();"> </td>
+	</tr>
+</table>		
+		
+<hr>
+<div id="out_box">
+<div id="box" style="margin-left: 0px; margin-top: 0px; width: 100px; height: 100px;">
+</div>
+
+
+
+</div>
+		
+		
+</body>
+</html>

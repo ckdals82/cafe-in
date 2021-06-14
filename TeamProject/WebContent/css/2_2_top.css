@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+*{ margin:0;
+	padding:0;
+}
+#box{
+	
+	margin:auto;
+	height: 100%;
+	width: 100%;
+	
+}
+#box_1{
+	background: #303030;
+	position: fixed;
+	width: 140%;
+	color: white;
+	
+}
+
+
+#div_Location{
+	margin:auto;
+	margin-left: 20%;
+	margin-bottom: 100px;
+	font-size: 20pt;
+	display: inline;
+	margin-right: 70px;
+}
+

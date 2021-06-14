@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- bootstrap을 사용하기 위한 설정 -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
+
+<style type="text/css">
+ #box{
+    width: 500px;
+    margin: auto;
+    margin-top: 100px;
+ }
+
+</style>
+
+
+<script type="text/javascript">
+
+function send(f){ // f = form
+   //비워지지 말아야할 4가지 값.
+   var name=      f.name.value.trim();
+   var id =       f.id.value.trim();
+   var pwd =      f.pwd.value.trim();
+   var profile = f.profile.value.trim();
+   
+   if(name==''){
+      alert('이름을 입력하세요!!');
+      f.name.value='';//값지우기
+      f.name.focus();
+      return;
+   }
+   if(id==''){
+      alert('아이디를 입력하세요!!');
+      f.id.value='';//값지우기
+      f.id.focus();
+      return;
+   }
+   
+   if(pwd==''){
+      alert('비밀번호를 입력하세요!!');
+      f.pwd.value='';//값지우기
+      f.pwd.focus();
+      return;
+   }
+   if(profile==''){
+      alert('자기소개를 입력하세요!!');
+      f.profile.value='';//값지우기
+      f.proflie.focus();
+      return;
+   }
+   
+   f.action = "member_register.do";//전송대상지정
+   f.method = "GET"; //생략하면 GET
+   
+   //주의)자바스크립트는 함수호출시 정확하게 표기해야함 :f.submit   <== X
+   f.submit();
+   
+}
+</script>
+</head>
+<body>
+<div id="box">
+<form action="">
+   <table border="0" class="table">
+       <tr>
+            <th>이름</th>
+            <td><input type="text" name="name" value="길동홍"></td>
+       </tr>
+       
+       <tr>
+            <th>아이디</th>
+            <td><input type="text" name="id" value="ghd"></td>
+       </tr>
+       
+       <tr>
+            <th>비밀번호</th>
+            <td><input type="password" name="pwd" value="1234"></td>
+       </tr>
+       
+       <tr>
+            <th>성별</th>
+            <td>
+                <input type="radio"  name="gender"  value="남자"  checked="checked">남자
+                <input type="radio"  name="gender"  value="여자">여자
+            </td>
+       </tr>
+       
+       <tr>            <!-- //체크된것만넘어감 -->
+            <th>취미</th>
+            <td>
+                 <input type="checkbox"  name="hobby"  value="독서">독서
+               <input type="checkbox"  name="hobby"  value="영화">영화
+               <input type="checkbox"  name="hobby"  value="운동">운동
+               <input type="checkbox"  name="hobby"  value="낚시">낚시
+            </td>
+       </tr>
+       
+       <tr>
+            <th>친구</th>
+            <td>   <!-- 입력여부와 상관없이 서버로 무조건 전송 -->
+                <input type="text"  name="friend"><br>
+             <input type="text"  name="friend"><br>
+             <input type="text"  name="friend"><br>
+            </td>
+       </tr>
+
+      <tr>
+         <th>혈액형</th>
+         <td><select name="blood">
+               <option value="A">A형</option>
+               <option value="B">B형</option>
+               <option value="O">O형</option>
+               <option value="AB">AB형</option>
+         </select></td>
+      </tr>
+      <tr>
+            <th>자기소개</th>
+            <td>
+                <textarea rows="5" cols="40"  name="profile">나는누구?</textarea>
+            </td>
+        </tr>
+      
+      
+        
+        <tr>
+            <td colspan="2" align="center">
+                <input class="btn btn-primary" type="button"   value="전송" onclick="send(this.form);">
+              <input class="btn btn-danger" type="reset"    value="취소">
+            </td>
+        </tr>
+      
+   </table>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+*{margin:0;}
+
+#title{
+	margin-left: 30px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#bx_review{
+	height:1000px;
+	width:1000px;
+	margin-top: 150px;
+	margin: auto;
+}
+
+#photo1{
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	background: white;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 300px;
+	float:left;
+}
+
+#photo2{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 200px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}
+
+#photo3{
+	border: 1px solid black;
+	margin-top: 10px;
+	width: 200px;
+	height: 200px;
+	background: white;
+	margin-right: 10px;
+	float:left;
+}

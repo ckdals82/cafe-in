@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+* { margin: 0; padding: 0;}
+
+#main_box{
+	width: 800px;
+	height: 600px;
+	background-color: #cccccc;
+	
+	margin: auto;
+}
+
+#header{
+	
+	width: 100%; /* 부모기준 : 생략시 부모크기를 그대로 물려받는다 */
+	height: 100px;
+	background: #ffcccc;
+}
+
+#content{
+	width: 100%;
+	min-height: 400px; /* 최소크기 */
+	height: auto;
+	background: #ccffcc;
+}	
+#footer{
+	height: 100px;
+	background: #ccccff;
+}
+
+

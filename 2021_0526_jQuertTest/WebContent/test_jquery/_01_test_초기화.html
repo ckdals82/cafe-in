@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jquery사용하려면 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+<script type="text/javascript">
+
+//자바스크립트 코드
+window.onload = function(){
+	
+	document.getElementById("d3").innerHTML = "3.window.onload";
+	//		$('#d3') <= document.getElementById("d3")
+};
+
+//제이커리 초기화
+$(document).ready(function(){
+	// # : id selector
+	$('#d1').html("1.jQuery초기화1");
+	//document.getElementById("d3").innerHTML = "3.window.onload";
+});
+	
+	//jquery약식
+	$(function(){
+		$('#d2').html("2.jquery초기화2");
+	});
+	
+	
+</script>
+
+</head>
+<body>
+<div id="d1">1</div>
+<div id="d2">2</div>
+<div id="d3">3</div>
+</body>
+</html>

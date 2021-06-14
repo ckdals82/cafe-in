@@ -1,2 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="action.JuminAction"/>
+    <fullyQualifiedTypeName name="util.Jumin"/>
+    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
+    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="vo.DeptVo"/>
+    <fullyQualifiedTypeName name="dao.DeptDao"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="vo.SawonVo"/>
+    <fullyQualifiedTypeName name="dao.SawonDao"/>
+    <fullyQualifiedTypeName name="dao.SungTBDao"/>
+    <fullyQualifiedTypeName name="vo.SungVo"/>
+    <fullyQualifiedTypeName name="java.lang.Readable"/>
+    <fullyQualifiedTypeName name="service.DBservice"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.util.EntityResolver2Wrapper"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="com.sun.tools.classfile.StackMapTable_attribute.verification_type_info"/>
+    <fullyQualifiedTypeName name="java.awt.JobAttributes"/>
+    <fullyQualifiedTypeName name="vo.VisitVo"/>
+    <fullyQualifiedTypeName name="dao.VisitDao"/>
+    <fullyQualifiedTypeName name="org.jdom2.input.SAXBuilder"/>
+    <fullyQualifiedTypeName name="java.io.Reader"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="vo.PersonVo"/>
+    <fullyQualifiedTypeName name="org.jdom2.Element"/>
+    <fullyQualifiedTypeName name="org.jdom2.Document"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="vo.ProductVo"/>
+    <fullyQualifiedTypeName name="util.MySearchUtil"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="action.member.MemberListAction"/>
+    <fullyQualifiedTypeName name="vo.MemberVo"/>
+    <fullyQualifiedTypeName name="dao.MemberDao"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+</qualifiedTypeNameHistroy>

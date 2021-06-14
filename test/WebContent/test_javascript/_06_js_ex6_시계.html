@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#disp{
+		width: 270px;
+		height: 100px;
+		background: black;
+		color:white;
+		
+		font-size: 50pt
+	}
+	
+	
+</style>
+
+<script type="text/javascript">
+	/* 자바스크립트 타이머 
+	1.setTimeout(Fn,Time); <=Time경과후 1회성 호출
+	2.setInterval(Fn,Time); <=Time간격으로 지속적으로 호출
+	Time단위 : milisec
+	*/
+	
+	//1초간격으로 timer_proc호출
+	setInterval(timer_proc,1000);
+	
+	function timer_proc(){
+		//console.log("---")
+		//현재시스템 시간
+		var now = new Date();
+		
+		//시분초를 얻어온다
+		var hour   = now.getHours() + "";
+		var minute = now.getMinutes() + "";
+		var second = now.getSeconds() + "";
+		
+		//문자열의 길이 구하기
+		console.log(second + ":" +second.length)
+		console.log(hour + ":" + minute + ":" + second)
+		
+		
+		if(second.length==1){
+			second= "0"+second; 		}
+		
+		if(second.length==1){
+			minute= "0"+minute; 		}
+		
+		if(second.length==1){
+			hour= "0"+hour; 		}
+		
+		
+		document.getElementById("disp").innerHTML = hour + ":" + minute + ":" + second; 
+		
+
+		
+	}
+</script>
+
+</head>
+<body>
+
+<div id="disp">html</div>
+
+	
+</body>
+</html>

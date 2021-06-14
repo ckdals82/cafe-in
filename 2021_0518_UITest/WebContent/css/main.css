@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+* {margin: 0; padding: 0;}
+
+#main_box{
+   
+   width: 800px;
+   height: 600px;
+   
+   margin: auto;    /* auto로 주면 중앙정렬(left==right) 된다*/
+}
+
+#header{
+   width: 100%; /* 부모기준 : 생략시 부모크기를 물려 받는다.*/
+   height: 100px;
+}
+
+#title{ /* h1#title 이다 .  */
+   text-align: center;
+   font-size: 24pt;
+   font-weight: bold;
+   font-family: 굴림체;
+   
+   margin-top: 10px;
+   color: #004080;
+   text-shadow: 1px 1px 5px black;
+   
+}
+
+#aside{
+   width: 20%;
+   min-height: 400px;
+   background: #ffffcc;
+   
+   float: left; /* 부유(띄우기)속성 */
+}
+
+
+#content{
+   width: 80%; /* 크기를 제대로 맞춰야지 부모보다 크면 자동으로 아래로 뚝떨어진다. */
+   min-height: 400px; /* 최소크기 */
+   height : auto;
+   background: #ccffcc;
+   
+   float: left;
+   
+}
+
+#footer{
+   
+   /* 부유속성 해제 */
+   clear: both; /* left,right 모두 해제 */
+   
+   height : 100px;
+}
+
+#footer_content{
+   color: #808080;
+   font-size: 11pt;
+   margin : 5px;
+   padding: 5px;
+}

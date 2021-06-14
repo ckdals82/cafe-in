@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- jQuery Library사용  -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+
+<script type="text/javascript">
+	// 윈도우 로딩이 완료된우 익명함수 수행
+	$(document).ready( function(){
+		
+		// jQuery 웹표준을 준수
+		// selector : 식별자
+		// id selector
+		
+		$("#btn1").click( function(){
+			alert("jQuery : 버튼1 눌림");
+		} );
+	
+	    $('#btn2').click(function(){
+	    	alert("jQuery : 버튼2 눌림");
+	    }); 
+	     
+	    
+		
+	} );
+	
+	
+</script>	
+</head>
+<body>
+	<input type="button" id="btn1"  value="버튼1"  />
+	<input type="button" id="btn2"  value="버튼2"  />
+</body>
+</html>

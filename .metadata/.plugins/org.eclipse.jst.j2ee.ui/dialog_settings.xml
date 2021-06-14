@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="J2EE_EXPORT_OVERWRITE" value="true"/>
+	<item key="J2EE_EXPORT_SOURCE" value="true"/>
 	<list key="MRU_RUNTIME_STORE">
 		<item value="Apache Tomcat v8.5"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="/Users/hwangchangmin/Desktop/2021_0608_Visit_.war"/>
+		<item value="/Users/hwangchangmin/Desktop/2021_0528_servletLifeCycle.war"/>
+	</list>
+	<list key="J2EE_IMPORT_null">
+		<item value="/Users/hwangchangmin/Downloads/2021_0610_Visit_Ajax.war"/>
+		<item value="/Users/hwangchangmin/Desktop/2021_0608_Visit_.war"/>
 	</list>
 </section>

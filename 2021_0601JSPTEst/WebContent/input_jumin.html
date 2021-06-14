@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script type="text/javascript">
+
+var juminRule=/^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-4][0-9]{6}$/;
+	function send(f){
+		var jumin_no = f.jumin_no.value.trim();
+		
+		if(regular_jumin.test(jumin_no)==false){
+			alert("올바른 주민번호를 입력하세요!!")
+			f.jumin_no.value='';
+			f.jumin_no.focus();
+			return;
+		}
+		//JSP(java server Page)==
+		f.action = "result_jumin.jsp"; //전송대상
+		f.submit();	//전송
+	}
+
+</script>
+
+</head>
+<body>
+	<form action="">
+	<!-- parameter name => jumin_no=value
+					  jumin_no=801212-1234560 -->
+	주민번호:<input name="jumin_no" value="801212-1234560">
+			<input type="button" value="확인" onclick="send(this.form);">
+	</form>
+	
+</body>
+</html>

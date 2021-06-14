@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+/* 자바스크립트 연산자 ==> 자바와 거의 같다
+*	+ - / * %
+*	>>  <<
+*	&  ^  |
+*	&& ||
+*/
+
+document.write("10/3="  + Math.round(10/3) + "<br>");
+document.write("10%3="  + 10%3 + "<br>");
+document.write("10<<2=" + (10<<2) + "<br>");
+
+
+/* for */
+var sum=0;
+for(var i=1;i<10; i++){
+	document.write(i);
+	//3항연산자
+	//document.write(i<10 ?"+":"=");
+	sum += i;	// sum = sum + i
+	
+	if(1<10)
+		document.write("+")
+	else
+		document.write("=")
+}
+
+document.write("=" + sum +"<br>");
+
+var i=0;
+while (true){
+	document.write(i+":안녕<br>")
+	i++;
+	if(i>5)break//탈출문
+}
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

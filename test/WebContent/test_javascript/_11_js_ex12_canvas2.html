@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	
+	*{margin: 0;}
+	
+	#my_canvas{
+		background: #cccccc;  /* rgb가 동일한 값은 gray color  */
+	}
+
+</style>
+
+	<script type="text/javascript">
+	var ctx = null;
+	var img = null;
+	//윈도우 초기화 이벤트
+	window.onload = function(){
+		
+		var my_canvas = document.getElementById("my_canvas");
+		
+		if(my_canvas.getContext){//지원된다
+			
+			ctx = my_canvas.getContext("2d");
+			ctx.font = "28px 굴림체";
+			
+			img = new Image();
+			img.src= "../image/사진.png";
+			
+			draw();
+		}else{
+			alert('Canvas를 지원하지 않습니다');
+		}
+	};
+	
+	
+	function draw(){
+		//이미지 그리기
+		ctx.drawImage(img,0,0);
+		
+		//타이틀 출력
+		ctx.fillStyle = "rgb(0,0,0)";//검정색
+		ctx.fillText("Canvas그리기 연습",140+1,30+1);
+		
+		ctx.fillStyle = "rgb(150,180,200)";
+		ctx.fillText("Canvas그리기 연습",140,30);
+		
+		//사각형 그리기
+		ctx.strokeStyle="red";
+		//면색상지정
+		ctx.fillStyle="rgba(255,255,0,0,5)"
+		
+		
+		ctx.fillRect(30,50,100,100);
+		ctx.strokeRect(150,50,100,100);
+		
+		//원그리기
+		ctx.beginPath();
+		//		x,	y,	r	 start	  end			반시계(true)
+		ctx.arc(80,220,50	, 0		,  360 * (Math.PI/180)	,	false);
+
+		ctx.stroke();
+		
+		ctx.beginPath();
+		//		x,	y,	r	 start	  end			반시계(true)
+		ctx.arc(200,220,50	, 0		,  2*Math.PI	, ture);
+		ctx.fill();
+		
+		//각도표현방법
+		//1.60분법 : 0~360도
+		//2.호도법 : 호의 길이를 이용한 각도측정방법(radian)
+		
+		ctx.beginPath();
+		
+		var radgrad = ctx.createRadialGradient(300,200,0,300,200,50);
+		radgrad.addColorStop(0, '#ffffff');
+		radgrad.addColorStop(1, 'rgb(255,0,0)');
+		ctx.fillStyle = radgrad;
+		
+//		x,	y,	r	 start	  end			반시계(true)
+		ctx.arc(320,220,50	, 0		,  2*Math.PI	, ture);
+		ctx.fill();		
+	}
+	
+	
+	</script>
+
+</head>
+<body>
+	
+	<canvas id="my_canvas" width="500" height="400">
+	이 브라우져는 Canvas를 지원하지 않습니다.
+	</canvas>
+</body>
+</html>

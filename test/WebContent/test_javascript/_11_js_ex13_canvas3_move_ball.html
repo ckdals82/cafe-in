@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#my_canvas{
+		background: #cccccc;
+	}
+
+</style>
+	
+	<script type="text/javascript">
+	
+	var ctx = null;//	java에서 graphics로 생각(그리기도구:연필/붓)
+	
+	//공에대한 정보
+	var x = 400;
+	var y = 300;
+	var r = 30;
+	
+	//공의 방향
+	var bRight = true;
+	var bDown  = true;
+	
+	//초기화 이벤트
+	window.onload = function(){
+		
+		var my_canvas = document.getElementById("my_canvas");
+		ctx = my_canvas.getContext("2d");
+		
+		draw_ball();
+		//타이머시작
+		setInterval(process, 10);
+	};
+	var LEFT = 37;
+	var UP	 = 38;
+	var RIGHT= 39;
+	var DOWN = 40;
+	
+	var BIG	 = 66;
+	var SMALL= 83;
+	
+	//색상
+	var RED = 82;
+	var YELLOW = 89;
+	var GREEN = 71;
+	//키이벤트
+	window.onkeydown = function(event){
+		
+		//눌린키
+		var key = event.keyCode;
+		//console.log(key);
+		
+		if(key==RED) color = 'red';
+		if(key==YELLOW)color= 'yellow';
+		if(key==GREEN) color='green';
+		
+		//방향키에 따라 공의 방향전환
+		if(key==LEFT){
+			bRight=false;
+		}else if(key==RIGHT){
+			bRight=true;
+		}else if(key==UP){
+			bDown=false;
+		}else if(key==DOWN){
+			bDown=true;
+		}
+		
+		
+		//공의크기 
+		//크게:(b) r==300
+		//작게:(s) r==-10	
+		if(key==BIG){
+			r++;
+			if(r>300)r=300;
+		}
+		if(key==SMALL){
+			r--;
+			if(r<10)r=10;
+		}	
+		
+	};
+	
+	
+	var gan = 5;
+	function move_ball(){
+		
+		if(bRight)
+			x = x + gan;
+		else
+			x = x - gan;
+		if(bDown)
+			y = y + gan;
+		else
+			y = y - gan;
+		//오른쪽벽에 닿았으면
+		if( (x+r)> 800)bRight=false;
+		else if((x-r) <0) bRight=true;
+		
+		//아래쪽벽에 닿았으면
+		if((y+r)>600)bDown=false;
+		else if((y-r) <0)bDown=true;
+		
+	}
+	
+	
+	function process(){
+		//공의 위치 변경	
+		move_ball();
+		//공을 그리기
+		draw_ball();
+		
+	}
+	
+	
+	function draw_ball(){
+		
+		//이전화면 지우기
+		ctx.clearRect(0,0,800,600);
+		
+		ctx.beginPath();
+		var gap = r/3;
+		var radgrad = ctx.createRadialGradient(x-gap,y-gap,0,x-gap,y-gap,r*1.6);
+		radgrad.addColorStop(0, '#ffffff');
+		radgrad.addColorStop(1, 'rgb(255,0,0)');
+		ctx.fillStyle = radgrad;
+		
+//				x,	y,	r	 start	  end			반시계(true)
+		ctx.arc(x,	y,	r	, 0		,  2*Math.PI	,true);
+		ctx.fill();		
+		
+	}
+	
+	</script>
+</head>
+<body>
+
+<canvas id="my_canvas" width="800" height="600"></canvas>
+</body>
+</html>

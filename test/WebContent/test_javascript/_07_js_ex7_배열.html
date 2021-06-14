@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script type="text/javascript">
+
+
+/*배열 */
+ //초기화 기법으로만듬
+ //					 0		1		2	  3 	 4 		5
+ var sido_array = ['서울','경기','인천','대전','대구','광주'] 
+ 
+document.write("sido_array's length=" + sido_array.length+ "<br>")
+document.write("sido_array[0]=" + sido_array[0] + "<br>")
+
+//배열요소 추가
+sido_array[9] = '제주';
+
+
+document.write("---<h1>배열 모두 출력하기</h1>")
+for(var i=0;i< sido_array.length;i++){
+	document.write("sido_array[" + i +"]=" + sido_array[i] + "<br>")
+}
+
+	/* 배열생성 */
+	document.write("<h2>배열생성2</h2>")
+	
+	var fruit_array = new Array();
+	document.write("fruti_array's length=" + fruit_array.length + "<br>")
+	
+	fruit_array[0] = '사과';
+	fruit_array[1] = '참외';
+	fruit_array[2] = '포도';
+	fruit_array[3] = '딸기';
+
+	document.write("fruti_array's length=" + fruit_array.length + "<br>")
+		
+	document.write("---<h1>배열 모두 출력하기</h1>")
+	for(var i=0;i< fruit_array.length;i++){
+	document.write("fruit_array[" + i +"]=" + fruit_array[i] + "<br>")
+}
+	
+	
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

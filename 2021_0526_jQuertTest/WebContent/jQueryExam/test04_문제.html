@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<script type="text/javascript">
+  //              01234567890123  
+  var jumin_no = "901212-1234567";
+  
+  var str_year = jumin_no.substring(0,0+2);
+  var year     = parseInt(str_year);// 90
+  var gender   = jumin_no.substring(7,7+1);
+  if(gender=='1' || gender=='2' || gender=='5' ||gender=='6')
+	  year += 1900;
+  else 
+	  year += 2000;
+</script>
+
+<!-- jQuery library사용할수 있도록... -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="js/jumin.js"></script>
+<script type="text/javascript">
+   
+  
+  //주민번호 정규식
+  var regular_jumin =/\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])-[1-8]\d{6}/;
+  
+  $(document).ready(function(){
+	  
+	  //결과버튼 눌렀을때 이벤트..
+	  $('#btn_result').click(function(){
+		  
+		  //입력받은값
+		  var jumin_no = $('#jumin_no').val().trim();
+		  //정규식으로 유효성 체크
+		  if(regular_jumin.test(jumin_no)==false){
+			  alert('옳바른 주민번호를 입력하세요!!');
+			  $('#jumin_no').val("");//값비우기
+			  $('#jumin_no').focus();//포커스 지정
+			  return;
+		  }
+		  		  
+		  //주민번호관리객체 생성
+		  var jumin = new Jumin(jumin_no);
+		  
+		  
+		  var year = jumin.getYear();
+		  var age  = jumin.getAge();
+		  var tti  = jumin.getTti();
+		  var gender= jumin.getGender();
+		  var local = jumin.getLocal();
+		  
+		  $('#res_year').html(year);
+		  $('#res_age').html(age);
+		  $('#res_tti').html(tti);
+		  $('#res_gender').html(gender);
+		  $('#res_local').html(local);
+		  
+	  });
+	  
+	  
+  });
+
+
+</script>
+
+
+</head>
+<body>
+
+	<hr>
+	1.입력값에 대한 주민번호 체크(정규식)<br>
+	2.jQuery방식으로 처리
+	<hr>
+	
+	주민번호:<input id="jumin_no" value="801212-1234560">
+	         <input class="btn btn-primary"   type="button" value="결과" id="btn_result">
+	<hr>
+	<div style="width:400px; box-shadow: 1px 1px 1px black;">
+		<table class="table table-striped table-hover">
+		  <tr>
+		  	<th>출생년도</th>
+		  	<th>나이</th>
+		  	<th>띠</th>
+		  	<th>성별</th>
+		  	<th>출생지역</th>
+		  </tr>
+		  
+		  <tr>
+		  	<td><span id="res_year"></span></td>
+		  	<td><span id="res_age"></span></td>
+		  	<td><span id="res_tti"></span></td>
+		  	<td><span id="res_gender"></span></td>
+		  	<td><span id="res_local"> </span></td>
+		  </tr>
+		  
+		</table>
+	</div>
+        
+         
+</body>
+</html>

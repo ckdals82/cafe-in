@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#disp{
+	width: 200px;
+	height: 200px;
+	background: black;
+	color: yellow;
+	padding: 20px;
+}
+
+</style>
+
+<script type="text/javascript">
+	var regular_gugudan = /^[2-9]{1}$/; /*  2에서 9까지만 입력 받고 1자리수만 pattern설계 */
+	
+	function show_gugudan(){
+		
+		//dan 에서 값을 얻어오기 + 공백제거
+		var dan = document.getElementById("dan").value.trim(); /* 컨트롤에 입력된 값 바로 읽어오기 */
+		
+		if(regular_gugudan.test(dan)==false){
+			alert("2~9사이의 값만 입력하세요!!");
+			document.getElementById("dan").value="";
+			document.getElementById("dan").focus();
+			return;
+		}
+		//구구단 생성해서 출력...
+		var html = "";
+		
+		for(var i=1; i<=9 ; i++){
+			html = html + (dan + " x " + i + " = " + (dan*i) + "<br>");
+		}
+		//html = html + (dan + " x " + 2 + " = " + (dan*2) + "<br>");
+		
+		
+		//결과출력 : 주의 -> 대소문자구분 : innerHTML
+		document.getElementById("disp").innerHTML = html; 
+		
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+단:<input id="dan">
+	<input type="button" value="결과보기" onclick="show_gugudan();"> <!-- //이걸누르면 구구단 함수 나오게 해주세용 -->
+<hr>
+<div id="disp">innerHTML</div>
+
+</body>
+</html>

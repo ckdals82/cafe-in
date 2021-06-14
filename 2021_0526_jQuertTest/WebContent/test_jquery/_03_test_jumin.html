@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="../js/jumin.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		//결과버튼이 눌리면
+		$("#btn_result").click(function(){
+			
+			var jumin_no = $("#jumin_no").val().trim();
+			
+			//정규식이용 주민번호 체크
+			
+			
+			//주민번호 객체
+			var jumin = new Jumin(jumin_no);
+			
+			var year = jumin.getYear();
+			$("#span_year").html(year); //<span>1980</span>
+			
+			var age = jumin.getAge();
+			$('#span_age').html(age);
+			
+			var tti = jumin.getTti();
+			$('#span_tti').html(tti);
+			
+			var season = jumin.getSeason();
+			$('#span_season').html(season);
+			
+			var local = jumin.getLocal();
+			$('#span_local').html(local);
+
+			var ganji = jumin.getGanji();
+			$('#span_ganji').html(ganji);
+		});
+		
+	});
+</script>
+
+</head>
+<body>
+
+주민번호:<input id="jumin_no" value="801212-1234560">
+		<input type="button" id="btn_result" value="결과">
+	<hr>
+	<table border="1" width="300">
+		<tr>
+			<th width="50%">출생년도 </th>
+			<th><span id="span_year"></span> </th>
+		</tr>
+		<tr>
+			<th>60갑자 </th>
+			<th><span id="span_ganji"></span> </th>
+		</tr>
+		<tr>
+			<th>나이 </th>
+			<th><span id="span_age"></span> </th>
+		</tr>
+		<tr>
+			<th>띠 </th>
+			<th><span id="span_tti"></span> </th>
+		</tr>
+		<tr>
+			<th>계절 </th>
+			<th><span id="span_season"></span> </th>
+		</tr>
+		<tr>
+			<th>출생지역 </th>
+			<th><span id="span_local"></span> </th>
+		</tr>
+		
+		
+	</table>
+	
+	
+	
+</body>
+</html>

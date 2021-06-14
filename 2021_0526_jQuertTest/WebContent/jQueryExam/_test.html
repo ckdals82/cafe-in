@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<!-- on-line상태 참조 -->
+<!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+
+<!-- off-line  참조 -->
+<script src="js/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+
+/* Javascript 초기화함수 */
+window.onload = function(){
+   console.log('3.javascript : 초기셋팅 완료!!');
+   //document.getElementById("disp").innerHTML = '초기화 완료!!';
+   //$("#disp").html("jQuery초기화 완료!!!");
+};
+
+/* jQuery 초기화처리 */
+
+ 
+ $(document).ready(function(){
+	 
+	 
+ }); 
+ 
+ 
+ 
+$(document).ready(function(){
+	console.log('1.jQuery : 초기셋팅 완료!!');
+	
+	// jQuery -> $
+	document.getElementById("disp").innerHTML="초기화";
+	jQuery("div#disp").html("jQuery:초기화 완료!!!");
+	
+	$("#disp2").html("$:초기화 완료!!!");
+});
+
+/* jQuery selector
+   대상      사건      처리함수를 호출하겠다
+   $(selector).event(처리함수());
+   jQuery(selector).event(처리함수());
+*/
+
+/*  jQuery 초기화처리2(약식) */
+ /* selector event생략된 구조 */
+ 
+ $(function(){});
+ 
+$(function(){
+	console.log('2.jQuery : 초기셋팅 완료(약식)!!');
+});
+
+
+
+</script>
+</head>
+<body>
+<div id="disp"></div>
+<div id="disp2"></div>
+
+
+</body>
+</html>

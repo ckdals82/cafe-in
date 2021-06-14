@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+#bt_searchCafe{
+	float:right;
+}
+
+#img_logo{
+	float:left;
+}
+
+#div_Location{
+	margin-left: 30%;
+	margin-bottom: 100px;
+	font-size: 20pt;
+	display: inline;
+	margin-right: 70px;
+}
+
+
+.input_button_three{
+	padding-left: 30px;
+	padding-right: 30px;
+	background: #808080;
+	
+}
+

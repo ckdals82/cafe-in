@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#box_review{
+	width:800px;
+	margin: auto;
+	margin-top: 150px; 
+}
+
+#btn_review{
+	margin-left: 600px; 
+}
+
+#td_star{
+	
+	width: 20px;
+}
+
+#td_thumb{
+	width: 20px;
+	margin-left: 550px; 
+}
+

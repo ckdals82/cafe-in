@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- form data 체크 -->
+
+<script type="text/javascript">
+	
+	function send1(){
+		//Html문서내의 form Element배열관리하는 객체 : forms <= 배열
+		var f = document.forms[0];
+		
+		//폼 Elemenat의 입력값 체크
+		//name값 얻어오기 + 공백제거
+		var name = f.name.value.trim();
+		var id 	 =f.id.value.trim();
+		var pwd  =f.pwd.value.trim();
+		
+		if(name==''){
+			alert('이름을 입력하세요!!');
+			f.name.value='';//값비우기
+			f.name.focus();
+			return;
+		}
+		
+		if(id==''){
+			alert('아이디를 입력하세여');
+			f.id.value='';//값비우기
+			f.id.focus();
+			return;
+			
+		}
+		if(id==''){
+			alert('비밀번호를 입력하세여');
+			f.pwd.value='';//값비우기
+			f.pwd.focus();
+			return;
+			
+		}
+		//전송할 서버(객체:대상)
+		// action값이 생략되면 자신의 페이지로 전송
+		f.action = "member_register.do";
+		
+		//전송방법(GET OR PORT)
+		// method가 생략되면 GET 기본값
+		// GET : 넘어가는 Parameter가 URL주소창에 기록(Query String 방식)
+		//				/member_register.do?name=홍길동&id=홍&pwd=1234
+		//POST: 내부적으로 헤더에 붙어서 넘겨진다(보안성좋다)
+		f.method="GET"
+		
+		//서버로 전송
+		f.submit();		//주의 : submit() 호출시 ( ) 누락시키지말것
+		
+		
+	}
+	function send2(){
+		//Html문서내의 ff이름을 가진
+		var f = document.ff;
+		
+		//폼 Elemenat의 입력값 체크
+		//name값 얻어오기 + 공백제거
+		var name = f.name.value.trim();
+		var id 	 =f.id.value.trim();
+		var pwd  =f.pwd.value.trim();
+		
+		if(name==''){
+			alert('이름을 입력하세요!!');
+			f.name.value='';//값비우기
+			f.name.focus();
+			return;
+		}
+		
+		if(id==''){
+			alert('아이디를 입력하세여');
+			f.id.value='';//값비우기
+			f.id.focus();
+			return;
+			
+		}
+		if(id==''){
+			alert('비밀번호를 입력하세여');
+			f.pwd.value='';//값비우기
+			f.pwd.focus();
+			return;
+			
+		}
+		//전송할 서버(객체:대상)
+		// action값이 생략되면 자신의 페이지로 전송
+		f.action = "member_register.do";
+		
+		//전송방법(GET OR PORT)
+		// method가 생략되면 GET 기본값
+		// GET : 넘어가는 Parameter가 URL주소창에 기록(Query String 방식)
+		//				/member_register.do?name=홍길동&id=홍&pwd=1234
+		//POST: 내부적으로 헤더에 붙어서 넘겨진다(보안성좋다)
+		f.method="GET"
+		
+		//서버로 전송
+		f.submit();		//주의 : submit() 호출시 ( ) 누락시키지말것
+		
+		
+	}
+	function send3(f){
+		//	f = this.form	<= this를 소유하고 있는 form(해석)
+		//alert(f.value);
+		
+		var name = f.name.value.trim();
+		var id 	 =f.id.value.trim();
+		var pwd  =f.pwd.value.trim();
+		
+		//id 체크하는 정규식 작성해보기
+		var regular_id = /^[a-zA-Z0-9]{6,8}$/
+		
+		var regular_hangul = /^[가-힣]+$/
+		
+		if(regular_hangul.test(name)==false){
+			alert('이름을 입력하세요!!');
+			f.name.value='';//값비우기
+			f.name.focus();
+			return;
+		}
+		
+		if(regular_id.test(id)==false){
+			alert('아이디는 영숫자조합의 6~8자리로 작성하세요!!');
+			f.id.value='';//값비우기
+			f.id.focus();
+			return;
+			
+		}
+		if(id==''){
+			alert('비밀번호를 입력하세여');
+			f.pwd.value='';//값비우기
+			f.pwd.focus();
+			return;
+			
+		}
+		//전송할 서버(객체:대상)
+		// action값이 생략되면 자신의 페이지로 전송
+		f.action = "member_register.do";
+		
+		//전송방법(GET OR PORT)
+		// method가 생략되면 GET 기본값
+		// GET : 넘어가는 Parameter가 URL주소창에 기록(Query String 방식)
+		//				/member_register.do?name=홍길동&id=홍&pwd=1234
+		//POST: 내부적으로 헤더에 붙어서 넘겨진다(보안성좋다)
+		f.method="GET"
+		
+		//서버로 전송
+		f.submit();		//주의 : submit() 호출시 ( ) 누락시키지말것
+		
+	
+		
+		
+	}
+	
+	</script>
+</head>
+<body>
+
+	<form name="ff">
+		<table border="1">
+			<tr>
+				<th>이름</th>
+				 <td><input type= "text" name="name"> </td>
+			</tr>
+			
+			<tr>
+				<th>아이디</th>
+				 <td><input type= "text" name="id"> </td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				 <td><input type= "text" name="pwd"> </td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"> 
+					<input type="button" value="체크1(xxxxxx)" onclick="send1()">
+					<input type="button" value="체크2(xxxxxx)" onclick="send2()">
+					<input type="button" value="체크3(oooooo)" onclick="send3(this.form);">
+					
+				</td>
+			</tr>
+		</table>
+	
+	</form>
+
+</body>
+</html>

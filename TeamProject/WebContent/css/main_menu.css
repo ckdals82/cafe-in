@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+ul#main_menu{
+	
+	list-style: none;
+	margin-top: 20px;
+}
+
+ul#main_menu > li {
+	/* 가로배치 */
+	display: inline-block;
+}
+
+ul#main_menu > li > a {
+	display: block;
+	text-decoration: none;
+	
+	width: 300px;
+	/* border: 1px solid blue; */
+	text-align: center;	
+	
+	font-size: 16pt;
+	color: white;
+	
+	margin-left: 100px;
+}	
+
+ul#main_menu > li > a:hover {
+	
+	color: #daa70c;	
+}	

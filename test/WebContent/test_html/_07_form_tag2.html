@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+	<table border="1">
+		<tr>
+			<th>이름</th>
+			<td><input type="text" name="name"> </td>
+
+		
+		</tr>
+	
+		<tr>
+			<th>아이디 </th>
+			<td><input name= "id"><br>
+		
+		</tr>
+		 	<tr>
+			<th>비밀번호 </th>
+			<td>
+				<input type="password" name="pwd" placeholder="6~8자리 영숫자조합">
+			</td>
+		</tr>
+		
+		<tr>
+			<th>성별 </th>
+				<td>
+					 <input type="radio" name="gender" value="남자" checked="checked">남자
+					 <input type="radio" name="gender" value="여자">여자
+				 </td>
+		</tr>
+		
+		<tr>
+			<th>취미 </th>
+				<td>
+					 <input type="checkbox" name="hobby" value="독서">독서
+					 <input type="checkbox" name="hobby" value="영화">영화
+					 <input type="checkbox" name="hobby" value="운동">운동
+					 <input type="checkbox" name="hobby" value="낚시">낚시
+				 
+				 </td>
+		</tr>
+		
+		<tr>
+			<th>친구1 </th>
+				<td>
+				 <input type="text" name= "friend">
+			 	
+				</td>
+		</tr>
+		
+		<tr>
+			<th>친구2 </th>
+				<td>
+				 <input type="text" name= "friend">
+			 			
+				</td>
+		</tr>
+		
+		<tr>
+			<th>친구3 </th>
+				<td> <input type="text" name= "friend">
+			 		<br>	
+				</td>
+		</tr>
+		
+		<tr>
+			<th>혈액형</th>
+				<td> 
+				 	<select name="blood">
+						<option value="A">A형</option>
+						<option value="B">B형</option>
+						<option value="O">O형</option>
+						<option value="AB">AB형</option>
+					</select>
+				</td>
+		</tr>
+	
+		<tr>
+			<th>자기소개</th>
+				<td>
+					 <textarea rows="5" cols="40" name="profile"></textarea>
+				</td>
+		</tr>
+		
+		<tr>
+			<th>첨부파일</th>
+				<td>
+					 <input type="file" name="photo">
+				</td>
+		</tr>
+		
+	<!-- 	<tr>
+		<hr>
+			웹표준을 준수하지 않는 기능(모든 브라우져에서 적용되지 않는다는 뜻)
+		<hr>
+		</tr> -->
+		
+		<tr>
+			<th>생년월일</th>
+				<td>
+					 <input type="date" name="birthday">
+				</td>
+		</tr>
+		
+		<tr>
+			<th>좋아하는 색상</th>
+				<td>
+					<input type="color" name="color">	
+				</td>
+		</tr>
+		
+		<tr>
+			
+				<td colspan="2" align="center">
+					<input type="submit" value= "전송">
+					<input type="reset"  value ="취소"> 
+				</td>
+		</tr>
+		
+	</table>
+	</form>
+</body>
+</html>

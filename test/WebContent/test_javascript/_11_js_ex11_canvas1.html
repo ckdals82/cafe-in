@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	var ctx = null;
+	
+	function init(){
+		alert("window배치가 완료되었네...")
+		
+		var my_canvas = document.getElementById("my_canvas");
+		if(my_canvas==null){
+			alert('my_canvas is null');
+	}else{
+		alert("get my_canvas");
+		if(my_canvas.getContext){
+			
+			ctx = my_canvas.getContext("2d");
+			ctx.font = "20px Arial";
+			ctx.fillText("잘 그려지나?",0,20);
+			
+		}else{
+			alert("Canvas를 지원하지 않습니다..")
+		 }
+	 }
+	}
+	//현재 HTML이 배치가 완료가 되면 발생되는 이벤트가 있다.
+	window.onload = init; 
+	
+	
+	
+	
+</script>
+
+</head>
+<body>
+	
+	<canvas id="my_canvas" width="500" height="400"></canvas>
+	
+	<script type="text/javascript">
+</script>
+</body>
+</html>
