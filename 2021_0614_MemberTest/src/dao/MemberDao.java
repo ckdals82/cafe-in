@@ -187,7 +187,7 @@ public class MemberDao {
 				vo.setM_name(rs.getString("m_name"));
 				vo.setM_id(rs.getString("m_id"));
 				vo.setM_pwd(rs.getString("m_pwd"));
-				vo.setM_zipcode(rs.getString("m_zipcod"));
+				vo.setM_zipcode(rs.getString("m_zipcode"));
 				vo.setM_addr(rs.getString("m_addr"));
 				vo.setM_ip(rs.getString("m_ip"));
 				vo.setM_modifydate(rs.getString("m_modifydate"));
@@ -263,5 +263,45 @@ public class MemberDao {
 
 		return res;
 	}
+	public int delete(int m_idx) {
+
+	      int res = 0;
+
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+
+	      String sql = "delete from member where m_idx=?";
+	      try {
+	         //1. Connection 얻어오기
+	         conn = DBService.getInstance().getConnection();
+	         //2. 명령처리객체 얻어오기
+	         pstmt = conn.prepareStatement(sql);
+
+	         //3. pstmt parameter index 채우기
+	         pstmt.setInt(1, m_idx);
+
+	         //4. DB insert
+	         res = pstmt.executeUpdate();
+
+	      } catch (Exception e) {
+	         e.printStackTrace();
+
+	      } finally {
+
+	         try {
+	            //열린역순으로 닫는다 
+	            if (pstmt != null)
+	               pstmt.close();
+	            if (conn != null)
+	               conn.close();
+	         } catch (SQLException e) {
+
+	            e.printStackTrace();
+	         }
+
+	      }
+
+	      return res;
+	   }
 	
 }

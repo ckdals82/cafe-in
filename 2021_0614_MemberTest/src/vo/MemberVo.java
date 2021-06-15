@@ -29,6 +29,17 @@ public class MemberVo {
 		this.m_ip = m_ip;
 		this.m_grade = m_grade;
 	}
+	
+	public MemberVo(String m_name, String m_id, String m_pwd, String m_zipcode, String m_addr, String m_ip) {
+		super();
+		this.m_name = m_name;
+		this.m_id = m_id;
+		this.m_pwd = m_pwd;
+		this.m_zipcode = m_zipcode;
+		this.m_addr = m_addr;
+		this.m_ip = m_ip;
+	}
+
 	//수정
 	public MemberVo(int m_idx, String m_name, String m_id, String m_pwd, String m_zipcode, String m_addr, String m_ip,
 			String m_grade) {

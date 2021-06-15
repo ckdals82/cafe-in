@@ -40,9 +40,7 @@
 	</div>
 	
 	<div class="tp_layer">
-		<div class="tp_index_layout">
-			index_screen
-		</div>
+		<div id="screen_box" class="tp_index_layout"></div><div id="screen_box" class="tp_index_layout"></div><div id="screen_box" class="tp_index_layout"></div>
 	</div>
 	
 	<div class="tp_layer">

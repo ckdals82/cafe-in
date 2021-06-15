@@ -1,4 +1,4 @@
-package action;
+package action.member;
 
 import java.io.IOException;
 
@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.VisitDao;
+import dao.MemberDao;
 
 /**
- * Servlet implementation class VisitDeleteAction
+ * Servlet implementation class MemberDeleteAction
  */
-@WebServlet("/visit/delete.do")
-public class VisitDeleteAction extends HttpServlet {
+
+// 여기 / 이렇게 놔구고 코딩하면 안된다고....
+
+@WebServlet("/member/delete.do")
+public class MemberDeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,18 +26,19 @@ public class VisitDeleteAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		// /visit/delete.do?idx=18
 		
+		//1.수신인코딩 설정
+		request.setCharacterEncoding("utf-8");
 		// 1. parameter�ޱ� ~> ������ȯ
-		int idx = Integer.parseInt(request.getParameter("idx"));
+		int m_idx = Integer.parseInt(request.getParameter("m_idx"));
 
 		// 2. DB delete
-		int res = VisitDao.getInstance().delete(idx);
+		int res = MemberDao.getInstance().delete(m_idx);
 		
 		// 3. ��Ϻ���
 		response.sendRedirect("list.do");
-		
+
 	}
 
 }
+

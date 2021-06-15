@@ -40,7 +40,7 @@ public class MemberInsertAction extends HttpServlet {
 		String m_ip = request.getRemoteAddr();
 		
 		//MemberVo 포장
-		MemberVo vo = new MemberVo( m_name, m_id, m_pwd, m_zipcode, m_addr, m_ip,"일반");
+		MemberVo vo = new MemberVo( m_name, m_id, m_pwd, m_zipcode, m_addr, m_ip);
 		
 		//DB insert
 		int res = MemberDao.getInstance().insert(vo);

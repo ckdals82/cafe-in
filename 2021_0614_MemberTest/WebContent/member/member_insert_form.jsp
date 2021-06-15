@@ -121,6 +121,32 @@ $(document).ready(function(){
 		var m_zipcode  = f.m_zipcode.value.trim();
 		var m_addr  = f.m_addr.value.trim();
 		
+		if(m_name==''){
+			alert('이름을 입력하세요');
+			f.m_name.value='';
+			f.m_name.focus();
+			return;
+		}
+		if(m_pwd==''){
+			alert('비밀번호를 입력하세요');
+			f.m_pwd.value='';
+			f.m_pwd.focus();
+			return;
+		}
+		if(m_zipcode==''){
+			alert('우편번호를 입력하세요');
+			f.m_zipcode.value='';
+			f.m_zipcode.focus();
+			return;
+		}
+		if(m_addr==''){
+			alert('주소를 입력하세요');
+			f.m_addr.value='';
+			f.m_addr.focus();
+			return;
+		}
+		
+		
 		//
 		f.action = "insert.do"; //member InsertAction
 		f.submit();//전송

@@ -40,8 +40,19 @@
 <div id="main_box">
 	<h1>::::회원 목록::::</h1>
 	<div class="btn_type">
+		
+		<!-- 로그인이 안된상태 -->
+		<c:if test="${ empty sessionScope.user }">
 		<input class="btn btn-success" type="button" value="로그인"
 										onclick="location.href='login_form.do'">
+		</c:if>
+		<!-- 로그인 된 상태 -->
+		<c:if test="${ not empty sessionScope.user }">
+			${ user.m_name }님 로그인하셨습니다
+			<input class="btn btn-success" type="button" value="로그아웃"
+										onclick="location.href='logout.do'">
+		</c:if>
+		
 	</div>
 	
 	<table class="table">
@@ -73,8 +84,10 @@
 			<td>${vo.m_grade } </td>
 			
 			<td>
-				<input class="btn btn-info" type="button" value="수정">
-				<input class="btn btn-danger" type="button" value="삭제">
+				<c:if test="${ (user.m_grade eq '관리자') or (user.m_id eq vo.m_id) }">
+					<input class="btn btn-info" type="button" value="수정" onclick="modify_form('${vo.m_idx }');">
+					<input class="btn btn-danger" type="button" value="삭제" onclick="del('${vo.m_idx}');">
+				</c:if>
 			 </td>
 			</tr>
 		</c:forEach>

@@ -1,4 +1,4 @@
-package action;
+package action.member;
 
 import java.io.IOException;
 
@@ -7,14 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import dao.VisitDao;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class VisitDeleteAction
+ * Servlet implementation class MemberLogoutAction
  */
-@WebServlet("/visit/delete.do")
-public class VisitDeleteAction extends HttpServlet {
+@WebServlet("/member/logout.do")
+public class MemberLogoutAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,17 +23,12 @@ public class VisitDeleteAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		// /visit/delete.do?idx=18
+		//1.session내의 user지우기
 		
-		// 1. parameter�ޱ� ~> ������ȯ
-		int idx = Integer.parseInt(request.getParameter("idx"));
-
-		// 2. DB delete
-		int res = VisitDao.getInstance().delete(idx);
-		
-		// 3. ��Ϻ���
+		request.getSession().removeAttribute("user");;//로그인한 멤버 브이오 정보를 통째로 넣음
+		//2.메인페이지 이동
 		response.sendRedirect("list.do");
-		
 	}
 
 }
+
