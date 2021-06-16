@@ -13,6 +13,37 @@ public class MemberVo {
 	String m_modifydate;
 	String m_grade;
 	
+	//password -> 외부출력용
+	String m_pwd_mask;
+	
+	
+	public String getM_pwd_mask() {
+		
+		//1.original pwd의 1/2만 노출 나머지는 ***
+		// ex) m_pwd="123456" => "123***"
+		int len =m_pwd.length();//비번길이
+		int half = len/2;
+		StringBuffer sb = new StringBuffer();
+		// ex) m_pwd="123456" => "123***"
+		// ex) m_pwd="123456" => "12**56"
+		// ex) m_pwd="123456" => "1*3*5*"
+		//
+		//방법1
+//		for(int i=0;i<len;i++) {
+//			if(i<half)
+//				sb.append(m_pwd.charAt(i));
+//			else 
+//				sb.append("*");
+//		}
+		//방법2
+		sb.append(m_pwd.substring(0,half));
+		
+		for(int i=0;i<(len-half);i++)
+			sb.append("*");
+		
+		return sb.toString();
+	}
+
 	public MemberVo() {
 		// TODO Auto-generated constructor stub
 	}

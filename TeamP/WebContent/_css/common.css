@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, input, textarea, blockquote, pre, a, abbr, acronym, address, big, cite, 
+code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, 
+sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, 
+legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, 
+details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, 
+ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+	font-family: 'Gothic A1';
+}
+
 /* body and scrollbar -------------------------------------------------------------------- */
 body {
 	background-color: #F5F7F6;
@@ -18,7 +32,7 @@ body {
 	position: relative;
     width: 95%;
 	margin: auto;
-    margin-bottom: 2px;
+    /* margin-bottom: 1px; */
 	padding: 3px 5px;
 }
 
@@ -30,9 +44,9 @@ body {
 
 .tp_button_layout {
 	width: 100%;
-	height: 40px;
+	height: 30px;
 	position: relative;
-	background: #ff8080; /* 크기보려고 색 지정해둠 나중에 지울 것 */
+	/* background: #ff8080; 크기보려고 색 지정해둠 나중에 지울 것 */
 }
 
 .tp_search_layout {
@@ -62,10 +76,10 @@ body {
 .tp_main_layout {
 	width: 100%;
 	height: 630px;
-	background: #38cb7a; /* 크기보려고 색 지정해둠 나중에 지울 것 */
+	/* background: #38cb7a; */ /* 크기보려고 색 지정해둠 나중에 지울 것 */
 }
 
-.tp_main_layout_long {
+.tp_main_layout._long {
 	width: 100%;
 	height: 800px; /*스크롤 생기는 페이지는 길이가 길어질 것 예상하고 나중에 지울 것*/
 	background: #38cb7a; /* 크기보려고 색 지정해둠 나중에 지울 것 */

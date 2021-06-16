@@ -6,15 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- jquery -->
+<script src="../resource/js/jquery-3.6.0.min.js"></script>
+
 <!-- bootstrap -->
-<link href="../temp/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
-<script src="../temp/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+<link href="../resource/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="../resource/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 
 <!-- semantic ui -->
-<link rel="stylesheet" href="../temp/Semantic-UI-CSS-master/semantic.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src="../temp/Semantic-UI-CSS-master/semantic.js"></script>
+<link rel="stylesheet" href="../resource/Semantic-UI-CSS-master/semantic.css">
+<script src="../resource/Semantic-UI-CSS-master/semantic.js"></script>
 
 <!-- common -->
 <link rel="stylesheet" href="../_css/common.css">
@@ -26,6 +27,28 @@
 
 </head>
 <body>
-top_button
+	
+	<div class="main_top_button">
+		<table class="button_box">
+			<tr>
+				<td></td>
+				<td align="right">
+					<table>
+						<tr align="right">
+							<td>
+								<div class="quick_item _modify" onclick="location.href='my_modify.jsp'"><img class="img_modify" src="../_img/img_modify.png">
+								</div>
+							</td>
+							<td>
+								<div class="quick_item _login" onclick="location.href='login_page.jsp'"><img class="img_login" src="../_img/img_login.png">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+
 </body>
 </html>

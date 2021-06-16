@@ -34,6 +34,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+
+function del(m_idx){
+	
+	if(confirm('정말 삭제하시겠습니까?')==false)return;
+	
+	//url-pattern호출 : javascript -> servlet호출
+	http://localhost:9090/2021_0614_MemberTest/member/ <=현재위치
+	location.href='delete.do?m_idx=' + m_idx; //MemberDeleteAction
+	
+}
+function modify_form(m_idx){
+	location.href = 'modify_form.do?m_idx=' + m_idx;//MemberModifyFormAction
+}
+
+
+</script>
+
 
 </head>
 <body>
@@ -75,7 +93,7 @@
 			<td>${vo.m_idx } </td>
 			<td>${vo.m_name } </td>
 			<td>${vo.m_id } </td>
-			<td>${vo.m_pwd } </td>
+			<td>${vo.m_pwd_mask } </td>
 			<td>${vo.m_zipcode } </td>
 			<td>${vo.m_addr } </td>
 			<td>${vo.m_regdate } </td>

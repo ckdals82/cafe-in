@@ -27,9 +27,10 @@ public class MemberDeleteAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//1.수신인코딩 설정
-		request.setCharacterEncoding("utf-8");
-		// 1. parameter�ޱ� ~> ������ȯ
+		//member/delets.do?m_idx=4
+		
+		
+		// 1. parameter받기
 		int m_idx = Integer.parseInt(request.getParameter("m_idx"));
 
 		// 2. DB delete

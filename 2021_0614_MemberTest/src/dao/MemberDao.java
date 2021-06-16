@@ -125,7 +125,7 @@ public class MemberDao {
 				vo.setM_name(rs.getString("m_name"));
 				vo.setM_id(rs.getString("m_id"));
 				vo.setM_pwd(rs.getString("m_pwd"));
-				vo.setM_zipcode(rs.getString("m_zipcod"));
+				vo.setM_zipcode(rs.getString("m_zipcode"));
 				vo.setM_addr(rs.getString("m_addr"));
 				vo.setM_ip(rs.getString("m_ip"));
 				vo.setM_modifydate(rs.getString("m_modifydate"));
@@ -263,6 +263,7 @@ public class MemberDao {
 
 		return res;
 	}
+	//삭제
 	public int delete(int m_idx) {
 
 	      int res = 0;
@@ -280,7 +281,7 @@ public class MemberDao {
 	         //3. pstmt parameter index 채우기
 	         pstmt.setInt(1, m_idx);
 
-	         //4. DB insert
+	         //4. DB delete
 	         res = pstmt.executeUpdate();
 
 	      } catch (Exception e) {
@@ -303,5 +304,55 @@ public class MemberDao {
 
 	      return res;
 	   }
+	
+	//수정
+	public int update(MemberVo vo) {
+
+		int res = 0;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		String sql =          //  1      2       3          4        5      6         7                                 8
+		"update member set m_name=?,m_id=?,m_pwd=?,m_zipcode=?,m_addr=?,m_ip=?,m_grade=?, m_modifydate=sysdate where m_idx=?";
+
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+			//2.명령처리객체 얻어오기
+			pstmt = conn.prepareStatement(sql);
+
+			//3.pstmt parameter index 채우기
+			pstmt.setString(1, vo.getM_name());
+			pstmt.setString(2, vo.getM_id());
+			pstmt.setString(3, vo.getM_pwd());
+			pstmt.setString(4, vo.getM_zipcode());
+			pstmt.setString(5, vo.getM_addr());
+			pstmt.setString(6, vo.getM_ip());
+			pstmt.setString(7, vo.getM_grade());
+			pstmt.setInt(8, vo.getM_idx());
+			//4.DB insert
+			res = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+
+			try {
+				//열린역순으로 닫는다
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		return res;
+	}
 	
 }
