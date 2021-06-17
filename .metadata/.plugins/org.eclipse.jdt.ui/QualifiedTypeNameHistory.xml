@@ -28,15 +28,12 @@
     <fullyQualifiedTypeName name="org.jdom2.input.SAXBuilder"/>
     <fullyQualifiedTypeName name="java.io.Reader"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="vo.PersonVo"/>
     <fullyQualifiedTypeName name="org.jdom2.Element"/>
     <fullyQualifiedTypeName name="org.jdom2.Document"/>
     <fullyQualifiedTypeName name="vo.ProductVo"/>
     <fullyQualifiedTypeName name="util.MySearchUtil"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="action.member.MemberListAction"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="org.apache.catalina.User"/>
@@ -49,5 +46,12 @@
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="javax.servlet.jsp.PageContext"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Enumeration"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="sun.security.timestamp.TSRequest"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="vo.PhotoVo"/>
+    <fullyQualifiedTypeName name="dao.PhotoDao"/>
 </qualifiedTypeNameHistroy>

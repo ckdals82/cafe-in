@@ -72,9 +72,9 @@ public class FileUploadAction2 extends HttpServlet {
 		//단 클라이언트 IP구하기
 		String ip = request.getRemoteAddr();//파라미터 권한만 넘긴거지 나머지 리퀘스트는 정상적으로 쓰면됨
 		
-		System.out.printf("제목:%s\n",title);
-		System.out.printf("화일명:%s\n",filename1);
-		System.out.printf("화일명:%s\n",filename2);
+//		System.out.printf("제목:%s\n",title);
+//		System.out.printf("화일명:%s\n",filename1);
+//		System.out.printf("화일명:%s\n",filename2);
 		
 		
 		//request binding

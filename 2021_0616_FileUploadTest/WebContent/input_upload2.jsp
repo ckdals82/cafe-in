@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	
 	function send(f){
 	
 		var title = f.title.value.trim();
@@ -13,18 +14,22 @@
 		var photo2 = f.photo2.value;
 		
 		if(title==''){
+			
 			alert('제목을 입력하세요!!!');
 			//swal("제목","제목을 입력하세요","error");
 			f.title.value='';
 			f.title.focus();
 			return;
 		}
+		
 		if(photo1==''){
+			
 			alert('업로드할 사진1을 선택하세요!!');
 			return;
 		}
 		
 		if(photo2==''){
+			
 			alert('업로드할 사진2을 선택하세요!!');
 			return;
 		}
