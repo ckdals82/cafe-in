@@ -196,7 +196,7 @@ $(document).ready(function(){
       								   disabled="disabled" onclick="send(this.form);">
       							
       							<input class="btn btn-success" type="button" value="메인화면"
-      												onclick="location.href='list.do'">
+      												onclick="location.href='../photo/list.do'">
       						</td> 
       					</tr>
       				

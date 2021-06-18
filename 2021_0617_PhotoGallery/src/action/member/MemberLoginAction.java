@@ -51,7 +51,9 @@ public class MemberLoginAction extends HttpServlet {
 		session.setAttribute("user", user);//로그인한 멤버 브이오 정보를 통째로 넣음
 		
 		//메인화면으로 이동
-		response.sendRedirect("list.do");
+		//현재위치 : /member/
+		//이동위치 : /photo/
+		response.sendRedirect("../photo/list.do");
 	}
 
 }

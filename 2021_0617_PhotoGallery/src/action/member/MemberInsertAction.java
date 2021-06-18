@@ -45,8 +45,8 @@ public class MemberInsertAction extends HttpServlet {
 		//DB insert
 		int res = MemberDao.getInstance().insert(vo);
 		
-		//목록보기
-		response.sendRedirect("list.do");
+		//로그인 폼으로 이동
+		response.sendRedirect("login_form.do");
 		
 		
 		

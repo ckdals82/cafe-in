@@ -43,7 +43,8 @@
 			}, function(isConfirm){
 				
 				if(isConfirm) 
-					location.href='../member/login_form.do';
+					//현재경로 : /photo/list.do
+					location.href='${ pageContext.request.contextPath }/member/login_form.do';
 				
 			
 			});
@@ -59,23 +60,72 @@
 		//return;
 		}
 	}
+	
+	function total_view(p_idx){
+		
+	/* 	alert(p_idx); */
+	//팝업화면 띄우기(보여주기)
+	//브라우저 크기 구함
+	var w = $(window).width();
+	var h = $(window).height();
+	
+	/* alert(w + "x" + h); */
+	/* 1440 789 */
+	//팝업창의 중앙위치 구하기
+	var pop_left = (w / 2) - (500/2)
+	var pop_top  = (h / 2) - (550/2)
+	
+	$("#photo_popup").css({left:pop_left,top:pop_top});
+	$("#photo_popup").show();
+	
+	//데이터가져오기
+	//p_idx에 해당되는 데이터 1건을 ajax로 요청
+	$.ajax({
+		url		: 'photo_one.do',	//photoOneaction
+		data 	: {'p_idx': p_idx},	//parameter
+		dataType: 'json',			//수신data타입
+		success : function(result_data){
+			//정상수신되었을경우
+			//{"p_idx":"1","p_title":"1번째 사진"..}
+			//alert(result_data.p_title);
+			$("#pop_title").html(result_data.p_title);
+			$("#pop_image").attr('src','../upload/'+result_data.p_filename);
+			$("#pop_content").html(result_data.p_content);
+			$("#pop_regdate").html(result_data.p_regdate);
+			
+		},
+		error	: function(err){
+			alert(err.responseText);
+		}
+	});
+	
+	
+	}
+	
 </script>
 
 
 </head>
 <body>
+		<!-- 전체보기 팝업화면 -->
+	<%@include file="photo_pop.jsp" %>
+
 	<div id="main_box">
 		<h1 id="title">:::PhotoGallery::::</h1>
 		<div id="type_login"> 
 			
 			<c:if test="${empty user }">
 			<!-- 로그인이 안된경우 -->
-			<input class="btn btn-primary" type="button" value="로그인">
+			<input class="btn btn-primary" type="button" value="로그인" 
+							onclick="location.href='${ pageContext.request.contextPath }/member/login_form.do'">
 			</c:if>
 			
-			<c:if test="${not empty user }">
 			<!-- 로그인이 된경우 -->
-			<input class="btn btn-primary" type="button" value="로그아웃">
+			<c:if test="${not empty user }">
+			
+			<b> [${ user.m_name }]</b> 님 로그인 하셨습니다.
+			<input class="btn btn-primary" type="button" value="로그아웃"
+							onclick="location.href='${ pageContext.request.contextPath }/member/logout.do'">
 			</c:if>
 			
 		</div>
@@ -92,9 +142,11 @@
 			<!-- Data가 있는 경우 -->
 			<c:forEach var="vo" items="${list }">
 				<div class="photo_box_style">
-				<img  src="${pageContext.request.contextPath }/upload/배경.jpg">
-				<div>${vo.p_title }</div>
-				<div>...</div>
+				<img  src="${pageContext.request.contextPath }/upload/${vo.p_filename}">
+				<div class="title_style">${vo.p_title }</div>
+				<div style="text-align: center;"> <input class="btn btn-info" type="button" value="전체보기"
+							 onclick="total_view('${vo.p_idx}' );" >
+				 </div>
 			</div>
 			</c:forEach>
 		</div>
