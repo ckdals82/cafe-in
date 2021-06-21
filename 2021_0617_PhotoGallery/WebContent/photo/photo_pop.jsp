@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,6 +61,21 @@
 		function close_me(){
 			$("#photo_popup").hide();
 		}
+		//download파일이름
+		//var filename;
+		
+		function download(){
+			//alert(filename);
+			
+			alert('한글=' + encodeURIComponent('한글'));
+			// /FileDownload.do?dir=/upload/&filename=a.jpg
+			//현재 작업경로 : /photo/list.do	
+			//자바스크립트에서 서버로 데이터전송시 인코딩주의
+			
+			location.href="../FileDownload.do?dir=/upload/&filename=" + 
+					encodeURIComponent(filename,"utf-8") ;		
+		}
+		
 	</script>
 
 </head>
@@ -74,9 +91,14 @@
 		<div id="pop_content">내용</div>
 		<div style="text-align: center; ">
 			
-			<input class="btn-primary" type="button" value="다운로드">
-			<input class="btn-danger" type="button" value="삭제하기">
-			<input class="btn-info" type="button" value="수정하기">
+			<!-- 로그인상태에서만 가능 -->
+			<c:if test="${ not empty user }">			
+				<input class="btn-primary" type="button" value="다운로드" onclick="download();">
+			</c:if>
+			
+			
+				<input id="pop_btn_del"    class="btn-danger" type="button" value="삭제하기">
+				<input id="pop_btn_modify" class="btn-info" type="button" value="수정하기">
 			
 		</div>
 	</div>

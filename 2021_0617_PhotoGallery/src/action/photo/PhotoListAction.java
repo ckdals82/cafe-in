@@ -33,7 +33,7 @@ public class PhotoListAction extends HttpServlet {
 		request.setAttribute("list", list);
 		
 
-		//Dispatcher (forward) : 서버내부에서forward_page호출한다
+		//Dispatcher (forward) : 서버내부에서forward_page호출한다 //데이터를 화면단에 넣어주는작업
 		String forward_page = "photo_list.jsp";
 		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
 		disp.forward(request, response);

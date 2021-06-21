@@ -25,6 +25,9 @@
 
 <script type="text/javascript">
 	
+	//download파일이름
+	var filename;
+	
 	function upload_photo(){
 		
 		//로그인여부체크
@@ -91,8 +94,25 @@
 			$("#pop_title").html(result_data.p_title);
 			$("#pop_image").attr('src','../upload/'+result_data.p_filename);
 			$("#pop_content").html(result_data.p_content);
-			$("#pop_regdate").html(result_data.p_regdate);
+			$("#pop_regdate").html(result_data.p_regdate.substring(0,16));
 			
+			//download할 파일이름
+			filename = result_data.p_filename;
+			//수정/삭제버튼 사용유무 결정
+			if(("${ user.m_idx }"==result_data.m_idx) 
+				|| 
+			  ("${ user.m_grade eq '관리자'}"=="true")
+			)
+			{
+				//보여줘라		
+				$("#pop_btn_del").show();
+				$("#pop_btn_modify").show();
+			}else{
+				//숨겨라
+				//alert('hide');
+				$("#pop_btn_del").hide();
+				$("#pop_btn_modify").hide();
+			}
 		},
 		error	: function(err){
 			alert(err.responseText);

@@ -26,9 +26,9 @@ public class PhotoOneAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		// /photo/photo_one.do?p_idx=2
 		
-		int p_idx = Integer.parseInt(request.getParameter("p_idx"));
+		int p_idx = Integer.parseInt(request.getParameter("p_idx"));// 값을 p_idx로 파라미터로 넘어온 값은스트링으로 넘어오니깐 정수로 변
 		
-		PhotoVo vo = PhotoDao.getInstance().selectOne(p_idx);
+		PhotoVo vo = PhotoDao.getInstance().selectOne(p_idx);// dao 에 있는 selectone 메소드를 활용하고 sql문을 활용하여 db에 있는 값을 가져
 		
 		//자바객체정보 => JSON Data로 변환
 		String json = vo.toJSONString();
