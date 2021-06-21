@@ -28,6 +28,8 @@
 	//download파일이름
 	var filename;
 	
+	var global_p_idx;//삭제 또는 수정할 photo p_idx
+	
 	function upload_photo(){
 		
 		//로그인여부체크
@@ -98,6 +100,10 @@
 			
 			//download할 파일이름
 			filename = result_data.p_filename;
+			//삭제 또는 수정될 p_idx
+			global_p_idx = p_idx;
+			
+			
 			//수정/삭제버튼 사용유무 결정
 			if(("${ user.m_idx }"==result_data.m_idx) 
 				|| 

@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<!-- sweetalert2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 <!-- bootstrap을 사용하기 위한 설정 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -76,6 +80,32 @@
 					encodeURIComponent(filename,"utf-8") ;		
 		}
 		
+		function del(){
+			
+			Swal.fire({
+				  title: '삭제',
+				  text: "정말 삭제하시겠습니까?",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '야쓰',
+				  cancelButtonText: '놉'
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    
+					//global_p_idx <= 삭제할 p_idx
+						//delete.do =>
+						location.href = "delete.do?p_idx=" + global_p_idx;
+				  }
+				  //lamda code
+				  //function(result){} => (result) => {}
+				});
+			
+		}//end del()
+		
+		function
+		
 	</script>
 
 </head>
@@ -97,8 +127,10 @@
 			</c:if>
 			
 			
-				<input id="pop_btn_del"    class="btn-danger" type="button" value="삭제하기">
-				<input id="pop_btn_modify" class="btn-info" type="button" value="수정하기">
+				<input id="pop_btn_del"    class="btn-danger" type="button" value="삭제하기"
+					onclick="del();">
+				<input id="pop_btn_modify" class="btn-info" type="button" value="수정하기"
+					onclick="modify_form.do">
 			
 		</div>
 	</div>

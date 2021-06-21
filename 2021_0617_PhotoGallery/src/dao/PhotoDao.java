@@ -195,4 +195,45 @@ public class PhotoDao {
 
 		return res;
 	}
+	
+	public int delete(int p_idx) {
+
+		int res = 0;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "delete from photo where p_idx=?";
+
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+			//2.명령처리객체 얻어오기
+			pstmt = conn.prepareStatement(sql);
+
+			//3.pstmt parameter index 채우기
+			pstmt.setInt(1, p_idx);
+			//4.DB insert
+			res = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+
+			try {
+				//열린역순으로 닫는다
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		return res;
+	}
 }
