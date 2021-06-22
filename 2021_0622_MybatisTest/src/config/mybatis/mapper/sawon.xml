@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sawon">
+
+ 	<!-- 전체조회  -->
+ 	 <!-- select 요청은 반드시 resultType속성이 존재 -->
+ 	<select id="sawon_list" resultType="vo.SawonVo">
+ 		select * from sawon
+ 	</select> 
+	
+	<!-- 부서별조회 -->
+	<!-- resultType or resultMap 는 레코드 1건을 담을 타입 -->
+	<!-- mapper 내의 parameter변수 표현형식은 #{변수명} 
+		전달되는 parameter가 1개의 단일자료형일경우(int,string,Integer)
+		사용되는 변수명은 아무거나 사용해도 된다.
+	--> 
+	<select id="sawon_list_deptno" parameterType="int" resultType="vo.SawonVo">
+	 select * from sawon where deptno = #{detpno}
+	</select>
+	
+	<select id="sawon_list_sajob" parameterType="String" resultType="vo.SawonVo">
+	select * from sawon where sajob = #{sajob}
+	
+	</select>
+	
+	<!-- 년대별조회 -->
+	<select id="sawon_list_year10" parameterType="int" resultType="vo.SawonVo">
+      select * from sawon where to_number((substr(to_char(sahire,'YYYY'),1,3) || '0')) = #{ year10 }
+   </select>
+
+	<!-- 연봉별조회 -->	 
+	<select id="sawon_list_sapay" parameterType="int" resultType="vo.SawonVo">
+		select * from sawon where to_number((substr(to_char(sapay,'YYYY'),1,3) || '0')) = #{ sapay }
+	
+	
+	</select>
+	
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/2021_0617_PhotoGallery" path="/2021_0617_PhotoGallery" reloadable="true" source="org.eclipse.jst.jee.server:2021_0617_PhotoGallery">
+      <Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/2021_0622_MybatisTest" path="/2021_0622_MybatisTest" reloadable="true" source="org.eclipse.jst.jee.server:2021_0622_MybatisTest">
 	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.commons.dbcp.BasicDataSourceFactory" maxActive="1" maxIdle="10" maxWait="1" name="jdbc/oracle_test" password="roqhd123!" type="javax.sql.DataSource" url="jdbc:oracle:thin:@realmen.cq16jsbvzacs.ap-northeast-2.rds.amazonaws.com:1521:ORCL" username="admin"/>
 </Context></Host>
     </Engine>

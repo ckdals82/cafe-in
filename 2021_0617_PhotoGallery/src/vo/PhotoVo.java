@@ -95,13 +95,16 @@ public class PhotoVo {
 		this.m_idx = m_idx;
 	}
 	
+	//Gson(Google JSON)
+	//Jackson
+	
 	public String toJSONString() {
-		//{"key":"value","key","value"}
+		//{"key":"value","key","value" , "p_content" : "abc\r\ndef"}
 		StringBuffer sb = new StringBuffer("{");
 		
 		sb.append(String.format("\"p_idx\":\"%d\",", p_idx));
 		sb.append(String.format("\"p_title\":\"%s\",", p_title));
-		sb.append(String.format("\"p_content\":\"%s\",", p_content));
+		sb.append(String.format("\"p_content\":\"%s\",", p_content.replaceAll("\r\n","<br>")));
 		sb.append(String.format("\"p_filename\":\"%s\",", p_filename));
 		sb.append(String.format("\"p_ip\":\"%s\",", p_ip));
 		sb.append(String.format("\"p_regdate\":\"%s\",", p_regdate));

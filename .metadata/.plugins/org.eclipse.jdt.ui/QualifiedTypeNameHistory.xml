@@ -11,8 +11,6 @@
     <fullyQualifiedTypeName name="vo.DeptVo"/>
     <fullyQualifiedTypeName name="dao.DeptDao"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
-    <fullyQualifiedTypeName name="vo.SawonVo"/>
-    <fullyQualifiedTypeName name="dao.SawonDao"/>
     <fullyQualifiedTypeName name="dao.SungTBDao"/>
     <fullyQualifiedTypeName name="vo.SungVo"/>
     <fullyQualifiedTypeName name="java.lang.Readable"/>
@@ -46,13 +44,16 @@
     <fullyQualifiedTypeName name="java.util.Enumeration"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="sun.security.timestamp.TSRequest"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="vo.MemberVo"/>
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
     <fullyQualifiedTypeName name="java.nio.charset.Charset"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="dao.PhotoDao"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="vo.PhotoVo"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="vo.SawonVo"/>
+    <fullyQualifiedTypeName name="dao.SawonDao"/>
 </qualifiedTypeNameHistroy>
