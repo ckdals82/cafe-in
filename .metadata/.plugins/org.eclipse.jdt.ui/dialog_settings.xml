@@ -54,8 +54,8 @@
 		<item key="OmitCallToSuper" value="false"/>
 	</section>
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="731"/>
-		<item key="DIALOG_Y_ORIGIN" value="88"/>
+		<item key="DIALOG_X_ORIGIN" value="353"/>
+		<item key="DIALOG_Y_ORIGIN" value="158"/>
 		<item key="DIALOG_WIDTH" value="553"/>
 		<item key="DIALOG_HEIGHT" value="617"/>
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>

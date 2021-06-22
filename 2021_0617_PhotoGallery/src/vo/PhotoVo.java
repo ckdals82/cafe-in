@@ -20,6 +20,29 @@ public class PhotoVo {
 		this.p_ip = p_ip;
 		this.m_idx = m_idx;
 	}
+	
+	
+
+
+
+	
+
+
+
+
+	public PhotoVo(int p_idx, String p_title, String p_content, String p_ip, int m_idx) {
+		super();
+		this.p_idx = p_idx;
+		this.p_title = p_title;
+		this.p_content = p_content;
+		this.p_ip = p_ip;
+		this.m_idx = m_idx;
+	}
+
+
+
+
+
 	public PhotoVo() {
 		
 	}

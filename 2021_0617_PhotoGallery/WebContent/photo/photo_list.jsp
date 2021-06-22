@@ -96,7 +96,7 @@
 			$("#pop_title").html(result_data.p_title);
 			$("#pop_image").attr('src','../upload/'+result_data.p_filename);
 			$("#pop_content").html(result_data.p_content);
-			$("#pop_regdate").html(result_data.p_regdate.substring(0,16));
+			$("#pop_regdate").html(result_data.p_modifydate.substring(0,16));
 			
 			//download할 파일이름
 			filename = result_data.p_filename;

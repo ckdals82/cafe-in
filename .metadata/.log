@@ -3997,3 +3997,223 @@ Binding(COMMAND+SHIFT+T,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.debug.core 4 125 2021-06-21 19:17:00.540
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Terminate failed
+	at org.eclipse.debug.core.Launch.terminate(Launch.java:298)
+	at org.eclipse.debug.internal.core.LaunchManager.shutdown(LaunchManager.java:2331)
+	at org.eclipse.debug.core.DebugPlugin.stop(DebugPlugin.java:676)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:871)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:863)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1025)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:370)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1886)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1761)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:202)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:220)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+!SUBENTRY 1 org.eclipse.debug.core 4 5010 2021-06-21 19:17:00.545
+!MESSAGE Terminate failed
+!SESSION 2021-06-21 19:44:07.516 -----------------------------------------------
+eclipse.buildId=4.18.0.I20201202-1800
+java.version=15.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+
+!ENTRY org.eclipse.jface 2 0 2021-06-21 19:44:18.650
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-06-21 19:44:18.650
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@356cb230,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@50b78155,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.debug.core 4 125 2021-06-21 19:58:26.616
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Terminate failed
+	at org.eclipse.debug.core.Launch.terminate(Launch.java:298)
+	at org.eclipse.debug.internal.core.LaunchManager.shutdown(LaunchManager.java:2331)
+	at org.eclipse.debug.core.DebugPlugin.stop(DebugPlugin.java:676)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:871)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:863)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1025)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:370)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1886)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1761)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:202)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:220)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+!SUBENTRY 1 org.eclipse.debug.core 4 5010 2021-06-21 19:58:26.621
+!MESSAGE Terminate failed
+!SESSION 2021-06-21 20:38:05.598 -----------------------------------------------
+eclipse.buildId=4.18.0.I20201202-1800
+java.version=15.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+
+!ENTRY org.eclipse.jface 2 0 2021-06-21 20:38:14.833
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-06-21 20:38:14.833
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@387ef6a7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2330c995,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.debug.core 4 125 2021-06-21 20:57:08.544
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Terminate failed
+	at org.eclipse.debug.core.Launch.terminate(Launch.java:298)
+	at org.eclipse.debug.internal.core.LaunchManager.shutdown(LaunchManager.java:2331)
+	at org.eclipse.debug.core.DebugPlugin.stop(DebugPlugin.java:676)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:871)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:863)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1025)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:370)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1886)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1761)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:202)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:220)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+!SUBENTRY 1 org.eclipse.debug.core 4 5010 2021-06-21 20:57:08.545
+!MESSAGE Terminate failed
+!SESSION 2021-06-21 23:21:14.388 -----------------------------------------------
+eclipse.buildId=4.18.0.I20201202-1800
+java.version=15.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+
+!ENTRY org.eclipse.jface 2 0 2021-06-21 23:21:23.725
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-06-21 23:21:23.725
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@50b78155,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1e284d90,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.debug.core 4 125 2021-06-21 23:46:23.283
+!MESSAGE Error logged from Debug Core: 
+!STACK 1
+org.eclipse.debug.core.DebugException: Terminate failed
+	at org.eclipse.debug.core.Launch.terminate(Launch.java:298)
+	at org.eclipse.debug.internal.core.LaunchManager.shutdown(LaunchManager.java:2331)
+	at org.eclipse.debug.core.DebugPlugin.stop(DebugPlugin.java:676)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:871)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:863)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:1025)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:370)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1886)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1761)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:275)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:202)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:660)
+	at org.eclipse.osgi.container.Module.stop(Module.java:521)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:207)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:220)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+!SUBENTRY 1 org.eclipse.debug.core 4 5010 2021-06-21 23:46:23.287
+!MESSAGE Terminate failed
+!SESSION 2021-06-22 09:33:28.751 -----------------------------------------------
+eclipse.buildId=4.18.0.I20201202-1800
+java.version=15.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/hwangchangmin/.eclipse_keyring
+
+!ENTRY org.eclipse.jface 2 0 2021-06-22 09:33:40.354
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2021-06-22 09:33:40.354
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@723081a2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@481f698f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)

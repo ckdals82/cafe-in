@@ -47,12 +47,12 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="sun.security.timestamp.TSRequest"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="vo.MemberVo"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="java.nio.charset.Charset"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="dao.PhotoDao"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="vo.PhotoVo"/>
-    <fullyQualifiedTypeName name="dao.PhotoDao"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.nio.charset.Charset"/>
 </qualifiedTypeNameHistroy>

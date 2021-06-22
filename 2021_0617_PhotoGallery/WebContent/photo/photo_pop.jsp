@@ -101,10 +101,13 @@
 				  //lamda code
 				  //function(result){} => (result) => {}
 				});
-			
+				//photo.list 파일이 인크루드 하고 있어 global_p_idx를 찾고 싶음 거기로가라! 삭제 또는 수정에 사용됨
 		}//end del()
 		
-		function
+		function modify_form(){
+			//	PhotoModifyFormAction
+			location.href="modify_form.do?p_idx=" + global_p_idx;
+		}
 		
 	</script>
 
@@ -130,7 +133,7 @@
 				<input id="pop_btn_del"    class="btn-danger" type="button" value="삭제하기"
 					onclick="del();">
 				<input id="pop_btn_modify" class="btn-info" type="button" value="수정하기"
-					onclick="modify_form.do">
+					onclick="modify_form()">
 			
 		</div>
 	</div>

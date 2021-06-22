@@ -236,4 +236,52 @@ public class PhotoDao {
 
 		return res;
 	}
+	public int update(PhotoVo vo) {
+
+		int res = 0;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		//										1			2	  3		  4									  5
+		String sql = "update photo set p_title=?,p_content=?,p_ip=?,m_idx=?, p_modifydate=sysdate where p_idx=?";
+
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+			//2.명령처리객체 얻어오기
+			pstmt = conn.prepareStatement(sql);
+
+			//3.pstmt parameter index 채우기
+			
+			pstmt.setString(1, vo.getP_title());
+			pstmt.setString(2, vo.getP_content());
+			pstmt.setString(3, vo.getP_ip());
+			
+			pstmt.setInt(4, vo.getM_idx());
+			pstmt.setInt(5, vo.getP_idx());
+			
+			
+			//4.DB insert
+			res = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+
+			try {
+				//열린역순으로 닫는다
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		return res;
+	}
 }
