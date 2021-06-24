@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -125,6 +126,23 @@ List<SawonVo> list = null;
 		return list;
 	}
 	
+	 public List<SawonVo> selectList(Map map) {
+	      // TODO Auto-generated method stub
+	      
+	      List<SawonVo> list = null;
+	      
+	      //1.작업객체정보 얻어오기(Connection획득 + Mapper정보)
+	      SqlSession sqlSession = factory.openSession();
+	      
+	      //2.작업수행
+	      list = sqlSession.selectList("sawon.sawon_list_condition",map);
+	      
+	      //3.반환(닫기)
+	      sqlSession.close();
+	      
+	      return list;
+	   }
+
 	
 	
 	

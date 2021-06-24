@@ -4,19 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sawon">
 
- 	<!-- 전체조회  -->
- 	 <!-- select 요청은 반드시 resultType속성이 존재 -->
- 	<select id="sawon_list" resultType="vo.SawonVo">
- 		select * from sawon
- 	</select> 
-	
-	<!-- 검색조건별 -->
-	<select id="sawon_list_condition" parameterType="Map" resultType="vo.SawonVo">
-	
-	select * from sawon 
-	
-	</select>
-	
+ 	 <!-- 전체조회 -->
+  <!-- select 요청은 반드시 resultType속성이 존재 -->
+  <select id="sawon_list" resultType="vo.SawonVo">
+     select * from sawon 
+  </select>
+  
+  <!-- 검색조건별 조회 -->
+  <select id="sawon_list_condition" parameterType="Map" resultType="vo.SawonVo">
+     select * from sawon 
+     
+     <trim prefix="where" prefixOverrides="and">
+     <if test="deptno!=null">
+        deptno = #{ deptno }
+     </if>
+     <if test="sajob!=null">
+        and sajob = #{ sajob }
+     </if>
+     <if test="sasex!=null">
+        and sasex = #{ sasex }
+     </if>
+     
+     </trim>
+     
+  </select>
 	
 	
 	<!-- 부서별조회 -->

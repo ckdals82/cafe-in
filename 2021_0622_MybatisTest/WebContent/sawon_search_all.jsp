@@ -30,7 +30,7 @@
 			
 			var deptno = $("#deptno").val();
 			var sajob = $("#sajob").val();
-			var sasex = $("#sajob").val();
+			var sasex = $("#sasex").val();
 			//ajax요청
 			$.ajax({
 											  //SawonAllListAction (call)
