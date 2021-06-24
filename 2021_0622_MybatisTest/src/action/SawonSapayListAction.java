@@ -38,9 +38,10 @@ public class SawonSapayListAction extends HttpServlet {
 			//전체조회
 			list = SawonDao.getInstance().selectList();
 		}else  {
-			
+			//연봉별조회
 			list = SawonDao.getInstance().selectpayList(sapay);
 		}
+		
 		
 		//request binding
 		request.setAttribute("list", list);

@@ -108,8 +108,7 @@ List<SawonVo> list = null;
 	}
 
 	public List<SawonVo> selectpayList(int sapay) {
-		// TODO Auto-generated method stub
-		List<SawonVo> list = null;
+	List<SawonVo> list = null;
 		
 		//1,작업객체정보 얻어오기(connection획득 + mapper)
 		SqlSession sqlSession = factory.openSession();
@@ -120,6 +119,8 @@ List<SawonVo> list = null;
 		
 		//3.반환(닫기)
 		sqlSession.close();
+		
+		
 		
 		return list;
 	}

@@ -28,7 +28,7 @@
 		//조회버튼이 클릭되면
 		$("#btn_find").click(function(){
 			
-			var year10 = $("#sapay").val();
+			var sapay = $("#sapay").val();
 			
 			//ajax요청
 			$.ajax({
@@ -54,8 +54,8 @@
 <div id="box">
 연봉별: <select id="sapay">
 		<option value="0">전체보기</option>
-		<option value="1980">4000만원 </option>
-		<option value="1990">3000만원 </option>
+		<option value="4000">4000만원 </option>
+		<option value="3000">3000만원 </option>
 		<option value="2000">2000만원 </option>
 	</select>
 	<input type="button" value="조회" id="btn_find">

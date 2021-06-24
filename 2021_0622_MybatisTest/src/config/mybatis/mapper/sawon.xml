@@ -10,6 +10,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select * from sawon
  	</select> 
 	
+	<!-- 검색조건별 -->
+	<select id="sawon_list_condition" parameterType="Map" resultType="vo.SawonVo">
+	
+	select * from sawon 
+	
+	</select>
+	
+	
+	
 	<!-- 부서별조회 -->
 	<!-- resultType or resultMap 는 레코드 1건을 담을 타입 -->
 	<!-- mapper 내의 parameter변수 표현형식은 #{변수명} 
@@ -32,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 연봉별조회 -->	 
 	<select id="sawon_list_sapay" parameterType="int" resultType="vo.SawonVo">
-		select * from sawon where to_number((substr(to_char(sapay,'YYYY'),1,3) || '0')) = #{ sapay }
+		select * from sawon where sapay= #{sapay}
 	
 	
 	</select>
