@@ -14,5 +14,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="config/mybatis/mapper/sawon.xml" />
+		<mapper resource="config/mybatis/mapper/dept.xml" />
 	</mappers>
 </configuration>

@@ -1,6 +1,5 @@
 package action;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.collections.map.HashedMap;
 
 import dao.SawonDao;
 import vo.SawonVo;
@@ -40,18 +41,15 @@ public class SawonAllListAction extends HttpServlet {
       
       int deptno = Integer.parseInt(str_deptno);
             
-      if(str_deptno==null) {
-         deptno = 0;
+      if(str_deptno==null) deptno = 0;
                   
-      }if(sajob==null) {
-         sajob = "all";
+      if(sajob==null)      sajob = "all";
          
-      }if(sasex==null) {
-         sasex = "all";
-      }
+      if(sasex==null)      sasex = "all";
+      
 
       //검색조건을 담을 객체
-      Map map = new HashMap();
+      Map map = new HashedMap();
       
       if(deptno!=0) {
          map.put("deptno", deptno);
