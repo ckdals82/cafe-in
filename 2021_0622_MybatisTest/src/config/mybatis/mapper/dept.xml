@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	<!-- sawon2Vo 1개의 객체를 포장 -->
  	<!-- colletion column ""
-			  select="" > column은 select로전달되는 parameter 정보 -->
+			       select="" > column은 select로전달되는 parameter 정보 -->
  	
  	<resultMap type="vo.Sawon2Vo" id="sawon_map">
  	<result property="sabun" column="sabun" />
