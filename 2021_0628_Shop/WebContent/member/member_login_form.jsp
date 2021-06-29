@@ -45,7 +45,10 @@
       if("${param.reason eq 'fail_pwd'}"=="true"){ 
          
          alert('비밀번호가 틀립니다');
-   }
+   }   if("${param.reason eq 'fail_cart'}"=="true"){ 
+       
+       alert('장바구니보기는 로그인후에 이용가능합니다.');
+ }
 
 }
 

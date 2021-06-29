@@ -17,21 +17,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 추가 -->
-	<select id="product_insert" parameterType="product" >
-    	insert into product values(seq_product_idx.nextVal,
-    						#{p_category},
-    						 #{p_num},
-							#{p_name},
-							#{p_company},
-							#{p_price},
-							#{p_saleprice},
-							#{p_image_s},
-							#{p_image_l},
-							#{p_content}, 
-							sysdate)
-    	  
+	
+	
+	 <select id="product_insert" parameterType="product" >
+      insert into product values((select nvl(max(p_idx),0)+1 from product),
+      						#{p_category},
+      						#{p_num},
+      						#{p_name},
+      						#{p_company},
+      						#{p_price},
+      						#{p_saleprice},
+      						#{p_image_s},
+      						#{p_image_l},
+      						#{p_content},
+      						sysdate)
    </select>
-
+	
 	
 </mapper>
 

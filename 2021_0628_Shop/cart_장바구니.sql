@@ -1,43 +1,56 @@
 /*
 
---Àå¹Ù±¸´Ï ÀÏ·Ã¹øÈ£
+--ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½Ï·Ã¹ï¿½È£
 create sequence seq_cart_idx
 
---Àå¹Ù±¸´Ï Å×ÀÌºí
+--ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 create table cart
 (
-  c_idx  int  primary key,
+  c_idx  int,
   c_cnt  int  not null,
-  p_idx  int
+  p_idx  int,
+  m_idx  int
 )
 
---»óÇ°Å×ÀÌºí(product)ÀÇ idx¿Í p_idx°£ÀÇ ¿Ü·¡Å° ¼³Á¤
+--ê¸°ë³¸í‚¤
 alter table cart
-  add constraint fk_cart_p_idx foreign key(p_idx) 
-                               references product(idx)
+	add constraint pk_cart_c_idx primary key(c_idx);
+
+--ìƒí’ˆí…Œì´ë¸”(product)ì˜ p_idxì™€ cartì˜ p_idxê°„ì˜ ì™¸ë˜í‚¤ ì„¤ì •
+alter table cart
+  add constraint fk_cart_p_idx foreign key(p_idx)
+                               references product(p_idx);
+
+--íšŒì›í…Œì´ë¸”(member)ì˜ m_idxì™€ cartì˜ m_idxê°„ì˜ ì™¸ë˜í‚¤ ì„¤ì •
+alter table cart
+	add constraint fk_cart_m_idx foreign key(m_idx)
+								 references member(m_idx);
 
 select * from product
+select * from member
 
-insert into cart values(seq_cart_idx.nextVal,1,1);
-insert into cart values(seq_cart_idx.nextVal,1,2);
-insert into cart values(seq_cart_idx.nextVal,1,21);
+insert into cart values(seq_cart_idx.nextVal,1,41,1);
+insert into cart values(seq_cart_idx.nextVal,1,42,2);
+insert into cart values(seq_cart_idx.nextVal,1,44,41);
 
 select * from cart
 
 commit
 
--- JoinÀ» ÅëÇØ¼­ Á¶È¸Á¤º¸¸¦ ÃßÃâ
+-- Joinì„ í†µí•´ì„œ ì¡°íšŒì •ë³´ë¥¼ ì¶”ì¶œ
 create or replace view cart_view
 as
 	select
-	   idx p_idx,c_idx, p_num,p_name,p_price,p_saleprice,
-	   c_cnt, c_cnt* p_saleprice amount
-	from product p inner join  cart c on p.idx = c.p_idx  
+	   p.p_idx,c_idx, p_num,p_name,p_price,p_saleprice,
+	   c_cnt, c_cnt* p_saleprice amount,c.m_idx
+	from product p inner join  cart c on p.p_idx = c.p_idx  
+		
+		--inner join member m on m.m_idx=c.m_idx
+		
+select * from cart_view where m_idx=2
 
-select * from cart_view;
-
---Àå¹Ù±¸´Ï »óÇ°ÀÇ ÃÑ°è
-select sum(amount) from cart_view;
+--ì¥ë°”êµ¬ë‹ˆ ìƒí’ˆì˜ ì´ê³„
+select sum(amount) from cart_view where m_idx=2
 
 
 

@@ -47,6 +47,8 @@
 	  		<b>${user.m_name }님 입장 </b>
 	  		<input class="btn btn-primary" type="button" value="로그아웃"
 	  					onclick="location.href='${pageContext.request.contextPath }/member/logout.do'">
+	  		<input class="btn btn-primary" type="button" value="장바구니보기"
+	  					onclick="location.href='cart_list.do'">			
 	  		</c:if>
 	  </div>
   </center>

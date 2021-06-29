@@ -7,8 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+
+<!-- sweetalert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- ck -->
+<!-- <script src="https://cdn.ckeditor.com/4.16.1/standard-all/ckeditor.js"></script> -->
+<!-- <script src="//cdn.ckeditor.com/4.16.1/basic/ckeditor.js"></script> -->
+<script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 
 <script type="text/javascript">
 
@@ -17,16 +23,19 @@ var regular_number =/^[0-9]+$/
 function send(f)
 {
    var p_category = f.p_category.value;
-   var p_num = f.p_num.value;
-   var p_name = f.p_name.value;
-   var p_company = f.p_company.value;
+   var p_num = f.p_num.value.trim();
+   var p_name = f.p_name.value.trim();
+   var p_company = f.p_company.value.trim();
    
    //얘 둘은 숫자만 입력하도록
-   var p_price = f.p_price.value;
-   var p_saleprice = f.p_saleprice.value;
+   var p_price = f.p_price.value.trim();
+   var p_saleprice = f.p_saleprice.value.trim();
    
+   //var p_content = f.p_content.value;
    
-   var p_content = f.p_content.value;   
+   //CkEditor사용시 입력값 체크
+   var p_content = CKEDITOR.instances.p_content.getData();
+   
    var photo_s = f.photo_s.value;
    var photo_l = f.photo_l.value;
    
@@ -57,6 +66,7 @@ function send(f)
      
       return;
    }
+  
    if(p_name=="")
    {
       Swal.fire({
@@ -73,6 +83,7 @@ function send(f)
        });
       return;
    }
+   
    if(p_company=="")
    {
       Swal.fire({
@@ -89,12 +100,13 @@ function send(f)
        });
       return;
    }
+  
    if(regular_number.test(p_price)==false)
    {
       Swal.fire({
          icon: 'error',
          title: '제품가격',
-         text: '제품가격을 입력하세요!',
+         text: '숫자만 입력하세요!',
          confirmButtonText: '확인',
          returnFocus: false
        }).then((result) => {
@@ -110,7 +122,7 @@ function send(f)
       Swal.fire({
          icon: 'error',
          title: '제품할인가격',
-         text: '제품할인가격을 입력하세요!',
+         text: '숫자만입력하세요!',
          confirmButtonText: '확인',
          returnFocus: false
        }).then((result) => {
@@ -198,8 +210,20 @@ function send(f)
         <td><input name="p_saleprice" type="text" ></td>
     </tr>    
     <tr>
-        <td>제품설명</td>
-        <td><TEXTAREA name="p_content" rows="5" cols="50"></TEXTAREA></td>
+        <td colspan="2">제품설명</td>
+      </tr> 
+        <tr>
+        <td colspan="2">
+        	<TEXTAREA id="p_content" name="p_content" rows="5" cols="50"></TEXTAREA>
+        	 <script>
+				    CKEDITOR.replace('p_content', {
+				      uiColor: '#ffcccc',
+				      enterMode: CKEDITOR.ENTER_DIV,
+				      // Pressing Shift+Enter will create a new <p> element.
+				      shiftEnterMode: CKEDITOR.ENTER_P
+				    });
+  			 </script>
+        </td>
     </tr>
     <tr>
         <td>제품사진(작은사진)</td>
