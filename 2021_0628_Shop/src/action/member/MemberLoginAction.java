@@ -26,6 +26,7 @@ public class MemberLoginAction extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//member/login.do?m_id=life3&m_pwd=123
+		//member/login.do?m_id=life3&m_pwd=123url
 		//1.수신인코딩 설정
 		request.setCharacterEncoding("utf-8");
 		
@@ -33,16 +34,29 @@ public class MemberLoginAction extends HttpServlet {
 		String m_id = request.getParameter("m_id");
 		String m_pwd = request.getParameter("m_pwd");
 		
+		String url = request.getParameter("url");
+		
+		if(url==null)
+			url="";
+		
 		//3.m_id에 해당되는 MemberVo 1건 얻어오기
 		MemberVo user = MemberDao.getInstance().selectOne(m_id);
 		
 		if(user==null) { //ID가 없는 경우
-			response.sendRedirect("login_form.do?reason=fail_id");
+				if(url.isEmpty())
+					response.sendRedirect("login_form.do?reason=fail_id");
+				else
+					response.sendRedirect("login_form.do?reason=fail_id&url=" + url);
 			return;
 		}
 		//비밀번호 비교
 		if(user.getM_pwd().equals(m_pwd)==false) {//비밀번호가 틀려서로그인못해~ 
-			response.sendRedirect("login_form.do?reason=fail_pwd");
+			if(url.isEmpty())
+				response.sendRedirect("login_form.do?reason=fail_pwd");
+			else
+				response.sendRedirect("login_form.do?reason=fail_pwd&url=" + url);
+			
+			
 			return;
 		}
 		//정상적인 로그인 상태
@@ -53,9 +67,13 @@ public class MemberLoginAction extends HttpServlet {
 		//메인화면으로 이동
 		//현재위치 : /member/
 		//이동위치 : /product/
+		if(url.isEmpty())
 		response.sendRedirect("../product/list.do");
+		else
+			response.sendRedirect(url);
+		
 	}
-
+	
 }
 //로그인 폼에서 아이디 패스워드 넘겨줌
 

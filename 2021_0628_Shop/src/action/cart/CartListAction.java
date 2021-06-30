@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CartDao;
+import dao.CategoryDao;
 import vo.CartVo;
+import vo.CategoryVo;
 import vo.MemberVo;
 
 /**
@@ -40,11 +42,16 @@ public class CartListAction extends HttpServlet {
 		
 		List<CartVo> list = CartDao.getInstance().selectList(user.getM_idx());
 		
+		//카테고리 목록가져오기
+		List<CategoryVo> category_list = CategoryDao.getInstance().selectList();
+		
 		int total_amout = CartDao.getInstance().selectTotalAmount(user.getM_idx());
 		
 		//request binding
 		request.setAttribute("list", list);
 		request.setAttribute("total_amount", total_amout);
+		request.setAttribute("category_list", category_list);
+		
 		
 		//Dispatcher (forward) : 서버내부에서forward_page호출한다
 		String forward_page = "cart_list.jsp";

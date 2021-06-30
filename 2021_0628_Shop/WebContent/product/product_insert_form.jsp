@@ -175,18 +175,35 @@ function send(f)
 <body>
 
 <!-- title -->
-<jsp:include page="index.jsp"/>
+<%-- <jsp:include page="index.jsp"/> --%>
+
+<%@ include file = "index.jsp" %>
+
 <form method="post" action="insert.do" enctype="multipart/form-data"> 
 <table align="center" width="600" border="1" 
     style="border-collapse:collapse;font-size:8pt" bordercolor="navy"
     cellpadding="2" cellspacing="0">
     <tr>
         <td>제품Category</td>
-        <td><select name="p_category">
-              <option value="">카테고리 선택</option>
-              <option value="com001">컴퓨터</option>
+      
+        <td>
+        <select name="p_category">
+        <option value="">--카테고리선택--</option>
+        
+        <c:forEach var="category" items="${category_list }">
+         
+          <option value="${category.category_code }">${category.category_name }</option>
+          
+        </c:forEach>
+        
+              
+              
+              
+              <!-- <option value="com001">컴퓨터</option>
               <option value="ele002">가전제품</option>
-              <option value="sp003">스포츠</option>
+              <option value="sp003">스포츠</option> -->
+              
+              
         </select></td>
     </tr>
     <tr>

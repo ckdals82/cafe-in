@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CategoryDao;
 import dao.ProductDao;
+import vo.CategoryVo;
 import vo.ProductVo;
 
 /**
@@ -41,8 +43,12 @@ public class ProductListAction extends HttpServlet {
 		//3.목록가져오기
 		List<ProductVo> list = ProductDao.getInstance().selectList(p_category);
 		
+		//카테고리 목록가져오기
+		List<CategoryVo> category_list = CategoryDao.getInstance().selectList();
+		
 		//4.request binding
 		request.setAttribute("list", list);
+		request.setAttribute("category_list", category_list);
 		
 
 		//Dispatcher (forward) : 서버내부에서forward_page호출한다

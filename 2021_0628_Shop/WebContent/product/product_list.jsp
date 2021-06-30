@@ -13,7 +13,10 @@
 </head>
 <body>
 
-<jsp:include page="index.jsp"/>
+<!-- directive tag 이용한 include
+결과적으로 한문서로 인식 -->
+<%@ include file="index.jsp" %>
+
 <table align="center" width="600" border="1"
  style="border-collapse:collapse;font-size:8pt"
  bordercolor="navy" cellpadding="4" cellspacing="0">

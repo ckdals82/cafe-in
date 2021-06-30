@@ -1,1 +1,8 @@
 @charset "UTF-8";
+
+.cafe_image_box{
+	margin-left: 15px;
+	color: black;
+	background: black;
+	margin: 50
+}

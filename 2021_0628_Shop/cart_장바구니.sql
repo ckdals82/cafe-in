@@ -47,7 +47,7 @@ as
 		
 		--inner join member m on m.m_idx=c.m_idx
 		
-select * from cart_view where m_idx=2
+select * from cart_view where m_idx=3 and p_idx=4
 
 --장바구니 상품의 총계
 select sum(amount) from cart_view where m_idx=2

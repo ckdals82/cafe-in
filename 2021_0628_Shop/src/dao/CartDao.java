@@ -83,4 +83,32 @@ public class CartDao {
 		
 		return res;
 	}
+
+	public CartVo selectOne(CartVo paramVo) {
+		// TODO Auto-generated method stub
+		CartVo vo = null;
+		SqlSession sqlSession = factory.openSession();
+		
+		vo=sqlSession.selectOne("cart.cart_one",paramVo);
+		
+		sqlSession.close();
+		
+		return vo;
+	}
+
+	public int insert(CartVo paramVo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+
+		//작업객체 얻어오기
+		SqlSession sqlSession = factory.openSession(true);
+		
+		//2.작업수행
+		res = sqlSession.insert("cart.cart_insert",paramVo);
+		
+		//3.닫기
+		sqlSession.close();
+		
+		return res;
+	}
 }

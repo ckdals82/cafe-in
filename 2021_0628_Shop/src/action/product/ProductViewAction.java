@@ -1,6 +1,7 @@
 package action.product;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CategoryDao;
 import dao.ProductDao;
+import vo.CategoryVo;
 import vo.ProductVo;
 
 /**
@@ -32,6 +35,11 @@ public class ProductViewAction extends HttpServlet {
 		
 		//2.p_idx에 해당되는 상품정보 1건 얻어오기
 		ProductVo vo = ProductDao.getInstance().selectOne(p_idx);
+		
+		//카테고리 목록
+		List<CategoryVo> category_list = CategoryDao.getInstance().selectList();
+		//카테고리 request bindeing
+		request.setAttribute("category_list", category_list);
 		
 		//3.request binding
 		request.setAttribute("vo", vo);

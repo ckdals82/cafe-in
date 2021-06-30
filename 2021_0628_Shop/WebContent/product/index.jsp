@@ -28,9 +28,18 @@
   </center>
   <hr width="600" border="1" noshade color="navy">
   <center>
-      <a href="list.do?p_category=com001">컴퓨터</a> | 
+  	
+  	<!-- for(CategoryVo category : category_list) -->
+        <c:forEach var="category" items="${category_list }">
+           <a href="list.do?p_category=${category.category_code }">${category.category_name }</a> |
+        </c:forEach>
+  
+<!-- <!--       <a href="list.do?p_category=com001">컴퓨터</a> | 
       <a href="list.do?p_category=ele002">가전 제품</a> | 
       <a href="list.do?p_category=sp003">스포츠</a>
+      
+       --> 
+         
   </center>
   <hr width="600" border="1" noshade style="color: navy" color="navy">
   

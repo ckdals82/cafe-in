@@ -11,6 +11,12 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+
+<!-- bootstrap을 사용하기 위한 설정 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript">
@@ -26,11 +32,12 @@
 					  showCancelButton: true,
 					  confirmButtonColor: '#3085d6',
 					  cancelButtonColor: '#d33',
-					  confirmButtonText: 'Yes, delete it!',
+					  confirmButtonText: '예',
 					  cancelButtonText: '아니오'
 					}).then((result) => {
 					  if (result.isConfirmed) {
-					    	location.href='../member/login_form.do'
+					      //현재주소위치 : location.href
+						  location.href='../member/login_form.do?url=' + location.href
 					    
 					  }
 					});
@@ -39,7 +46,39 @@
 			}else{
 				//로그인이 된상태
 				//장바구니 담기
-				location.href='cart_insert.do?p_idx=${ vo.p_idx }&m_idx=${ user.m_idx}' ;
+				//location.href='cart_insert.do?p_idx=${ vo.p_idx }&m_idx=${ user.m_idx}' ;
+				
+				//ajax처리
+				$.ajax({
+					url  :'cart_insert.do', //CartInsertAction
+					data :{'p_idx': '${vo.p_idx}','m_idx':'${ user.m_idx }'},
+					dataType: 'json',
+					success : function(result_data){
+						//result_data = {"result":"cart_success"}
+						//result_data = {"result":"cart_exist"}
+						if(result_data.result =='cart_exist'){
+							
+							Swal.fire(
+									  '이미 장바구니에<br>저장되어있습니다',
+									  '',
+									  'warning'
+									);
+							return;
+						}
+						if(result_data.result =='cart_success'){
+							Swal.fire(
+									  '장바구니에 저장되었습니다',
+									  '',
+									  'warning'
+									);
+							return;
+						}
+					},
+					error   : function(err){
+						alert(err.responseText);
+					}
+					
+				});
 			}
 		}
 		
@@ -48,7 +87,9 @@
 </head>
 <body>
 
-<jsp:include page="index.jsp"/>
+<%-- <jsp:include page="index.jsp"/> --%>
+
+<%@ include file="index.jsp" %>
 
 <table align="center" width="600" border="1"
  style="border-collapse:collapse;font-size:8pt"
