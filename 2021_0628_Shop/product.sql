@@ -28,6 +28,11 @@ alter table product
 alter table product
  add constraint fk_product_p_category foreign key(p_category)
  									  references category(category_code)
+ 									  
+ 									  
+ 									  
+ 									  
+ 									  
 --아래주석문 확인해보신다고함 									  
 --on update cascade : 부모키가 바뀌면 참조하는 자식키도 변경(수정)해라
 --on delete cascade : 부모키가 삭제되면 참조하는 자식도 삭제해라 									  

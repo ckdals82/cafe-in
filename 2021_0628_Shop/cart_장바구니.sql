@@ -21,6 +21,10 @@ alter table cart
   add constraint fk_cart_p_idx foreign key(p_idx)
                                references product(p_idx);
 
+
+
+
+
 --회원테이블(member)의 m_idx와 cart의 m_idx간의 외래키 설정
 alter table cart
 	add constraint fk_cart_m_idx foreign key(m_idx)

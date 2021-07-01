@@ -1,8 +1,38 @@
 @charset "UTF-8";
 
-.cafe_image_box{
-	margin-left: 15px;
-	color: black;
-	background: black;
-	margin: 50
+
+
+.cafe_name{
+	
+	
+	background-color: black;
+	color: white;
+	height: 20px;
+}
+
+.img_tg_f{
+	display: flex;
+	margin-top: 20px;
+}
+
+.cafe_img{
+	height: 500px;
+	width: 400px;
+	background-color: blue;
+	
+	margin-left: 30px;
+	justify-content: flex-end;
+	margin-right: 20px;
+}
+
+.tg{
+	border: solid;
+	width: 400px;
+	height: 500px;
+	
+}
+
+tg-m_img{
+	height: 50px;
+	background-color: black;
 }

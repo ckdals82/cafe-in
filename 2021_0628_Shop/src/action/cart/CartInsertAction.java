@@ -63,9 +63,10 @@ public class CartInsertAction extends HttpServlet {
 			else
 			result="cart_fail";
 			result = "cart_success";
-		}else {// 기등록상태
+			}
+			else {// 기등록상태
 			result = "cart_exist";
-		}
+			}
 		
 		//결과 전송(JSON포장)
 		String json = String.format("{\"result\":\"%s\"}", result);

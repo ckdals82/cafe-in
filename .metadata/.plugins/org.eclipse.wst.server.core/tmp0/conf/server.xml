@@ -153,9 +153,9 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/2021_0628_Shop" path="/2021_0628_Shop" reloadable="true" source="org.eclipse.jst.jee.server:2021_0628_Shop">
-	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.commons.dbcp.BasicDataSourceFactory" maxActive="2" maxIdle="10" maxWait="1" name="jdbc/oracle_test" password="roqhd123!" type="javax.sql.DataSource" url="jdbc:oracle:thin:@realmen.cq16jsbvzacs.ap-northeast-2.rds.amazonaws.com:1521:ORCL" username="admin"/>
-</Context><Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/TeamP" path="/TeamP" reloadable="true" source="org.eclipse.jst.jee.server:TeamP"/></Host>
+      <Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/hwangchangmin/Desktop/html/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/2021_0701_MyMVCVisit_Ajax_Mybatis" path="/2021_0701_MyMVCVisit_Ajax_Mybatis" reloadable="true" source="org.eclipse.jst.jee.server:2021_0701_MyMVCVisit_Ajax_Mybatis">
+	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.commons.dbcp.BasicDataSourceFactory" maxActive="1" maxIdle="10" maxWait="1" name="jdbc/oracle_test" password="roqhd123!" type="javax.sql.DataSource" url="jdbc:oracle:thin:@realmen.cq16jsbvzacs.ap-northeast-2.rds.amazonaws.com:1521:ORCL" username="admin"/>
+</Context></Host>
     </Engine>
   </Service>
 </Server>

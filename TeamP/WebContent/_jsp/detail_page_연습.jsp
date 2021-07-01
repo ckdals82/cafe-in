@@ -45,8 +45,46 @@
 	<div class="tp_layer">
 		<div class="tp_main_layout">
 			
-			<div class="cafe_image_box">안녕</div>
-			
+			<div class="cafe_name">cafe_name</div>
+				<div class="img_tg_f">
+				<div class="cafe_img"></div>
+
+					<table class="tg">
+					<thead>
+					  <tr class="tg-0lax">
+					    <th class="tg-m_img" colspan="2">왕따시만한 사진</th>
+					    <th class="tg-0lax"></th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+					    <td class="tg-0lax">카페사진</td>
+					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax"></td>
+					  </tr>
+					  <tr>
+					    <td class="tg-0lax">전화번호</td>
+					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax"></td>
+					  </tr>
+					  <tr>
+					    <td class="tg-0lax">키워드</td>
+					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax"></td>
+					  </tr>
+					  <tr>
+					    <td class="tg-0lax">메뉴</td>
+					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax"></td>
+					  </tr>
+					  <tr>
+					    <td class="tg-0lax">리뷰</td>
+					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax"> <form> <input type="button"></form> </td>
+					  </tr>
+					</tbody>
+					</table>
+			</div>
 		</div>
 	</div>
 	
