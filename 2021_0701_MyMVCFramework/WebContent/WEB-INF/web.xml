@@ -29,7 +29,7 @@
   		<servlet-class>controller.DispatcherServlet</servlet-class>
   		<init-param>
   			<param-name>action</param-name>
-  			<param-value>action.BookController</param-value>
+  			<param-value>action.BookController,action.TestController</param-value>
   		</init-param>
   </servlet>
   

@@ -17,7 +17,7 @@ public class VisitController {
 	@RequestMapping("/visit/list.do")
 	public String list(HttpServletRequest request,HttpServletResponse response) {
 		
-		//2.parameter받기
+				//2.parameter받기
 				String search = request.getParameter("search");
 				String search_text = request.getParameter("search_text");
 				

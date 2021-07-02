@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cart">
+
+<!-- 회원별 장바구니 조회 -->
+<select id="cart_list" parameterType="int" resultType="cart">
+
+	select * from cart_view where m_idx=#{ m_idx}
+</select>
+	
+	<!-- 회원별 장바구니 총계 -->
+	<select id="cart_total_amount" parameterType="int" resultType="int">
+		select nvl(sum(amount),0) from cart_view where m_idx=#{ m_idx}
+	</select>
+	
+	<!-- 장바구니 수량수정 -->
+	<update id="cart_update" parameterType="cart">
+		update cart set c_cnt=#{ c_cnt } where c_idx=#{ c_idx}
+	</update>
+	
+	<!-- 장바구니 삭제 -->
+	<delete id="cart_delete" parameterType="int">
+		delete from cart where c_idx=#{c_idx}
+	</delete>
+	
+	<!-- 특정회원의 p_idx상품에 장바구니 정보 1건 -->
+	<select id="cart_one" parameterType="cart" resultType="cart">
+	select * from cart_view where m_idx=#{ m_idx } and p_idx=#{ p_idx }
+	</select>
+	
+<!-- 	장바구니 등록 -->
+	<insert id="cart_insert" parameterType="cart">
+		insert into cart values(seq_cart_idx.nextVal,1,#{p_idx},#{m_idx})
+	</insert>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

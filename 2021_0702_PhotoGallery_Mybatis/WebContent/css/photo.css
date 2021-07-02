@@ -1,0 +1,64 @@
+@charset "UTF-8";
+*{margin: 0;}
+
+#main_box{
+	
+	width: 800px;
+	margin: auto; /* 화면중앙 */
+	
+}
+#title{
+	text-align: center;
+	color: #cccccc;
+	text-shadow: 1px 1px 1px  black;
+}
+#type_login{
+	text-align: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#type_photo_insert{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+}
+#photo_box{
+	width: 100%;
+	height: 500px;
+	
+	border: 2px solid blue;
+	
+	overflow: scroll;
+}
+.photo_box_style{
+	width: 160px;
+	height: 200px;
+	
+	border: 1px solid #de45e9;
+	margin : 15px;
+	padding: 20px;
+	
+	margin-top: 25px;
+	float: left;
+}
+.photo_box_style > img{
+	width: 120px;
+	height: 120px;
+}
+.photo_box_style:hover{
+	border: 1px solid red;
+}
+#empty_message{
+	text-align: center;
+	margin-top: 220px;
+	color: red;
+	font-size: 22pt;
+}
+
+.title_style{
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	
+}

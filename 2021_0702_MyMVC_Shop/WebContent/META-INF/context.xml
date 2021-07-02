@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource 
+	        auth="Container" 
+      		name="jdbc/oracle_test"
+      		type="javax.sql.DataSource"
+      		driverClassName="oracle.jdbc.driver.OracleDriver"
+      		factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+      		url="jdbc:oracle:thin:@realmen.cq16jsbvzacs.ap-northeast-2.rds.amazonaws.com:1521:ORCL"
+      		username="admin" password="roqhd123!" 
+      		maxActive="2" maxIdle="10" maxWait="1"/>
+</Context>

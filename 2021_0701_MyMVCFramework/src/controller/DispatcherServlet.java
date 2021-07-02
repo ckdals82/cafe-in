@@ -27,10 +27,10 @@ public class DispatcherServlet extends HttpServlet {
 	//Object ob = null;
 	List<Method> method_list = new ArrayList<Method>();
 	
-	//¹æ¹ı1
+	//ï¿½ï¿½ï¿½1
 	List<Object> object_list = new ArrayList<Object>();
 	
-	//¹æ¹ı2
+	//ï¿½ï¿½ï¿½2
 	Map<String, Object> object_map = new HashMap<String, Object>();
 	
 	
@@ -49,9 +49,12 @@ public class DispatcherServlet extends HttpServlet {
 			try {
 				
 				Class c = Class.forName(action_name);
+				System.out.println("--------[before]------");
 				Object ob = c.newInstance();
+				System.out.printf("--[%s]ìƒì„±--\n",action_name);
+				System.out.println("--------[after]------");
                 
-				//¹æ¹ı1
+				//ï¿½ï¿½ï¿½1
 				//object_list.add(ob);
 				
 				Method [] method_array = c.getDeclaredMethods();
@@ -59,7 +62,7 @@ public class DispatcherServlet extends HttpServlet {
 				for(Method method : method_array) {
 					method_list.add(method);
 					
-					//¹æ¹ı2
+					//ï¿½ï¿½ï¿½2
 					String key = method.getDeclaringClass().getName() + "." + method.getName();
 					object_map.put(key, ob);
 					//System.out.println(method.getDeclaringClass().getName() + "." + method.getName());
@@ -80,7 +83,7 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-        //URI PatternºĞ¼®
+        //URI Patternï¿½Ğ¼ï¿½
 	
 		String uri = request.getRequestURI();
 
@@ -99,10 +102,10 @@ public class DispatcherServlet extends HttpServlet {
 					try {
 		
 						/*
-						//¹æ¹ı1
+						//ï¿½ï¿½ï¿½1
 						for(Object ob :object_list) {
 							try {
-								 //invoke½ÇÆĞ: ob method¸¦ Æ÷ÇÔÇÑ°´Ã¼°¡ ¾Æ´Ò¶§ 
+								 //invokeï¿½ï¿½ï¿½ï¿½: ob methodï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½Ã¼ï¿½ï¿½ ï¿½Æ´Ò¶ï¿½ 
 							     forward_page = (String) method.invoke(ob, request,response);
 							     break;
 							}catch(Exception e) {
@@ -111,7 +114,7 @@ public class DispatcherServlet extends HttpServlet {
 						}
 						*/
 						
-						//¹æ¹ı2
+						//ï¿½ï¿½ï¿½2
 						String key = method.getDeclaringClass().getName() + "." + method.getName();
 						forward_page = (String) method.invoke(object_map.get(key), request,response);
 						
@@ -134,7 +137,7 @@ public class DispatcherServlet extends HttpServlet {
 			
 		}
 		
-		//forward or redirect³»¿ëÀÌ ¾øÀ¸¸é ³¡³»¶ó...
+		//forward or redirectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
 		//if(forward_page.isEmpty())return;
 		
 		if(bResponseBody) {
