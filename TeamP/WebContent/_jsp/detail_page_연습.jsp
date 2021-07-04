@@ -25,7 +25,11 @@
 <link rel="stylesheet" href="../_css/detail_page.css">
 <script src='../_js/detail_page.js'></script>
 
-
+ <script
+src="https://kit.fontawesome.com/6478f529f2.js"
+      crossorigin="anonymous">
+      >
+    </script>
 
 </head>
 <body>
@@ -45,42 +49,48 @@
 	<div class="tp_layer">
 		<div class="tp_main_layout">
 			
-			<div class="cafe_name">cafe_name</div>
-				<div class="img_tg_f">
+			<div class="cafe_name"><i class="fas fa-star"></i> 카페명 <i  class="fab fa-hotjar"></i></div>
+				<div class="img_cafe_info">
 				<div class="cafe_img"></div>
 
-					<table class="tg">
+					<table class="cafe_info">
 					<thead>
 					  <tr class="tg-0lax">
-					    <th class="tg-m_img" colspan="2">왕따시만한 사진</th>
+					    <th class="tg-m_img" colspan="2"></th>
 					    <th class="tg-0lax"></th>
 					  </tr>
 					</thead>
 					<tbody>
-					  <tr>
-					    <td class="tg-0lax">카페사진</td>
+					  <tr class="tb_h">
+					    <td class="tg-0lax">카페위치</td>
 					    <td class="tg-0lax"></td>
-					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax"> 
+					    <div class="review_w"> <a class="icon_C_change" href="review_write_page.jsp"> <i  class="fas fa-search fa-2x" class="cafe_icon"></i></a>
+					    			<span>길찾기</span> </div>
+					    	</td>
 					  </tr>
-					  <tr>
+					  <tr class="tb_h">
 					    <td class="tg-0lax">전화번호</td>
 					    <td class="tg-0lax"></td>
 					    <td class="tg-0lax"></td>
 					  </tr>
-					  <tr>
+					  <tr class="tb_h">
 					    <td class="tg-0lax">키워드</td>
-					    <td class="tg-0lax"></td>
+					    <td class="tg-0lax, cafe_hashT">#조용한분위기 #공부</td>
 					    <td class="tg-0lax"></td>
 					  </tr>
-					  <tr>
+					  <tr class="tb_h">
 					    <td class="tg-0lax">메뉴</td>
 					    <td class="tg-0lax"></td>
 					    <td class="tg-0lax"></td>
 					  </tr>
-					  <tr>
+					  <tr class="tb_h" >
 					    <td class="tg-0lax">리뷰</td>
 					    <td class="tg-0lax"></td>
-					    <td class="tg-0lax"> <form> <input type="button"></form> </td>
+					    <td class="tg-0lax"> 
+					    		<div class="review_w"> <a class="icon_C_change" href="review_write_page.jsp"> <i  class="fas fa-pen fa-2x" class="cafe_icon" ></i></a>
+					    			<span>길찾기</span> </div>
+					    	</td>
 					  </tr>
 					</tbody>
 					</table>

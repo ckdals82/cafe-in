@@ -3,36 +3,67 @@
 
 
 .cafe_name{
-	
-	
-	background-color: black;
-	color: white;
-	height: 20px;
+	margin-top: 20px;
+	height: 50px;
+	text-align: center;
 }
 
-.img_tg_f{
+.img_cafe_info{
+	
 	display: flex;
-	margin-top: 20px;
+	justify-content: center;
+	margin-top: 5vh;
 }
 
 .cafe_img{
 	height: 500px;
 	width: 400px;
 	background-color: blue;
+	margin-right: 70px;
 	
-	margin-left: 30px;
-	justify-content: flex-end;
-	margin-right: 20px;
+	
 }
 
-.tg{
-	border: solid;
-	width: 400px;
-	height: 500px;
+.cafe_info{
+	margin-top: 12vh;
+	width: 600px;
+	height: 350px;
+	text-align: right;
+	margin-left: 70px;
 	
 }
 
 tg-m_img{
 	height: 50px;
 	background-color: black;
+}
+
+.riv_btn{
+	text-align: right;
+}
+
+.cafe_hashT{
+	text-align: center;
+	
+}
+
+.fa-hotjar{
+	color: red;
+}
+.fa-star{
+	color: #FFE102;
+}
+
+.review_w{
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tb_h{
+	height: 70px;
+}
+
+.icon_C_change{
+	color: black;
 }
