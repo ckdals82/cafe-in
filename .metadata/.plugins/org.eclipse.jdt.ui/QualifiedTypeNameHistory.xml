@@ -56,8 +56,8 @@
     <fullyQualifiedTypeName name="action.BookViewAction"/>
     <fullyQualifiedTypeName name="action.BookController"/>
     <fullyQualifiedTypeName name="annotation.RequestMapping"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="annotation.ResponseBody"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

@@ -1,69 +1,61 @@
 @charset "UTF-8";
 
-
-
 .cafe_name{
-	margin-top: 20px;
-	height: 50px;
-	text-align: center;
+   margin-top: 20px;
+   height: 50px;
+   text-align: center;
 }
 
 .img_cafe_info{
-	
-	display: flex;
-	justify-content: center;
-	margin-top: 5vh;
+   display: flex;
+   justify-content: center;
+   margin-top: 5px;
 }
 
 .cafe_img{
-	height: 500px;
-	width: 400px;
-	background-color: blue;
-	margin-right: 70px;
-	
-	
+   height: 500px;
+   width: 400px;
+   background-color: blue;
+   margin-right: 70px;
 }
 
 .cafe_info{
-	margin-top: 12vh;
-	width: 600px;
-	height: 350px;
-	text-align: right;
-	margin-left: 70px;
-	
+   margin-top: 75px;
+   margin-left: 70px;
+   width: 600px;
+   height: 350px;
 }
 
-tg-m_img{
-	height: 50px;
-	background-color: black;
+.title_align{
+   text-align: right;
 }
 
-.riv_btn{
-	text-align: right;
-}
-
-.cafe_hashT{
-	text-align: center;
-	
-}
-
-.fa-hotjar{
-	color: red;
-}
-.fa-star{
-	color: #FFE102;
-}
-
-.review_w{
-	display: flex;
-  flex-direction: column;
-  align-items: center;
+.review_content{
+   text-align: center;
 }
 
 .tb_h{
-	height: 70px;
+   height: 70px;
 }
 
-.icon_C_change{
-	color: black;
+.title_align{
+   width: 150px;
+}
+
+.review_content{
+   width: 350px;
+}
+
+.link_button{
+   width: 100px;
+}
+
+.hot_size{
+   width: 32px;
+   height: 20px;
+}
+
+.star_size{
+   width: 27px;
+   height: 25px;
 }
