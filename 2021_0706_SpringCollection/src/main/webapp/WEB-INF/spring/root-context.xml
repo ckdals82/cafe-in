@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	
+	<!-- MyList객체 생성 -->
+	<bean id="myListBean" class="myutil.MyList">
+		<property name="fruit_list" >
+			<!-- new Arraylist() -->
+			<list>
+				<value>사과</value>
+				<value>참외</value>
+				<value>수박</value>
+				<value>딸기</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- MySet객체 생성 
+		MySet mySetBean = new MySet(sido_set)--> 
+	<!-- 여기서 셋을 만들어서 컨스트럭터 아규먼트 첫번째인자로 늘거임 -->
+	<bean id="mySetBean" class="myutil.MySet">
+		<constructor-arg>
+		<!-- new HashSet() -->
+			<!-- sido_set.add("서울") -->
+			<set>
+				<value>서울</value>
+				<value>경기</value>
+				<value>인천</value>
+				<value>대전</value>
+				<value>강원</value>	
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MyMap객체 생성 -->
+	<bean id="myMapBean" class="myutil.MyMap">
+		<property name="map">
+			<!-- new HashMap() -->
+			<map>
+				<!-- map.put( key, value) -->
+				<entry key="one" value="하나" />
+				<entry key="two" value="둘" />
+				<entry key="three" value="셋" />
+				<entry key="four" value="넷" />
+				<entry key="five" value="다섯" />
+				
+			</map>
+		</property>
+		</bean>
+		
+		
+		<!-- MyProp 객체 생성 -->
+		<bean id="myPropBean" class="myutil.MyProp">
+			<property name="prop">
+				
+				<!-- new Propertie -->
+				<props>
+					<!-- prop.put(key,value) -->
+					<prop key="driver">oracle.jdbc.driver.OracleDriver</prop>
+					<prop key="url">jdbc:oracle:thin@내마음속</prop>
+					<prop key="username">scott</prop>
+					<prop key="password">tiger</prop>
+				</props>
+			
+			</property>
+			
+		</bean>
+	
+	
+</beans>

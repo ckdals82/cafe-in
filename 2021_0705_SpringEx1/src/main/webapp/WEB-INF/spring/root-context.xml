@@ -35,25 +35,25 @@
 	</bean>
 	
 	<!-- String name = new String("오길동") -->  
-	<!-- <bean id="nameBean" class="java.lang.String">
+	 <bean id="nameBean" class="java.lang.String">
 		<constructor-arg value="오길동" />
 	</bean>
 	
-	Integer ageBean = new Integer(55)
-	<bean id="ageBean" class="java.lang.Integer" >
+	<!-- Integer ageBean = new Integer(55) -->
+	 <bean id="ageBean" class="java.lang.Integer" >
 		<constructor-arg value="55"/>
 	</bean>
 	
-	string telBean = new String("010-555-1234")
+	<!-- string telBean = new String("010-555-1234") -->
 	<bean id="telBean" class="java.lang.String">
 		<constructor-arg value="010-555-1234" />
 	</bean>
 		
 		
-	PersonVo p3 = new PersonVo() : setter injection	
-	<bean id="p3" class="vo.PersonVo">
+	<!-- PersonVo p3 = new PersonVo() : setter injection	 -->
+	<bean id="p4" class="vo.PersonVo">
 		<property name="name" ref="nameBean"/>
 		<property name="age" ref="ageBean"/>
 		<property name="tel" ref="telBean"/>
-	</bean>	 -->
+	</bean>
 </beans>

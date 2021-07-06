@@ -1,4 +1,7 @@
 @charset "UTF-8";
+style{
+	
+}
 
 .cafe_name{
    margin-top: 20px;
@@ -53,9 +56,11 @@
 .hot_size{
    width: 32px;
    height: 20px;
+   margin-left: 5px;
 }
 
 .star_size{
    width: 27px;
    height: 25px;
+   margin-right: 5px;
 }

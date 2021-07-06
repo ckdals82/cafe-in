@@ -25,6 +25,38 @@
 <link rel="stylesheet" href="../_css/detail_page.css">
 <script src='../_js/detail_page.js'></script>
 
+<!-- daum 주소찾기 라이브러리  -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>  
+
+<!-- 카페 길찾기 함수 -->
+ <script type="text/javascript">
+    $(document).ready(function(){   
+  //주소찾기 버튼 클릭시
+	$("#btn_find").click(function(){
+		
+		var width = 500; //팝업의 너비
+		var height = 600; //팝업의 높이
+		
+		 new daum.Postcode({
+			 width: width, //생성자에 크기 값을 명시적으로 지정해야 합니다.
+			    height: height,
+		        oncomplete: function(data) {
+		            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+		            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+		            //data = {'zonecode' : '12345', 'address','서울시 관악구 시흥대로 552', 'roadAddress','t서울'}
+		            $("#m_zipcode").val(data.zonecode);
+		            $("#m_addr").val(data.roadAddress);
+		        }
+		    }).open({
+		    		left: (window.screen.width / 2) - (width / 2),
+		    	    top: (window.screen.height / 2) - (height / 2)
+		    }
+		    );
+	});//end 찾기버튼 클릭
+    });// end jQuery초기화
+    </script>
+
+
 </head>
 <body>
 
@@ -43,7 +75,7 @@
    <div class="tp_layer">
       <div class="tp_main_layout">
          
-         <div class="cafe_name"><img src="../_img/img_star.png" class="star_size"> 카페명 <img src="../_img/img_hot.png" class="hot_size"></div>
+         <div class="cafe_name"><img src="../_img/img_star.png" class="star_size"> <span> 카페명</span>  <img src="../_img/img_hot.png" class="hot_size"></div>
             
             <div class="img_cafe_info">
             
@@ -55,7 +87,7 @@
                       <td class="title_align">카페위치</td>
                       <td class="review_content"></td>
                       <td class="link_button">
-                        <form> <input type="button" id="bt_navi" value="길찾기" onclick=""/> </form>         
+                        <form> <input type= "button" id="btn_find" value="길찾기"> </form>         
                       </td>
                     </tr>
                     
