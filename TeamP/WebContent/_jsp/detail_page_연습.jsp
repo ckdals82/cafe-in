@@ -95,9 +95,10 @@ src="https://kit.fontawesome.com/6478f529f2.js"
 					    <td class="tg-0lax">카페위치</td>
 					    <td class="tg-0lax"></td>
 					    <td class="tg-0lax"> 
-					    <div class="review_w"> <input type= "button"  value="길찾기" onclick="location.href='https://map.kakao.com/link/to/18577297'">
-					    
-					    			<span>길찾기</span> </div>
+					    <div class="review_w"> <button onclick="window.open('https://map.kakao.com/link/to/18577297')">길찾기</button>
+
+
+					    			</div>
 					    	</td>
 					  </tr>
 					  <tr class="tb_h">
