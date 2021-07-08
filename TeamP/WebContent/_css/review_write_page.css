@@ -1,1 +1,16 @@
 @charset "UTF-8";
+
+#review_write{
+	width: 50%;
+}
+
+.checked {
+    color: orange;
+    
+}
+
+#image_container{
+	width:50%;
+	height: 50%; 
+	
+}
