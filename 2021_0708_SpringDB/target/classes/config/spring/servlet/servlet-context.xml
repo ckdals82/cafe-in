@@ -22,13 +22,16 @@
 	</beans:bean>
 	
 	<!-- auto detact(자동생성) -->
-	<context:component-scan base-package="com.increaps.db" />
+	<context:component-scan base-package="com.increaps.db2" />
 	
 	<!-- 수동생성 -->
 	<beans:bean class="controller.DeptController">
 		<beans:constructor-arg ref="dept_dao" />
 	</beans:bean>
 	
+	<beans:bean class="controller.SawonController">
+		<beans:constructor-arg ref="sawon_dao" />
+	</beans:bean>
 	
 	
 </beans:beans>

@@ -1,13 +1,12 @@
 package vo;
 
 public class SawonVo {
-	
 	int sabun;
 	String saname;
-	String sasex;
+	String sasex; 
 	int deptno;
 	String sajob;
-	int sahire;
+	String sahire;
 	int samgr;
 	int sapay;
 	
@@ -41,10 +40,11 @@ public class SawonVo {
 	public void setSajob(String sajob) {
 		this.sajob = sajob;
 	}
-	public int getSahire() {
+	
+	public String getSahire() {
 		return sahire;
 	}
-	public void setSahire(int sahire) {
+	public void setSahire(String sahire) {
 		this.sahire = sahire;
 	}
 	public int getSamgr() {

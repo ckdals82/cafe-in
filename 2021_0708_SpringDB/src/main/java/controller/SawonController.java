@@ -11,27 +11,20 @@ import vo.SawonVo;
 
 @Controller
 public class SawonController {
+   SawonDao sawon_dao;
 
-	//interface
-	SawonDao sawon_dao;
-
-	public SawonController(SawonDao sawon_dao) {
-		super();
-		this.sawon_dao = sawon_dao;
-	}
-	
-	@RequestMapping("/sawon/lit.do")
-	public String list(Model model) {
-		
-		List<SawonVo> list = sawon_dao.selectList();
-		
-		model.addAttribute("list",list);
-		
-		return "sawon/sawon_list";
-	}
-		
-		
-		
-	
-	
+   public SawonController(SawonDao sawon_dao) {
+      super();
+      this.sawon_dao = sawon_dao;
+   }
+   
+   @RequestMapping("/sawon/list.do")
+   public String list(Model model) {
+      
+      List<SawonVo> list = sawon_dao.selectList();
+      
+      model.addAttribute("list",list);
+      
+      return "sawon/sawon_list";
+   }
 }

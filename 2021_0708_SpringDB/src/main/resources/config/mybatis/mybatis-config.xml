@@ -9,11 +9,12 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="vo.DeptVo" alias="dept"/>
+		<typeAlias type="vo.DeptVo"  alias="dept"/>
+		<typeAlias type="vo.SawonVo" alias="sawon"/>
 	</typeAliases>
 	
 	<mappers>
 		 <mapper resource="config/mybatis/mapper/dept.xml" />
-		
+		 <mapper resource="config/mybatis/mapper/sawon.xml" />		
 	</mappers>
 </configuration>

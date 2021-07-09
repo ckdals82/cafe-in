@@ -10,5 +10,9 @@
 		<constructor-arg ref="sqlSession"/>
 	</bean>
 	
+	<bean id="sawon_dao" class="dao.SawonDaoImpl">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
 		
 </beans>
