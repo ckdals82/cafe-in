@@ -96,9 +96,7 @@
                       <td class="title_align"></td>
                       <td class="review_content"></td>
                       <td class="link_button">
-                         <form action="">
-                         	<input  type="button" id="bt_write_review" value="작성완료" onclick=""/>
-                         </form>
+                     
                       </td>
                     </tr>
                     
