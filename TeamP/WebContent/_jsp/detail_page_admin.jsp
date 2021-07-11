@@ -58,7 +58,11 @@
                   
                     <tr class="tb_h">
                       <td class="title_align">카페위치</td>
-                      <td class="review_content"> <form ><input> </form>  </td>
+                      <td class="review_content"> 
+                          <form >
+                              <input  type="text" id="in_id" class="input_lgn">
+                          </form>  
+                      </td>
                       <td class="link_button">
                                  
                       </td>
@@ -66,25 +70,40 @@
                     
                     <tr class="tb_h">
                       <td class="title_align">전화번호</td>
-                      <td class="review_content"><form ><input> </form> </td>
+                      <td class="review_content"> 
+                          <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button"></td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">키워드</td>
-                      <td class="review_content"><form ><input> </form></td>
+                      <td class="review_content">
+                          <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
                       <td class="link_button"></td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">메뉴</td>
-                      <td class="review_content"><form ><input ></form></td>
+                      <td class="review_content">
+                          <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button"></td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">리뷰</td>
-                      <td class="review_content"><form ><input> </form></td>
+                      <td class="review_content">
+                          <form >
+                              <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button">
                       </td>
                     </tr>
@@ -94,7 +113,7 @@
                       <td class="review_content"></td>
                       <td class="link_button">
                          <form action="">
-                         	<input  type="button" id="bt_write_review" value="수정하기" onclick=""/>
+                         	<input  type="button" class="common_button"  id="bt_write_review" value="수정하기" onclick=""/>
                          </form>
                       </td>
                     </tr>

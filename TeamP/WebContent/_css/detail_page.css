@@ -1,13 +1,12 @@
 @charset "UTF-8";
-style{
-	
-}
 
 .cafe_name{
    margin-top: 20px;
    height: 50px;
    text-align: center;
+   font-size: 25px;
 }
+
 
 .img_cafe_info{
    display: flex;
@@ -27,6 +26,7 @@ style{
    margin-left: 70px;
    width: 600px;
    height: 350px;
+   font-size: 17px;
 }
 
 .title_align{
@@ -63,4 +63,20 @@ style{
    width: 27px;
    height: 25px;
    margin-right: 5px;
+}
+.input_lgn{
+ border-bottom: solid #4D5059 1px;
+ color: #1A1A1A;
+    background-color:#F5F7F6;
+    width: 250px;
+}
+.common_button{
+	width: 80px;
+	height: 30px;
+	background-color:#D96941;
+	color: white;
+	border:1px solid #F5F7F6;
+	border-radius: 10px;
+	text-align: center;
+	cursor: pointer;
 }

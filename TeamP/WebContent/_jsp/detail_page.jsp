@@ -58,36 +58,58 @@
                   
                     <tr class="tb_h">
                       <td class="title_align">카페위치</td>
-                      <td class="review_content"></td>
+                      <td class="review_content">
+                           <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button">
-                        <form> <button onclick="window.open('https://map.kakao.com/link/to/18577297')">길찾기</button> </form>         
+                        <form> 
+                        	<button class="common_button"  onclick="window.open('https://map.kakao.com/link/to/18577297')">길찾기</button> 
+                        </form>         
                       </td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">전화번호</td>
-                      <td class="review_content"></td>
+                      <td class="review_content">
+                           <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button"></td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">키워드</td>
-                      <td class="review_content">#조용한분위기 #공부</td>
+                      <td class="review_content">
+                           <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button"></td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">메뉴</td>
-                      <td class="review_content"></td>
+                      <td class="review_content">
+                           <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button"></td>
                     </tr>
                     
                     <tr class="tb_h">
                       <td class="title_align">리뷰</td>
-                      <td class="review_content"></td>
+                      <td class="review_content">
+                           <form >
+                      	  	  <input  type="text" id="in_id" class="input_lgn">
+                          </form>
+                      </td>
                       <td class="link_button">
                          <form action="">
-                         	<input  type="button" id="bt_write_review" value="리뷰작성" onclick="location.href='review_write_page.jsp'"/>
+                         	<input  type="button"  class="common_button" id="bt_write_review" value="리뷰작성" onclick="location.href='review_write_page.jsp'"/>
                          </form>
                       </td>
                     </tr>
