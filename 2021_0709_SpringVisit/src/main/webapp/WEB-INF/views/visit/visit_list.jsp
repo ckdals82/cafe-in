@@ -23,8 +23,6 @@
 
 <link rel="stylesheet"
    href="${pageContext.request.contextPath }/resources/css/visit.css">
-<!-- 내가쓸 css 경로지정 여기서 style태그 쓰면 코드길어져서 따로씀. -->
-<!--나중에 유지보수할때 편하게하려면 ../ 보다 ${pageContext.request.contextPath }/ 쓰는게낫다  -->
 
 <script type="text/javascript">
 function del(f) {
@@ -94,52 +92,55 @@ function modify_form(f){
       
    }
    
-   function search() {
-      var search       = $("#search").val();
-      var search_text = $("#search_text").val().trim();
-      
-      //전체보기가 아니면서 검색내용이 입력이 안되었으면
-      if(search != 'all' && search_text==''){
-         
-         Swal.fire({
-              title: '검색 내용을 입력 하세요',
-              icon : 'warning',
-              confirmButtonText: `확인`,
-              denyButtonText: `Don't save`,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                 
-                 $("#search_text").focus();    
-                 $("#search_text").val('');   //값비우기 
-                 return;
-              }
-            });
-         //alert('검색 내용을 입력 하세요');
-          
-         return;
-      }else if(search=='all'){
-         search_text = '';
-         $("#search_text").val('');
-      }//end if 
-      
-      //서버로 요청내용 전송
-      location.href="list.do?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8");
-   }
-	
-   /* jQuery초기화 */
-   $(function(){
-	  
-	   //list.do?search=all
-		//검색카테고리(search)가 있으면 아래 내용 처리해라
-	   if('${not empty param.search}'=='true'){
-		   $("#search").val('${param.search}');
-	   }
-		   
-	   
-	  /*  $("#search").val('${param.search}'); */
-	   
-   });
-   
+function search(){
+    
+    var search      = $("#search").val();
+    var search_text = $("#search_text").val().trim(); 
+    
+    //전체보기가 아니면서 검색내용이 입력이 안되었으면 
+    if( search != 'all' && search_text==''){
+       
+       Swal.fire({
+            title: '검색내용을 입력하세요',                
+               icon : 'warning',
+            confirmButtonText: `확인`,               
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+               $("#search_text").val('');//값비우기
+               $("#search_text").focus();
+              
+           
+            }  
+          });
+       
+       //alert('검색내용을 입력하세요');
+    
+         return;   
+        
+         }else if(search=='all'){
+        search_text = '';
+       $("#search_text").val('');
+    }//end if
+ 
+    
+    //서버로 요청내용 전송
+    location.href="list.do?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8");
+    
+ }
+
+ 
+ //jQuery초기화
+ $(function(){
+    
+    //list.do?search=all
+    //검색 카테고리(search)가 있으면 아래 내용 처리해라...
+    if('${not empty param.search}' == 'ture'){ // search(parameter)가 있으면    
+       $("#search").val('${param.search}'); 
+    }
+ });
+ 
+ 
 </script>
 
 
@@ -164,7 +165,7 @@ function modify_form(f){
                <option value="name_content">이름+내용</option>
                <option value="regdate">작성일자</option>
             </select>
-            <input id="search_text" value="${ param.search_text }">
+            <input id="search_text" value="${param.search_text }"> 
             <input class="btn btn-primary" type="button" value="검색" onclick="search();">      
          </div>
       <hr>
