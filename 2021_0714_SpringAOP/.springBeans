@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.17.202106210642-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[true]]></enableImports>
+	<configs>
+	</configs>
+	<autoconfigs>
+		<config>src/main/resources/config/spring/context/context-5-fileupload.xml</config>
+		<config>src/main/resources/config/spring/context/context-4-service.xml</config>
+		<config>src/main/resources/config/spring/servlet/servlet-context.xml</config>
+		<config>src/main/resources/config/spring/context/context-1-datasource.xml</config>
+		<config>src/main/resources/config/spring/context/context-2-mybatis.xml</config>
+		<config>src/main/resources/config/spring/context/context-3-dao.xml</config>
+		<config>src/main/resources/config/spring/context/context-6-jsonconverter.xml</config>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

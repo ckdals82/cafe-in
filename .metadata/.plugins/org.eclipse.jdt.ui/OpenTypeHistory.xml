@@ -3,4 +3,5 @@
     <typeInfo handle="=2021_0706_SpringDI/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;dao{BoardDao.java[BoardDao" modifiers="513" timestamp="1625551304000"/>
     <typeInfo handle="=2021_0706_SpringDI/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;service{BoardService.java[BoardService" modifiers="513" timestamp="1625551974000"/>
     <typeInfo handle="=2021_0708_SpringDB/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;dao{SawonDao.java[SawonDao" modifiers="513" timestamp="1625748497000"/>
+    <typeInfo handle="=2021_0714_SpringAOP/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;dao{TestDao.java[TestDao" modifiers="513" timestamp="1626239170000"/>
 </typeInfoHistroy>

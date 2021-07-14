@@ -95,7 +95,7 @@
 			//{"p_idx":"1","p_title":"1번째 사진"..}
 			//alert(result_data.p_title);
 			$("#pop_title").html(result_data.p_title);
-			$("#pop_image").attr('src','../upload/'+result_data.p_filename);
+			$("#pop_image").attr('src','../resources/upload/'+result_data.p_filename);
 			$("#pop_content").html(result_data.p_content);
 			$("#pop_regdate").html(result_data.p_modifydate.substring(0,16));
 			

@@ -35,11 +35,10 @@ public class MemberController {
       this.member_dao = member_dao;
    }
    
-   //로그인폼 띄우기 
-   @RequestMapping("login_form.do")
+   @RequestMapping("login_form")
    public String login_form() {
-      
-      return "member/member_login_form";
+	   
+	   return "member/member_login_form";
    }
    
    //로그인
@@ -75,84 +74,86 @@ public class MemberController {
       
       return "redirect:../photo/list.do";
    }
+
    
-   //로그아웃
    @RequestMapping("logout.do")
    public String logout() {
-      
-      session.removeAttribute("user");
-      
-      return "redirect:../photo/list.do";
-      
+	   
+	   session.removeAttribute("user");;//로그인한 멤버 브이오 정보를 통째로 넣음
+		
+	   
+		return "redirect:../photo/list.do";
    }
    
-   //회원목록 읽어오기
    @RequestMapping("list.do")
    public String list(Model model) {
-      
-      //회원목록 읽어오기 
-      List<MemberVo> list = member_dao.selectList();
-      
-      model.addAttribute("list", list);
-      
-      return "member_list";
+	   
+	 //회원목록 읽어오기
+	List<MemberVo> list = member_dao.selectList();
+	
+	//request binding
+	model.addAttribute("list", list);
+	
+	return "member/member_list";
+	
+	
    }
    
-   //회원가입
-   @RequestMapping("insert.do")
-   public String insert(MemberVo vo) {
-      
-      String m_ip = request.getRemoteAddr();
-      vo.setM_ip(m_ip);
-      
-      // 4.DB insert
-      int res = member_dao.insert(vo);
-      
-      // 5.목록페이지로 이동 : redirect:list.do => response.sendRedirect("list.do")
-      return "redirect:login_form.do";
-   }
-   
-   //회원가입폼
-   @RequestMapping("insert_form.do")
-   public String insert_form() {
-      
-      return "member/member_insert_form";
-   }
-   
-   //회원수정
    @RequestMapping("modify.do")
    public String modify(MemberVo vo) {
-      
-      String m_ip = request.getRemoteAddr();
-      vo.setM_ip(m_ip);
-      
-      //DB update
-      int res = member_dao.update(vo);
-      
-      //메인화면...
-      return "redirect:list.do";
+	   
+	 //3.ip받기
+	String m_ip = request.getRemoteAddr();
+	vo.setM_ip(m_ip);
+	
+	
+	
+	//DB update
+	int res = member_dao.update(vo);
+	   
+	   
+	   return "redirect:list.do";
    }
    
-   //회원수정폼
    @RequestMapping("modify_form.do")
    public String modify_form(int m_idx,Model model) {
-      
-      MemberVo vo = member_dao.selectOne(m_idx);
-      
-      model.addAttribute("vo", vo);
-
-      return "member/member_modify_form";
+	   
+	 //2.m_idx에 대한 MemberVo를 얻어오기
+	MemberVo vo= member_dao.selectOne(m_idx);
+	
+	//3.request binding
+	request.setAttribute("vo", vo);
+	   
+	   
+	   return "member_modify_form";
    }
    
-   //삭제
+   @RequestMapping("insert.do")
+   public String insert( MemberVo vo) {
+	   
+	   //3. ip구하기
+	   String m_ip = request.getRemoteAddr();
+	   vo.setM_ip(m_ip);
+	   
+	 //DB insert
+	 int res = member_dao.insert(vo);
+	   
+	   
+	   return "redirect:login_form.do";
+   }
+   
+   @RequestMapping("insert_form.do")
+   public String insert_form() {
+	   
+	   return "member/member_insert_form";
+   }
+   
    @RequestMapping("delete.do")
    public String delete(int m_idx) {
-      
-      //DB delete
-      int res = member_dao.delete(m_idx);
-      
-      //메인화면...
-      return "redirect:list.do";
+	   
+	   int res = member_dao.delete(m_idx);
+	   
+	   return "redirect:list.do";
    }
    
    //아이디체크
@@ -160,22 +161,20 @@ public class MemberController {
    @ResponseBody
    public Map check_id(String m_id) {
       
-      Map map = new HashMap();
       
-      //DB내에 m_id존재여부 검사 
-      boolean bResult;
       MemberVo vo = member_dao.selectOne(m_id);
-         
-      if(vo==null) {//사용가능한 ID
-         bResult = true;
-      }else {
-         //사용중인 ID
-         bResult = false; 
-      }
-      map.put("result", bResult);
+      
+      Map map = new HashMap();
+      map.put("result", (vo==null));
+      
+      
       
       return map;
    }
+   
+ 
+   
+   
    
    
 }
