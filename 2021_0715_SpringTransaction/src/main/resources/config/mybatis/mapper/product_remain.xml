@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product_remain">
+
+	<!-- 목록조회 -->
+	<select id="product_remain_list" resultType="product">
+		select * from product_remain order by idx
+	</select>
+	
+	<!-- 상품명을 이용해서 상품정보 얻어오기 -->
+	<select id="product_remain_one" parameterType="String" resultType="product">
+		select * from product_remain where name=#{ name }
+	</select>
+	
+	<!-- 재고등록 -->
+	<insert id="product_remain_insert" parameterType="product">
+		insert into product_remain values(seq_product_remain_idx.nextVal,#{name},#{cnt},sysdate)
+	</insert>
+	
+	<!-- 재고수정	 -->
+	<update id="product_remain_update" parameterType="product">
+		update product_remain set cnt=#{cnt},regdate=sysdate
+		where idx=#{idx}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
