@@ -6,7 +6,7 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:config/spring/context/context_0_aspect.xml,
+		<param-value>classpath:config/spring/context/context-0-aspect.xml,
 					 classpath:config/spring/context/context-1-0-datasource.xml,
 					 classpath:config/spring/context/context-1-1-transaction.xml,
 					 classpath:config/spring/context/context-2-mybatis.xml,

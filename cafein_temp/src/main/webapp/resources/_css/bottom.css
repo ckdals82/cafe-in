@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.bottom_info{
+	/* border: 1px solid black; */
+	margin: auto;
+	width: 100%;
+	height: 100px;
+	margin-top: 5px;
+}
+
+.bottom_info td:nth-child(1){
+	width: 50%;
+}
+
+.bottom_info td:nth-child(2){
+	width: 10%;
+}
+
+.bottom_info td:nth-child(3){
+	width: 30%;
+}
+
+.bottom_content{
+	text-align: left;
+	font-size: 14px;
+}
+
+.bottom_link{
+	text-align: right;
+}
+
+.bottom_button{
+	padding-top: 60px;
+}
+
+/* Semantic UI button */
+.ui.button{
+	padding: 5px 10px 5px;
+}
+
+.ui.instagram.button{
+	background-color: #e1306c;
+}
+
+
+

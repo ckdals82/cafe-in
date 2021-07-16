@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.main_top_button{
+   text-align: right;
+}
+
+.only_menu{
+   width: 100%;
+   
+}
+
+.only_menu2{
+   margin-top: -1%
+   
+}
+
+.img_logo_only_menu{
+   width: 150px;
+   height: 130px;
+   margin-top: -20%;
+}
+
+.active.item{
+   margin-left: 28%;
+}
+
+.item{
+   margin-left:15%;
+}
+
+.menu{
+   background-color: #f2a21c!important;
+}

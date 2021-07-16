@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+.main_top_button{
+   text-align: right;
+}
+
+.top_menu{
+   width: 100%;
+   
+}
+
+.top_menu2{
+   margin-top: -1%
+   
+}
+
+
+.img_logo_menu{
+   width: 150px;
+   height: 130px;
+   margin-top: -20%;
+}
+
+.main_top_button{
+   text-align: right;
+}
+
+
+
+.item{
+   margin-left:20%;
+}
+
+.menu{
+   background-color: #f2a21c!important;
+}
+
+.td_font{
+   font-size: 25pt;
+}
+
+.menu_cafe_location{
+   margin-left: 400pt;
+   height: 30pt;
+}
+
+.select_location{
+   height: 30pt;
+    width: 200pt;
+    margin-left: 10pt;
+    margin-bottom: 15pt;
+    padding-left: 30pt;
+}
+
+.inverted{
+    background-color: #f2a21c!important;
+}

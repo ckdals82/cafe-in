@@ -28,16 +28,25 @@ public class Product_in_DaoImpl implements ProductDao {
 		 return sqlSession.insert("product_in.product_in_insert",vo);
 	}
 
-	@Override
-	public int delete(int idx) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	 @Override
+	   public int delete(int idx) {
+	      // TODO Auto-generated method stub
+	      return sqlSession.delete("product_in.product_in_delete",idx);
+	   }
+
 
 	@Override
 	public int update(ProductVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public ProductVo selectOne(int idx) {
+		// TODO Auto-generated method stub
+		  return sqlSession.selectOne("product_in.product_in_one",idx);
+	}
+	 
+
 
 }

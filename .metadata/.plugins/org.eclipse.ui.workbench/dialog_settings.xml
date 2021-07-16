@@ -27,5 +27,9 @@
 		</list>
 	</section>
 	<section name="ZipFileImportWizard">
+		<item key="WizardZipFileResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
+		<list key="WizardZipFileResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/Users/hwangchangmin/Downloads/2021_0715_SpringTransaction1.zip"/>
+		</list>
 	</section>
 </section>

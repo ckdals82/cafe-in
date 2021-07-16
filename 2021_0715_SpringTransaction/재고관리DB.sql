@@ -39,3 +39,9 @@ create table product_remain
 alter table product_remain add constraint pk_product_remain_idx primary key(idx);
 
 alter table product_remain add constraint unique_product_remain_name unique(name);
+
+delete from product_in;
+delete from product_out;
+delete from product_remain;
+
+commit

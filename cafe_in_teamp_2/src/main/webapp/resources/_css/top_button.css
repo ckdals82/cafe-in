@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.button_box{
+	width: 100%;
+	margin-top: 10px;
+}
+
+.button_box td:nth-child(1){
+	width: 50%;
+}
+
+.button_box td:nth-child(2){
+	width: 50%;
+}
+
+.quick_item{
+	cursor: pointer;
+}
+
+.quick_item._modify{
+	padding-right: 5px;
+}
+
+.img_modify{
+	width: 25px;
+	height: 25px;
+}
+
+.img_login{
+	width: 25px;
+	height: 25px;
+}

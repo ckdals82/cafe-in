@@ -14,6 +14,11 @@
 <script type="text/javascript">
  window.onload=function(){
       
+	 setTimeout(show_message,300);//0.5초후에 show_message()호출
+	     
+ };
+ 
+ function show_message(){
 	 if("${ param.error eq 'remain_not' }"=='true')
 	 {
 		 alert('재고목록에 출고할\n상품이 없습니다');
@@ -23,8 +28,9 @@
 	 {
 		 alert('출고할 상품수량이 부족합니다');
 	 }
-	     
- };
+	 
+	 
+ }
 </script>
 
 

@@ -9,10 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product_out order by idx
 	</select>
 	
-	<!-- 입고등록 -->
-	<insert id="product_out_insert" parameterType="product">
-		insert into product_out values(seq_product_out_idx.nextVal,#{name},#{cnt},sysdate)
-	</insert>
+	<!-- 출고등록 -->
+   <insert id="product_out_insert" parameterType="product">
+      insert into product_out values(seq_product_out_idx.nextVal,#{name},#{cnt},sysdate)
+   </insert>
 
 </mapper>
 
