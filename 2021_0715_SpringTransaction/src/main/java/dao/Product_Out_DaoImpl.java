@@ -21,6 +21,12 @@ public class Product_Out_DaoImpl implements ProductDao {
 		// TODO Auto-generated method stub
 		  return sqlSession.selectList("product_out.product_out_list");
 	}
+	
+	@Override
+	public ProductVo selectOne(int idx) {
+		// TODO Auto-generated method stub
+		return selectOne(idx).selectOne("product");
+	}
 
 	@Override
 	public int insert(ProductVo vo) {

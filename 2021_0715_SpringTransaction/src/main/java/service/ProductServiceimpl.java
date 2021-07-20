@@ -124,6 +124,13 @@ public class ProductServiceimpl implements ProductService {
 	         
 	         //4.재고 수량 수정
 	         int cnt = remainVo.getCnt() - vo.getCnt();
+	         
+//	         if(cnt<0) {
+//	        	 //재고수량이 적다
+//	        	 throw ()
+//	         }
+//	         
+	         
 	         remainVo.setCnt(cnt);
 	         
 	         res = product_remain_dao.update(remainVo);
@@ -136,11 +143,38 @@ public class ProductServiceimpl implements ProductService {
 	   }
 
 	   @Override
-	   public int delete_out(int[] idx) throws Exception {
+	   public int delete_out(int[] idx_array) throws Exception {
 	      // TODO Auto-generated method stub
-	      return 0;
-	   }
-
+		   int res = 0;
+		      for(int idx : idx_array) {
+		         
+		         //1.출고취소된 상품명 얻어오기
+		         ProductVo vo = product_out_dao.selectOne(idx);
+		         
+		         //2.출고목록 삭제
+		         product_in_dao.delete(idx);
+		         
+		         //3.재고상품정보 얻어오기(출고취소한 상품명을 이용해서)
+		         ProductVo remainVo = product_remain_dao.selectOne(vo.getName());
+		         
+		         //4.재고 수량 수정
+		         int cnt = remainVo.getCnt() + vo.getCnt();
+		         
+		         if(cnt<0) {
+		        	 //재고수량이 적다
+		        	 throw new Exception("remain") 
+		         }
+		         
+		         
+		         remainVo.setCnt(cnt);
+		         
+		         res = product_remain_dao.update(remainVo);
+		         
+		         
+		      }
+		      
+		      
+		      return res;
 	}
 
 

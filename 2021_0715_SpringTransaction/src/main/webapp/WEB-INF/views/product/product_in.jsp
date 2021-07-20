@@ -23,16 +23,16 @@
          //alert(checked);
          
          //아래쪽 체크박스 모두를 checkd
-         $("input[name='idx']").prop("checked",checked);
+         $("input.check_in").prop("checked",checked);
       });
       
       //아래쪽 체크박스 이벤트
-      $("input[name='idx']").change(function() {
+      $("input.check_in").change(function() {
          
          //아래 체크박스 모두 검사
          $("#ck_idx_all").prop("checked", true);
          
-         $("input[name='idx']").each(function(){
+         $("input.check_in").each(function(){
             
             if( $(this).is(":checked")==false ){
                $("#ck_idx_all").prop("checked", false);
@@ -49,7 +49,7 @@
       
       //alert( $("input[name='idx']:checked").length);
       //삭제할 상품 선택여부
-      if( $("input[name='idx']:checked").length==0 ){
+      if( $("input[name='idx'].check_in:checked").length==0 ){
          alert('삭제할 상품을 선택하세요');
          return;
       }
@@ -85,7 +85,7 @@
 
       <c:forEach var="vo" items="${ map.in_list }">
          <tr>
-            <td><input type="checkbox" name="idx" value="${ vo.idx }">&nbsp;&nbsp;${ vo.name }</td>
+            <td><input class="check_in" type="checkbox" name="idx" value="${ vo.idx }">&nbsp;&nbsp;${ vo.name }</td>
             <td>${ vo.cnt }</td>
             <td>${ vo.regdate }</td>
          </tr>   

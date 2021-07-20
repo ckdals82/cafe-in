@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	
+	<!-- 전체조회 -->
+   <select id="board_list" resultType="board">
+      select * from board order by b_ref desc, b_step asc
+   </select>
+	
+	<!-- b_idx에 해당되는 게시불 1 건 -->
+	<select id="board_one" parameterType="int" resultType="board">
+		select * from board where b_idx=#{ b_idx }
+	</select>
+	
+	<!-- 새글쓰기 -->
+	<insert id="board_insert" parameterType="board" >
+		insert into board values(seq_board_b_idx.nextVal,
+													#{ b_subject },
+  													#{ b_content },
+  													0,
+  													#{ b_ip },
+  													sysdate,
+  													'y',
+  													#{ m_idx },
+  													#{ m_name},
+  													seq_board_b_idx.currVal,
+  													0,
+  													0
+  													)
+	</insert>
+	
+	<!-- 답글쓰기 -->
+	<insert id="board_reply" parameterType="board" >
+		insert into board values(seq_board_b_idx.nextVal,
+													#{ b_subject },
+  													#{ b_content },
+  													0,
+  													#{ b_ip },
+  													sysdate,
+  													'y',
+  													#{ m_idx },
+  													#{ m_name},
+  													#{ b_ref },
+  													#{ b_step },
+  													#{ b_depth }
+  													)
+	</insert>
+
+
+	<!-- 조회수 증가 -->
+   <update id="board_update_readhit" parameterType="int">
+      update board set b_readhit = b_readhit + 1
+      where b_idx = #{ b_idx }
+   </update>
+	
+	
+	<!-- step증가 -->
+	<update id="board_update_step" parameterType="board">
+		update board set b_step = b_step + 1
+		where b_ref=#{ b_ref } and b_step > #{ b_step }
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

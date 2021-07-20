@@ -54,7 +54,7 @@ public class ProductController {
    //입고처리 취소
    // /tx/product/delete_in.do?idx=10&idx=11&idx=12
    @RequestMapping("delete_in.do")
-   public String delete_in(int [] idx) {
+   public String delete_in(int [] idx,Model model) {
       
       try {
          
@@ -62,7 +62,10 @@ public class ProductController {
          
       } catch (Exception e) {
          // TODO Auto-generated catch block
-         e.printStackTrace();
+         //e.printStackTrace();
+    	  String message = e.getMessage();
+          //System.out.println(message);
+          model.addAttribute("error", message); 
       }
       
       return "redirect:list.do";
@@ -92,6 +95,26 @@ public class ProductController {
          //1.forward시 request binding
          //2.redirect시에는 요청parameter(query)로 이용
          //  redirect:list.do=> response.sendRedirect("list.do?error=remain_not");
+      }
+      
+      return "redirect:list.do";
+   }
+   
+ //출고처리 취소
+   // /tx/product/delete_in.do?idx=10&idx=11&idx=12
+   @RequestMapping("delete_out.do")
+   public String delete_out(int [] idx,Model model) {
+      
+      try {
+         
+         product_service.delete_out(idx);
+         
+      } catch (Exception e) {
+         // TODO Auto-generated catch block
+         //e.printStackTrace();
+    	  String message = e.getMessage();
+          //System.out.println(message);
+          model.addAttribute("error", message); 
       }
       
       return "redirect:list.do";

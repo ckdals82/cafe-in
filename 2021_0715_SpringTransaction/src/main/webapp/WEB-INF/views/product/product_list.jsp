@@ -26,7 +26,7 @@
 	
 	 if("${ param.error eq 'remain_lack' }"=='true')
 	 {
-		 alert('출고할 상품수량이 부족합니다');
+		 alert('재고 상품수량이 부족합니다');
 	 }
 	 
 	 
