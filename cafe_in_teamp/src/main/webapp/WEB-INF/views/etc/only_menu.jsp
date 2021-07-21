@@ -35,27 +35,27 @@
 
 </head>
 <body>
-   <%@ include file="filter_pop.jsp"  %>
-   <div class="only_menu">
-       <div>
-          <table>
-                <tr>
-                   <td><img class="img_logo_only_menu" src="${pageContext.request.contextPath}/_img/img_logo.png"></td>
-                <td></td>
-   
-                </tr>
-          </table>
-       </div>
-       
-       <div class="only_menu2">
-          <div class="ui inverted menu">
-             <a class="active item" href="#" onclick="filter_view()">필터</a> 
-             <a class="item">     추천카페 </a> 
-             <a class="item" href="#" onclick="location.href='review_page.jsp'"> 리뷰 </a>
-          </div>
-       </div>   
-   </div>
-   
-   
+	<%@ include file="filter_pop.jsp"  %>
+	<div class="only_menu">
+	    <div>
+	       <table>
+	             <tr>
+	                <td><img class="img_logo_only_menu" src="${pageContext.request.contextPath}/resources/_img/img_logo.png"></td>
+	             <td></td>
+	
+	             </tr>
+	       </table>
+	    </div>
+	    
+	    <div class="only_menu2">
+	       <div class="ui inverted menu">
+	          <a class="active item"  onclick="filter_view()">필터</a> 
+	          <a class="item">     추천카페 </a> 
+	          <a class="item" href="#" onclick="location.href='review_page.jsp'"> 리뷰 </a>
+	       </div>
+	    </div>   
+	</div>
+	
+	
 </body>
 </html>

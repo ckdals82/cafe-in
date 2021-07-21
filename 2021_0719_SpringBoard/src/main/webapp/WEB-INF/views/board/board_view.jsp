@@ -49,6 +49,8 @@
 	function reply_form(b_idx){
 		//로그인여부체크
 		if('${ empty user }'=='true'){
+			
+			
 			Swal.fire({
 				  title: '답글쓰기',
 				  html: "<h5>답글쓰기는 로그인후 이용가능합니다<br>로그인 하시겠습니까?</h5>",
@@ -61,8 +63,9 @@
 				}).then((result) => {
 				  if (result.isConfirmed) {
 					
-					//현재경로 : /photo/list.do
-					location.href='${ pageContext.request.contextPath }/member/login_form.do?url=' + location.href;
+					  
+					//예 버튼 누를시
+					location.href="delete.do?b_idx=" + b_idx;
 				    
 				  }
 				});
@@ -80,6 +83,31 @@
 		location.href='reply_form.do?b_idx=' + b_idx;//PhotoInsertFormAction
 		//return;
 		}
+		
+		
+		
+	}
+	
+	//삭제
+	function del(b_idx){
+		
+		Swal.fire({
+			  title: '게시물삭제',
+			  html: "<h5>정말 삭제 하시겠습니까?</h5>",
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '예',
+			  cancelButtonText   : "아니요"
+			}).then((result) => {
+			  if (result.isConfirmed) {
+				
+				//현재경로 : /photo/list.do
+				  location.href="delete.do?b_idx=" +b_idx + "&page=${ param.page }";
+			    
+			  }
+			});
 		
 		
 		
@@ -113,14 +141,18 @@
 		  		<tr>
 		  			<td colspan="2" align="center">
 		  				<input class="btn btn-primary" type="button" value="목록보기"
-		  						onclick="location.href='list.do'">
+		  						onclick="location.href='list.do?page=${ param.page }'">
+		  						
+		  				<!-- 메인글에만사용 -->
+		  			<c:if test="${ vo.b_depth eq 0 }">		
 		  				<input class="btn btn-primary" type="button" value="답글쓰기"
 		  						onclick="reply_form(${ vo.b_idx})">
-		  				
+		  				</c:if>
 		  				<!-- 본인 또는 관리자 -->
 		  				<c:if test="${ (vo.m_idx eq user.m_idx) or (user.m_grade eq '관리자') }">
 			  				<input class="btn btn-info" type="button" value="수정">
-			  				<input class="btn btn-danger" type="button" value="삭제">
+			  				<input class="btn btn-danger" type="button" value="삭제"
+			  					onclick="del('${ vo.b_idx }');">
 		  				</c:if>
 		  			</td>
 		  		</tr>

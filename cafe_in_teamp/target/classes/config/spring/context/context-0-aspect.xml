@@ -6,9 +6,7 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<aop:config>
-		<aop:pointcut id="serviceMethod" 
-		     expression="execution(* kr.co.hb.service.*.*(..))" 
-		     />
+		<aop:pointcut id="serviceMethod" expression="execution(* dao.*.*(..))" />
 
 		<aop:aspect ref="myHandler">
 			<aop:after-throwing 

@@ -92,4 +92,27 @@ select * from board
 select * from board order by b_ref desc,b_step asc
 
 commit
+
+--Paging처리를 위한 SQL문장
+select * from board order by b_ref desc,b_step asc
+	
+	select * from
+	(
+		select
+			rank() over(order by b_ref desc,b_step asc) as no,
+			b.*
+		from (select * from board ) b
+	)	
+	where no between 1 and 5
+
+select nvl(count(*),0) from board
+
+
+
+
+
+
+
+
+
 */

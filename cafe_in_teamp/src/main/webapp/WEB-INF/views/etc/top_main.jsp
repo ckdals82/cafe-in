@@ -32,8 +32,8 @@
 
 </head>
 <body>
-	
-	<div class="top_main">
+   
+   <div class="top_main">
       <table>
          <tr>
             <td><img class="img_logo" src="${ pageContext.request.contextPath }/resources/_img/img_logo.png"></td>
@@ -55,6 +55,6 @@
    <div class="top_location">
       <div><input id ="location_text" type="text" value="내 위치 기준"><img class="img_location" src="${ pageContext.request.contextPath }/resources/_img/img_location.png" onclick=""></div>
    </div>
-	
+   
 </body>
 </html>

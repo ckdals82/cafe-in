@@ -1,16 +1,21 @@
 package controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.BoardDao;
+import mycommon.MyConstant;
+import util.Paging;
 import vo.BoardVo;
 import vo.MemberVo;
 
@@ -37,18 +42,42 @@ public class BoardController {
 
 
 	//목록보기
+	//	/board/list.do?page=2
+	
 	@RequestMapping("list.do")
-	public String list(Model model) {
+	public String list(@RequestParam(value = "page",required = false,defaultValue = "1") int nowPage, Model model) {
 		
-		List<BoardVo> list = board_dao.selectList();
+		//현재 보여질 페이지 : nowPage
 		
+		//가져올 범위계산
+		int start = (nowPage-1) * MyConstant.Board.BLOCK_LIST + 1;
+		int end	  = start + MyConstant.Board.BLOCK_LIST -1;
+		
+		Map map = new HashedMap();
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<BoardVo> list = board_dao.selectList(map);
 		//System.out.println(list.size());
+		
+		//전체게시물수 구하기
+		int rowTotal = board_dao.selectRowTotal();
+		
+		//System.out.println(rowTotal);
+		
+		//PagingMenu만들기...
+		String pageMenu = Paging.getPaging("list.do",
+											nowPage,
+											rowTotal,
+											MyConstant.Board.BLOCK_LIST,
+											MyConstant.Board.BLOCK_PAGE);
 		
 		//view.do에서 봣냐?에 대한 정보 기록해놓은 값 => 제거
 		session.removeAttribute("show");
 		
 		//model을 통해서 DispatcherServlet에게 전달 => 결과적으로 request binding
 		model.addAttribute("list",list);
+		model.addAttribute("pageMenu", pageMenu);
 		
 		return "board/board_list";
 	}
@@ -189,6 +218,22 @@ public class BoardController {
 		
 		return "redirect:list.do";
 	}
+	
+	
+	//삭제 board/view.do?b_idx=3
+	@RequestMapping("delete.do")
+	public String delete(int b_idx, @RequestParam(value = "page",required = false,defaultValue = "1") int page, Model model) {
+		
+		try {
+			int res = board_dao.update_use_yn(b_idx);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//현재 model에 들어간값을 DispatcherServlet은 어떻게 처리할까=> 답 : query로 사용
+		model.addAttribute("page",page);
+		return "redirect:list.do";	
+		}
 
 		
 		

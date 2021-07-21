@@ -21,8 +21,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.increaps.db" />
-	
+	<!--<context:component-scan base-package="com.increpas.cafein2" />-->	
 	<beans:bean class="controller.EtcController"></beans:bean>
+	
+	<beans:bean class="controller.FilterController">
+		<beans:property name="filter_dao" ref="filter_dao"/>
+	</beans:bean>
 	
 </beans:beans>

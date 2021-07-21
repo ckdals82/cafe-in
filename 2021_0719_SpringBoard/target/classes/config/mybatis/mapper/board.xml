@@ -8,6 +8,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="board_list" resultType="board">
       select * from board order by b_ref desc, b_step asc
    </select>
+   
+   <!-- 조건별조회 -->
+   <select id="board_list_condition" parameterType="Map" resultType="board">
+	select * from
+	(
+		select
+			rank() over(order by b_ref desc,b_step asc) as no,
+			b.*
+		from (select * from board ) b
+	)
+	where no between #{ start } and #{ end }
+   </select>
+   
+   <!-- 전체게시물수 구하기 -->
+   <select id="board_row_total" resultType="int">
+   		select nvl(count(*),0) from board
+   </select>
 	
 	<!-- b_idx에 해당되는 게시불 1 건 -->
 	<select id="board_one" parameterType="int" resultType="board">
@@ -61,9 +78,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update board set b_step = b_step + 1
 		where b_ref=#{ b_ref } and b_step > #{ b_step }
 	</update>
+	
+	<!-- 삭제 use_yn='n'-->
+	<update id="board_update_use_yn" parameterType="int">
+			update board set b_use_yn='n'
+			where b_idx=#{ b_idx }
+	</update>
+	
+	
 </mapper>
 
-
+	
 
 
 

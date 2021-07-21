@@ -31,7 +31,7 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public List<BoardVo> selectList(Map map) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("board.board_list_condition",map);
 	}
 
 
@@ -72,6 +72,22 @@ public class BoardDaoImpl implements BoardDao {
 	public int update_step(BoardVo vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update("board.board_update_step",vo);
+	}
+
+
+
+	@Override
+	public int update_use_yn(int b_idx) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.update("board.board_update_use_yn",b_idx);
+	}
+
+
+
+	@Override
+	public int selectRowTotal() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("board.board_row_total");
 	}
 
 	

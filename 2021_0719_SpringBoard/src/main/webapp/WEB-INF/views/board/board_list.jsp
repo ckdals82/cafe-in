@@ -142,7 +142,7 @@
          <!-- for(BoardVo vo: list -->
          <c:forEach var="vo" items="${list }">
             <tr>
-               <td>${vo.b_idx }</td>
+               <td>${vo.no }</td>
                
                <!-- 제목 -->
                <td style="text-align: left;">
@@ -159,12 +159,12 @@
                		
                		<!-- 사용가능한 게시글일떄  -->
                		<c:if test="${ vo.b_use_yn eq 'y' }">
-               			<a href="view.do?b_idx=${vo.b_idx }">${vo.b_subject }"</a>
+               			<a href="view.do?b_idx=${vo.b_idx }&page=${ (empty param.page) ? 1 : param.page }">${vo.b_subject }"</a>
                		</c:if>
                		
                		<!-- 삭제된 게시글일때 -->
                		<c:if test="${ vo.b_use_yn eq 'n' }">
-               		<div style="color:red;">삭제된 글입니다</div>
+               			<span style="color:red;">삭제된 글입니다(${vo.b_subject })</span>
                		</c:if>
                </td>
                
@@ -176,7 +176,20 @@
          </c:forEach>
          
       </table>
+      <!-- 페이지에 메뉴넣기 -->
+      <div style="text-align: center; font-size: 15px;">
+      	${ pageMenu }
       
+      
+      <!--     <a href="list.do?page=1">1</a> &nbsp;&nbsp;&nbsp;
+          <a href="list.do?page=2">2</a> &nbsp;&nbsp;&nbsp;
+          <a href="list.do?page=3">3</a> &nbsp;&nbsp;&nbsp;
+          <a href="list.do?page=4">4</a> &nbsp;&nbsp;&nbsp;
+          <a href="list.do?page=5">5</a> &nbsp;&nbsp;&nbsp;
+          <a href="list.do?page=6">6</a> &nbsp;&nbsp;&nbsp; -->
+       </div>
+      		
+      		
    </div>
 </body>
 </html>

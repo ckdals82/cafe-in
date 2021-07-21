@@ -2,6 +2,9 @@ package vo;
 
 public class BoardVo {
 	
+	
+	int no;
+	
 	int b_idx;
 	String b_subject;
 	String b_content;
@@ -18,6 +21,14 @@ public class BoardVo {
 	int b_depth;
 	
 	
+	
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public int getB_idx() {
 		return b_idx;
 	}
