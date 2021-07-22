@@ -5,12 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<script type="text/javascript">
 
-location.href="board/list.do";
+<script type="text/javascript">
+  
+  location.href="board/list.do";
+ 
 </script>
-	
+
+</head>
 <body>
 
 </body>

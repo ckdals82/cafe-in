@@ -5,21 +5,24 @@ import java.util.List;
 import vo.MemberVo;
 
 public interface MemberDao {
+
+	//ÀüÃ¼¸ñ·Ï º¸±â
+	public List<MemberVo> selectList();
 	
-	
-	
-	//ì „ì²´ëª©ë¡ ë³´ê¸°
-	public List<MemberVo> selectList(); 
-	
-	//m_idxì— í•´ë‹¹ë˜ëŠ” íšŒì›ì •ë³´ 1ê±´
+	//m_idx¿¡ ÇØ´çµÇ´Â È¸¿øÁ¤º¸ 1°Ç
 	public MemberVo selectOne(int m_idx);
-	//m_idì— í•´ë‹¹ë˜ëŠ” íšŒì›ì •ë³´ 1ê±´ ì–»ì–´ì˜¤ê¸°
+	
+	//m_id¿¡ ÇØ´çµÇ´Â È¸¿øÁ¤º¸ 1°Ç ¾ò¾î¿À±â
 	public MemberVo selectOne(String m_id);
-	//ì¶”ê°€ 
+	
+	//Ãß°¡
 	public int insert(MemberVo vo);
-	//ì‚­ì œ
+
+	//»èÁ¦
 	public int delete(int m_idx);
-	//ìˆ˜ì •
+
+	//¼öÁ¤
 	public int update(MemberVo vo);
+	
 	
 }

@@ -40,7 +40,7 @@
 	   }
 	   
 	   //전송대상
-	   f.action = "reply.do";
+	   f.action = "modify.do";
 	   f.submit();
 	   
 	   
@@ -54,25 +54,25 @@
 <body>
 
 	<form>
-	    <input type="hidden"  name="b_idx"  value="${ param.b_idx }">
+	    <input type="hidden"  name="b_idx"  value="${ vo.b_idx }">
 	    <input type="hidden"  name="page"   value="${ param.page }">
 		<div id="box">
 			<div class="panel panel-primary">
-				<div class="panel-heading"><h3>답글쓰기폼</h3></div>
+				<div class="panel-heading"><h3>수정폼</h3></div>
 				<div class="panel-body">
 				    <table class="table">
                         <tr>
 	                        <th>제목</th>
-	                        <td><input name="b_subject"></td>
+	                        <td><input name="b_subject"  value="${ vo.b_subject }"></td>
                         </tr>
                         <tr>
                             <th>내용</th>
-                            <td><textarea name="b_content" rows="8" cols="60"></textarea></td>
+                            <td><textarea name="b_content" rows="8" cols="60">${ vo.b_content }</textarea></td>
                         </tr>
                         
                         <tr>
                             <td colspan="2" align="center">
-                                <input class="btn btn-primary" type="button"  value="답글쓰기"
+                                <input class="btn btn-primary" type="button"  value="수정하기"
                                        onclick="send(this.form);" >
                                 <input class="btn btn-success" type="button"  value="목록보기"
                                        onclick="location.href='list.do'"  >

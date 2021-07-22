@@ -1,15 +1,17 @@
 package controller;
 
+import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,97 +24,127 @@ import vo.MemberVo;
 @Controller
 @RequestMapping("/board/")
 public class BoardController {
-	
-	//ìë™ìƒì„±ì‹œì—ëŠ” ì—°ê²°í•´ì¤€ë‹¤
-	//ìˆ˜ë™ìƒì„±ì‹œ : <context:annotation-config/>
+
+	//ÀÚµ¿»ı¼º½Ã¿¡´Â ¿¬°áÇØÁØ´Ù
+	//¼öµ¿»ı¼º½Ã : <context:annotation-config/> ÇØ¾ß ¿¬°áµÈ´Ù
 	@Autowired
 	HttpServletRequest request;
 	
 	@Autowired
-	HttpSession session; //idx m_nameì„ êµ¬í•˜ëŠ”
-	
-	BoardDao board_dao;
+	HttpSession session;
 	
 	
+	
+	BoardDao  board_dao;
 	
 	public void setBoard_dao(BoardDao board_dao) {
 		this.board_dao = board_dao;
 	}
 
-
-
-	//ëª©ë¡ë³´ê¸°
-	//	/board/list.do?page=2
+	//¸ñ·Ïº¸±â
+    //  /board/list.do
+	//  /board/list.do?page=1
+	
+    //  /board/list.do?search=all&search_text=
+	//  /board/list.do?search=name&search_text=±æµ¿
+    //  /board/list.do?search=subject&search_text=Á¦¸ñ
+    //  /board/list.do?search=content&search_text=³»¿ë
+    //  /board/list.do?search=subject_content&search_text=Á¦¸ñ¶Ç´Â³»¿ë
 	
 	@RequestMapping("list.do")
-	public String list(@RequestParam(value = "page",required = false,defaultValue = "1") int nowPage, Model model) {
+	public String list(@RequestParam(value="page", required=false,defaultValue="1")        int nowPage, 
+			           @RequestParam(value="search",required=false,defaultValue="all")     String search,
+			           @RequestParam(value="search_text",required=false,defaultValue="")   String search_text,
+			           Model model) {
+		 
+		//ÇöÀç º¸¿©Áú ÆäÀÌÁö : nowPage
 		
-		//í˜„ì¬ ë³´ì—¬ì§ˆ í˜ì´ì§€ : nowPage
-		
-		//ê°€ì ¸ì˜¬ ë²”ìœ„ê³„ì‚°
+		//°¡Á®¿Ã ¹üÀ§°è»ê
 		int start = (nowPage-1) * MyConstant.Board.BLOCK_LIST + 1;
-		int end	  = start + MyConstant.Board.BLOCK_LIST -1;
+		int end   = start + MyConstant.Board.BLOCK_LIST - 1;
 		
-		Map map = new HashedMap();
+		
+		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
+		
+		//°Ë»öÁ¶°ÇÀ» Map¿¡ Ãß°¡
+		if(search.equals("name")) {
+		    map.put("name", search_text);	
+		}else if(search.equals("subject")) {
+			map.put("subject", search_text);	
+		}else if(search.equals("content")) {
+			map.put("content", search_text);	
+		}else if(search.equals("subject_content")) {
+			map.put("subject", search_text);
+			map.put("content", search_text);	
+		}
+		
 		
 		List<BoardVo> list = board_dao.selectList(map);
 		//System.out.println(list.size());
 		
-		//ì „ì²´ê²Œì‹œë¬¼ìˆ˜ êµ¬í•˜ê¸°
-		int rowTotal = board_dao.selectRowTotal();
-		
+		//°Ë»öÁ¶°Ç¿¡ µû¸¥ °Ô½Ã¹°¼ö ±¸ÇÏ±â
+		int rowTotal = board_dao.selectRowTotal(map);
+				
 		//System.out.println(rowTotal);
 		
-		//PagingMenuë§Œë“¤ê¸°...
-		String pageMenu = Paging.getPaging("list.do",
-											nowPage,
-											rowTotal,
-											MyConstant.Board.BLOCK_LIST,
-											MyConstant.Board.BLOCK_PAGE);
+		//PagingMenu¸¸µé±â...
 		
-		//view.doì—ì„œ ë´£ëƒ?ì— ëŒ€í•œ ì •ë³´ ê¸°ë¡í•´ë†“ì€ ê°’ => ì œê±°
+		//list.do?page=1&search=all&search_text=
+		
+		String search_filter = String.format("&search=%s&search_text=%s", search,search_text);
+				
+		
+		String pageMenu = Paging.getPaging("list.do", 
+				                           nowPage, 
+				                           rowTotal,
+				                           search_filter,
+				                           MyConstant.Board.BLOCK_LIST,
+				                           MyConstant.Board.BLOCK_PAGE);
+		
+				
+		
+		//view.do¿¡¼­ ºÃ³Ä?¿¡ ´ëÇÑÁ¤º¸ ±â·ÏÇØ³õÀº °ª => Á¦°Å
 		session.removeAttribute("show");
 		
-		//modelì„ í†µí•´ì„œ DispatcherServletì—ê²Œ ì „ë‹¬ => ê²°ê³¼ì ìœ¼ë¡œ request binding
-		model.addAttribute("list",list);
-		model.addAttribute("pageMenu", pageMenu);
+		//modelÅëÇØ¼­ DispatcherServlet¿¡°Ô Àü´Ş=>°á°úÀûÀ¸·Î request binding
+		model.addAttribute("list", list);
+		model.addAttribute("pageMenu",pageMenu);
 		
 		return "board/board_list";
 	}
 	
-	//ëª©ë¡ë³´ê¸°
-		@RequestMapping("insert_form.do")
-		public String insert_form() {
-			
-			
-			
-			
-			return "board/board_insert_form";
-		}
-	//board/insert.do?b_subject=ì˜¤í™&b_content=ì•ˆë…•í•˜ì„¸ìš”
+	//»õ±Û¾²±âÆû ¶ç¿ì±â
+	@RequestMapping("insert_form.do")
+	public String insert_form() {
+		
+		return "board/board_insert_form";
+	}
+	
+	
+	// /board/insert.do?b_subject=Á¦¸ñ&b_content=³»¿ë
 	@RequestMapping("insert.do")
 	public String insert(BoardVo vo,Model model) {
 		
-		//ì¶”ê°€ë¡œ êµ¬í•´ì•¼í•  í•­ëª© : b_ip,m_idx,m_name
+		//Ãß°¡·Î ±¸ÇØ¾ß ÇÒ Ç×¸ñ : b_ip,m_idx ,m_name
 		MemberVo user = (MemberVo) session.getAttribute("user");
 		
-		//ì„¸ì…˜ ë§Œë£Œì‹œ
+		//¼¼¼Ç ¸¸·á½Ã...
 		if(user==null) {
 			
-			//2ê°€ì§€ ìš©ë„
-			//1. forward: request binding
-			//2. redirect: queryì‚¬ìš© ?reason=end_session
-			model.addAttribute("reason","end_session");
+			//2°¡Áö ¿ëµµ
+			//1. forward : request binding
+			//2. redirect: query»ç¿ë  ?reason=end_session
+			model.addAttribute("reason", "end_session");
 			return "redirect:../member/login_form.do";
-			
 		}
-		//ìœ ì €ë²ˆí˜¸ì™€ ì´ë¦„ì„ voì— ë‹´ëŠ”ë‹¤
+		
+		//À¯Àú¹øÈ£¿Í ÀÌ¸§À» vo¿¡ ´ã´Â´Ù
 		vo.setM_idx(user.getM_idx());
 		vo.setM_name(user.getM_name());
 		
-		//ì‘ì„±ìIP
+		//ÀÛ¼ºÀÚIP
 		String b_ip = request.getRemoteAddr();
 		vo.setB_ip(b_ip);
 		
@@ -122,91 +154,104 @@ public class BoardController {
 		
 		//DB Insert
 		try {
+			
 			int res = board_dao.insert(vo);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		
 		return "redirect:list.do";
 	}
 	
+	
+	
+	//  /board/view.do?b_idx=12
 	@RequestMapping("view.do")
-	public String view(int b_idx, Model model ) {
+	public String view(int b_idx,Model model) {
 		
 		BoardVo vo = board_dao.selectOne(b_idx);
 		
-		//ì¡°íšŒìˆ˜ ì¦ê°€
+		//Á¶È¸¼ö Áõ°¡
 		try {
 			
-			//ê²Œì‹œë¬¼ì„ ë´¤ëƒ?
+			//°Ô½Ã¹°À» ºÃ³Ä?
 			if(session.getAttribute("show")==null) {
-				//ì•ˆë´¤ìœ¼ë©´ null
-				int res = board_dao.update_readhit(b_idx);//ì¡°íšŒìˆ˜ì¦ê°€
-				
-				//ë´¤ë‹¤ê³  ê¸°ë¡
-				session.setAttribute("show", true);
+			    //¾ÈºÃÀ¸¸é  null
+			    int res = board_dao.update_readhit(b_idx);//Á¶È¸¼öÁõ°¡
+			    
+			    //ºÃ´Ù°í ±â·Ï
+			    session.setAttribute("show", true);
 			}
-			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}		
 		
-		//modelí†µí•´ ì „ë‹¬(DispatcherServlet) => request binding
-		model.addAttribute("vo",vo);
+		//modelÅëÇØ Àü´Ş(DispatcherServlet) => request binding
+		model.addAttribute("vo", vo);
+		
 		
 		return "board/board_view";
 	}
-	//ëª©ë¡ë³´ê¸°
+	
+	
+	
+	
+	//´ä±Û¾²±âÆû ¶ç¿ì±â
 	@RequestMapping("reply_form.do")
 	public String reply_form() {
 		
 		return "board/board_reply_form";
 	}
 	
+	
+	//  /board/reply.do?b_idx=8&b_subject=[´äº¯]´ä±Û&b_content=´Ù³à¿Ô½À´Ï´Ù&page=3
 	@RequestMapping("reply.do")
-	public String reply(BoardVo vo, Model model) {
+	public String reply(BoardVo vo, @RequestParam(value="page",required=false,defaultValue="1") int page, Model model) {
 		
-		
-		//ì¶”ê°€ë¡œ êµ¬í•´ì•¼í•  í•­ëª© : b_ip,m_idx,m_name
+		//Ãß°¡·Î ±¸ÇØ¾ß ÇÒ Ç×¸ñ : b_ip,m_idx ,m_name
 		MemberVo user = (MemberVo) session.getAttribute("user");
 		
-		//ì„¸ì…˜ ë§Œë£Œì‹œ
+		//¼¼¼Ç ¸¸·á½Ã...
 		if(user==null) {
 			
-			//2ê°€ì§€ ìš©ë„
-			//1. forward: request binding
-			//2. redirect: queryì‚¬ìš© ?reason=end_session
-			model.addAttribute("reason","end_session");
+			//2°¡Áö ¿ëµµ
+			//1. forward : request binding
+			//2. redirect: query»ç¿ë  ?reason=end_session
+			model.addAttribute("reason", "end_session");
 			return "redirect:../member/login_form.do";
-			
 		}
-		//ìœ ì €ë²ˆí˜¸ì™€ ì´ë¦„ì„ voì— ë‹´ëŠ”ë‹¤
+		
+		//À¯Àú¹øÈ£¿Í ÀÌ¸§À» vo¿¡ ´ã´Â´Ù
 		vo.setM_idx(user.getM_idx());
 		vo.setM_name(user.getM_name());
 		
-		//ì‘ì„±ìIP
+		//ÀÛ¼ºÀÚIP
 		String b_ip = request.getRemoteAddr();
 		vo.setB_ip(b_ip);
 		
 		//\r\n -> <br>
 		String b_content = vo.getB_content().replaceAll("\r\n", "<br>");
 		vo.setB_content(b_content);
+				
 		
 		
-		//1.ê¸°ì¤€ê¸€ ì •ë³´ ì–»ì–´ì˜¤ê¸°
+		//1.±âÁØ±Û Á¤º¸ ¾ò¾î¿À±â
 		BoardVo baseVo = board_dao.selectOne(vo.getB_idx());
 		
 		try {
-			//2.ê¸°ì¤€ê¸€ë³´ë‹¤ stepì´ í° ê²Œì‹œë¬¼ì˜ stepì„ 1ì”© ì¦ê°€ì‹œí‚´ => ì™œ í•˜ëŠ”ê±°ì„? (í˜„ì¬ ë‹µê¸€ì´ ë“¤ì–´ê°ˆ ìë¦¬ë¥¼ ë§ˆë ¨)
-			int res = board_dao.update_step(baseVo);
+			//2.±âÁØ±Ûº¸´Ù stepÀÌ Å«°Ô½Ã¹°ÀÇ stepÀ» 1¾¿ Áõ°¡½ÃÅ²´Ù=>¿Ö?(ÇöÀç ´ä±ÛÀÌ µé¾î°¥ ÀÚ¸®¸¦ ¸¶·Ã)
+			int  res = board_dao.update_step(baseVo);
 			
-			//3.ë‹µê¸€ì˜ b_ref,b_step,b_stepê³„ì‚°
-			vo.setB_ref(baseVo.getB_ref());//ë‹µê¸€b_ref = ê¸°ì¤€ê¸€b_ref
-			vo.setB_step(baseVo.getB_depth()+1); //ë‹µê¸€b_step = ê¸°ì¤€ê¸€b_step + 1
-			vo.setB_depth(baseVo.getB_depth()+1);//ë‹µê¸€b_depth= ê¸°ì¤€ê¸€b_depth +1
+			//3.´ä±ÛÀÇ b_ref,b_step,b_depth°è»ê
+			vo.setB_ref(baseVo.getB_ref());      // ´ä±Ûb_ref  = ±âÁØ±Ûb_ref
+			vo.setB_step(baseVo.getB_step()+1);  // ´ä±Ûb_step = ±âÁØ±Ûb_step  + 1
+			vo.setB_depth(baseVo.getB_depth()+1);// ´ä±Ûb_depth= ±âÁØ±Ûb_depth + 1
 			
 			res = board_dao.reply(vo);
 			
@@ -215,27 +260,110 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		
-		
+		//ÇöÀç model¿¡ µé¾î°£°ªÀ» DispatcherServletÀº ¾î¶»°Ô Ã³¸®ÇÒ±î?=> ´ä : query·Î »ç¿ë
+		model.addAttribute("page", page);
+	
 		return "redirect:list.do";
 	}
 	
 	
-	//ì‚­ì œ board/view.do?b_idx=3
+	//board/delete.do?b_idx=17&page=3&search=name&search_text=°ü¸®
+	//»èÁ¦...
 	@RequestMapping("delete.do")
-	public String delete(int b_idx, @RequestParam(value = "page",required = false,defaultValue = "1") int page, Model model) {
+	public String delete(int b_idx,@RequestParam(value="page",required=false,defaultValue="1") int page,
+			              String search,String search_text, 
+			              Model model) {
 		
 		try {
+			
 			int res = board_dao.update_use_yn(b_idx);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//í˜„ì¬ modelì— ë“¤ì–´ê°„ê°’ì„ DispatcherServletì€ ì–´ë–»ê²Œ ì²˜ë¦¬í• ê¹Œ=> ë‹µ : queryë¡œ ì‚¬ìš©
-		model.addAttribute("page",page);
-		return "redirect:list.do";	
+		
+		//ÇöÀç model¿¡ µé¾î°£°ªÀ» DispatcherServletÀº ¾î¶»°Ô Ã³¸®ÇÒ±î?=> ´ä : query·Î »ç¿ë
+		model.addAttribute("page", page);
+		model.addAttribute("search", search);
+		model.addAttribute("search_text", search_text);
+		
+		return "redirect:list.do"; // list.do?page=5&search=name&search_text=°ü¸®
+	}
+	
+	//  /board/modify_form.do?b_idx=5&page=3
+	//¼öÁ¤Æû ¶ç¿ì±â
+	@RequestMapping("modify_form.do")
+	public String modify_form(int b_idx,Model model) {
+		
+		//1.¼öÁ¤µ¥ÀÌÅÍ Á¤º¸ 1°Ç ¾ò¾î¿À±â
+		BoardVo  vo = board_dao.selectOne(b_idx);
+		
+		// <br> -> \r\n º¯°æ
+		String content = vo.getB_content().replaceAll("<br>", "\r\n");
+		vo.setB_content(content);
+				
+		
+		//2.°á°úÀûÀ¸·Î request binding
+		model.addAttribute("vo", vo);
+		
+		return "board/board_modify_form";
+	}
+	
+	
+	//¼öÁ¤ÇÏ±â
+	//  /board/modify.do?b_idx=33&page=3&b_subject=½Å³­´Ù&b_content=¾ß!½Å³­´Ù
+	@RequestMapping("modify.do")
+	public String modify(BoardVo vo,int page,Model model) {
+		//Ãß°¡·Î ±¸ÇØ¾ß ÇÒ Ç×¸ñ : b_ip,m_idx ,m_name
+		MemberVo user = (MemberVo) session.getAttribute("user");
+		
+		//¼¼¼Ç ¸¸·á½Ã...
+		if(user==null) {
+			
+			//2°¡Áö ¿ëµµ
+			//1. forward : request binding
+			//2. redirect: query»ç¿ë  ?reason=end_session
+			model.addAttribute("reason", "end_session");
+			return "redirect:../member/login_form.do";
 		}
-
+		
+		//À¯Àú¹øÈ£¿Í ÀÌ¸§À» vo¿¡ ´ã´Â´Ù
+		vo.setM_idx(user.getM_idx());
+		vo.setM_name(user.getM_name());
 		
 		
 		
+		//ÀÛ¼ºÀÚIP
+		String b_ip = request.getRemoteAddr();
+		vo.setB_ip(b_ip);
+		
+		//\r\n -> <br>
+		String b_content = vo.getB_content().replaceAll("\r\n", "<br>");
+		vo.setB_content(b_content);
+		
+		//DB update
+		try {
+			
+			int res = board_dao.update(vo);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//modelÅëÇØ¼­ Àü´ŞµÈ µ¥ÀÌÅÍ°¡ queryÀÌ¿ë
+		model.addAttribute("b_idx", vo.getB_idx());
+		model.addAttribute("page", page);
+		
+		return "redirect:view.do";  //   view.do?b_idx=5&page=3
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

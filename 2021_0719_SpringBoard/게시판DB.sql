@@ -1,118 +1,130 @@
 /*
 
---ì¼ë ¨ë²ˆí˜¸ ê´€ë¦¬ê°ì²´
-create sequence seq_board_b_idx
+--ÀÏ·Ã¹øÈ£ °ü¸®°´Ã¼
+create sequence  seq_board_b_idx
 
---í…Œì´ë¸”
+
+--Å×ÀÌºí
 create table board
 (
-
-b_idx			int,			--ì¼ë ¨ë²ˆí˜¸
-b_subject		varchar2(500),	--ì œëª©
-b_content		clob,			--ë‚´ìš©
-b_readhit		int,			--ì¡°íšŒìˆ˜
-b_ip			varchar2(100),	--ì•„ì´í”¼
-b_regdate		date,			--ë“±ë¡ì¼ì
-b_use_yn		char(1),		--ì‚¬ìš©ìœ ë¬´
-m_idx			int,			--íšŒì›ë²ˆí˜¸
-m_name			varchar2(100),	--íšŒì›ëª…
-
-b_ref			int,			--ì°¸ì¡°ê¸€ë²ˆí˜¸
-b_step			int,			--ê·¸ë£¹ê¸€ì˜ ìˆ˜ì§ì  ìœ„ì¹˜
-b_depth			int				--ê¸€ì˜ ê¹Šì´(ë‹µê¸€ì˜ ì •ë„)
-
+   b_idx 			int,			--ÀÏ·Ã¹øÈ£
+   b_subject		varchar2(500),	--Á¦¸ñ
+   b_content		clob,			--³»¿ë
+   b_readhit		int,			--Á¶È¸¼ö
+   b_ip				varchar2(100),	--¾ÆÀÌÇÇ
+   b_regdate		date,			--µî·ÏÀÏÀÚ
+   b_use_yn			char(1),		--»ç¿ëÀ¯¹«(y or n)
+   m_idx			int,			--È¸¿ø¹øÈ£
+   m_name			varchar2(100),	--È¸¿ø¸í
+   
+   b_ref			int,			--ÂüÁ¶±Û¹øÈ£
+   b_step			int,			--±×·ì±ÛÀÇ ¼öÁ÷Àû À§Ä¡
+   b_depth			int				--±ÛÀÇ ±íÀÌ(´ä±ÛÀÇÁ¤µµ)
 )
 
---ê¸°ë³¸í‚¤ ì„¤ì •
+--±âº»Å° ¼³Á¤
 alter table board
-	add constraint pk_board_b_idx primary key(b_idx);
-	
---ì™¸ë˜í‚¤ ì„¤ì •
+  add constraint pk_board_b_idx primary key(b_idx);
+  
+--¿Ü·¡Å° ¼³Á¤
 alter table board
-	add constraint fk_board_m_idx foreign key(m_idx)
-								  references member(m_idx)
-								  
-select * from member
-								  								  
+  add constraint fk_board_m_idx  foreign key(m_idx)
+                                 references member(m_idx);
+
+select * from member                                                                  
+                                 
 --sample data
---1.ìƒˆê¸€ì“°ê¸°
-  insert into board values(seq_board_b_idx.nextVal,'ë‚˜ ì‹œë¼ì†Œë‹ˆì•¼',
-  													'í‰ì–‘ë°•ì¹˜ê¸°',
-  													0,
-  													'127.0.0.1',
-  													sysdate,
-  													'y',
-  													2,
-  													'í™ê¸¸ë™',
-  													seq_board_b_idx.currVal,
-  													0,
-  													0);								  
---2.ë‹µê¸€ì“°ê¸°
-	 insert into board values(seq_board_b_idx.nextVal,
-	 												'ë‚˜ í™©ì°½ë¯¼ì´ì•¼',
-  													'ê°œë´‰ë™ë¶ˆì£¼ë¨¹',
-  													0,
-  													'127.0.0.1',
-  													sysdate,
-  													'y',
-  													3,
-  													'ë°•ê¸¸ë™',
-  													1,
-  													1,
-  													1);	
-
-	 insert into board values(seq_board_b_idx.nextVal,
-	 												'ë‚˜ í™©ì°½ë¯¼ì´ì•¼',
-  													'ê°œë´‰ë™ë¶ˆì£¼ë¨¹',
-  													0,
-  													'127.0.0.1',
-  													sysdate,
-  													'y',
-  													2,
-  													'í™ê¸¸ë™',
-  													1,
-  													2,
-  													2);	
---1.ì‚­ì œê¸€
-  insert into board values(seq_board_b_idx.nextVal,'ë‚˜ ì‹œë¼ì†Œë‹ˆì•¼',
-  													'í‰ì–‘ë°•ì¹˜ê¸°',
-  													0,
-  													'127.0.0.1',
-  													sysdate,
-  													'n',
-  													2,
-  													'ë°•ê¸¸ë™',
-  													seq_board_b_idx.currVal,
-  													1,
-  													2);		  													 													
-  													
-	
-select * from board
-
-select * from board order by b_ref desc,b_step asc
-
-commit
-
---Pagingì²˜ë¦¬ë¥¼ ìœ„í•œ SQLë¬¸ì¥
-select * from board order by b_ref desc,b_step asc
-	
-	select * from
-	(
-		select
-			rank() over(order by b_ref desc,b_step asc) as no,
-			b.*
-		from (select * from board ) b
-	)	
-	where no between 1 and 5
-
-select nvl(count(*),0) from board
-
-
-
-
-
-
-
-
+--1.»õ±Û¾²±â
+  insert into  board values(seq_board_b_idx.nextVal,
+                            '³»°¡1µîÀÌ´Ù',
+                            'ÀÌ¹ø¿¡µµ 1µîÀÌ³×',
+                            0,
+                            '127.0.0.1',
+                            sysdate,
+                            'y',
+                            2,
+                            'È«±æµ¿',
+                            seq_board_b_idx.currVal,
+                            0,
+                            0
+                            );  
+   
+   --»èÁ¦±Û µî·Ï                         
+   insert into  board values(seq_board_b_idx.nextVal,
+                            '³»°¡10µîÀÌ´Ù',
+                            'ÀÌ¹ø¿¡µµ 10µîÀÌ³×',
+                            0,
+                            '127.0.0.1',
+                            sysdate,
+                            'n',
+                            2,
+                            'È«±æµ¿',
+                            seq_board_b_idx.currVal,
+                            0,
+                            0
+                            );                                                            
+ --2.´ä±Û¾²±â                                
+   insert into  board values(seq_board_b_idx.nextVal,
+                            '¾Æ½±³× 1µî ³õÃÆ³×',
+                            'ÀÌ¹ø¿¡µµ 2µîÀÌ³×',
+                            0,
+                            '127.0.0.1',
+                            sysdate,
+                            'y',
+                            3,
+                            '¹Ú±æµ¿',
+                            1,
+                            1,
+                            1
+                            );   
+   
+   insert into  board values(seq_board_b_idx.nextVal,
+                            '´ÙÀ½¿¡ ÀßÇÏ¸é µÇÁö',
+                            '´ÙÀ½¿¡´Â 1µîÇØ!!',
+                            0,
+                            '127.0.0.1',
+                            sysdate,
+                            'y',
+                            2,
+                            'È«±æµ¿',
+                            1,
+                            2,
+                            2
+                            );   
+  
+  select * from board  order by b_ref desc,b_step asc 
+  
+  
+  update board set b_use_yn = 'y'
+  
+  commit
+  
+  
+  -- PagingÃ³¸®¸¦ À§ÇÑ SQL¹®Àå
+  select * from board  order by b_ref desc,b_step asc 
+  
+  
+  select * from 
+  (
+	  select
+	     rank() over(order by b_ref desc,b_step asc) as no,
+	     b.*
+	  from (select * from board) b
+  )
+  where no between 1  and  5
+  
+  
+  
+  select nvl(count(*),0) from board
+  
+  
+  update board set b_use_yn = 'y'
+  
+  
+  commit
+  
+  
+  
+  
 
 */

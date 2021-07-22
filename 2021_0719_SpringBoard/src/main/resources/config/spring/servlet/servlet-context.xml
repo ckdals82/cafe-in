@@ -25,20 +25,17 @@
 	
 	<!-- 수동생성 -->
 	
-	<!-- autowired지원옵션 -->
+	<!-- @Autowired지원 옵션 -->
 	<context:annotation-config/>
 	
-	<!-- 수동생성 -->
-	<beans:bean class="controller.BoardController">
-		<beans:property name="board_dao" ref="board_dao"/>
-	</beans:bean>
-	
-	<!-- 수동생성 -->
 	<!-- MemberController -->
 	<beans:bean class="controller.MemberController">
-		<beans:property name="member_dao" ref="member_dao"></beans:property>
+		<beans:property name="member_dao"  ref="member_dao"/>
 	</beans:bean>
 	
+	<beans:bean  class="controller.BoardController">
+	   <beans:property name="board_dao" ref="board_dao"/>
+	</beans:bean>
 	
 	
 </beans:beans>

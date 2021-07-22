@@ -7,9 +7,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	
 	<context:property-placeholder 
 		location="classpath:config/mybatis/db.properties"/>
+
 
 	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driver}"/>

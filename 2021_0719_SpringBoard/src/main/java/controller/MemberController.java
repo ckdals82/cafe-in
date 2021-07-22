@@ -20,170 +20,176 @@ import vo.MemberVo;
 @RequestMapping("/member/")
 public class MemberController {
 
-   // DispatcherServletì—ê²Œ ìë™ìœ¼ë¡œ ë„£ì–´ë‹¬ë¼...ìš”ì²­
-   // 1. í•´ë‹¹ ì»¨íŠ¸ë¡¤ëŸ¬ê°€ Auto-Detactingìœ¼ë¡œ ìƒì„±ë˜ë©´ ìë™ì£¼ì…ì´ ëœë‹¤ 
-   // 2. ìˆ˜ë™ìƒì„±ì‹œ ìƒì„±ì½”ë“œ(<bean>) ìœ„ìª½ì— <context:annotation-config/> ì‘ì„±í•´ì•¼ ì§€ì›ëœë‹¤ 
-   @Autowired
-   HttpSession session;
-   
-   @Autowired
-   HttpServletRequest request;
-   
-   MemberDao member_dao;
-
-   public void setMember_dao(MemberDao member_dao) {
-      this.member_dao = member_dao;
-   }
-   
-   @RequestMapping("login_form")
-   public String login_form() {
-	   
-	   return "member/member_login_form";
-   }
-   
-   //ë¡œê·¸ì¸
-   @RequestMapping("login.do")
-   public String login(String m_id,String m_pwd,String url,Model model) {
-      
-      //ë©”ì†Œë“œì˜ ì¸ì? ì˜ë¯¸? : DispatcherServletì— ëŒ€í•œ ìš”ì²­ì‚¬í•­
-      //Modelìš©ë„?
-      // 1. fowardì‹œì—ëŠ” request binding ì‹œí‚¨ë‹¤
-      // 2. redirectì‹œì—ëŠ” parameterë³€ìˆ˜(query)ë¡œ ì´ìš©ëœë‹¤ 
-      
-      //.m_idì— í•´ë‹¹ë˜ëŠ” MemberVo 1ê±´ ì–»ì–´ì˜¤ê¸°
-      MemberVo user = member_dao.selectOne(m_id);
-      
-      if(user==null) { //IDê°€ ì—†ëŠ”ê²½ìš°
-         //return "redirect:login_form.do?reason=fail_id";
-         
-         model.addAttribute("reason", "fail_id");
-         
-         return "redirect:login_form.do";
-      }
-      
-      //ë¹„ë°€ë²ˆí˜¸ ë¹„êµ
-      if(user.getM_pwd().equals(m_pwd)==false) {   
-         //return "redirect:login_form.do?reason=fail_pwd";
-         
-         model.addAttribute("reason", "fail_pwd");
-         
-         return "redirect:login_form.do";
-      }
-      
-      session.setAttribute("user", user);
-      
-      if(url==null)
-			url="";
-      
-      if(url.isEmpty())
+	
+	// DispatcherServlet¿¡°Ô ÀÚµ¿À¸·Î ³Ö¾î´Ş¶ó...¿äÃ»
+	// 1.ÇØ´çÄÁÆ®·Ñ·¯°¡ Auto-DetactingÀ¸·Î »ı¼ºµÇ¸é ÀÚµ¿ÁÖÀÔÀÌ µÈ´Ù
+	// 2.¼öµ¿»ı¼º½Ã »ı¼ºÄÚµå(<bean>) À­ÂÊ¿¡  <context:annotation-config/> ÀÛ¼ºÇØ¾ß Áö¿øµÈ´Ù
+	// 3.¾ğÁ¦ Injection : ´ë»ó ¸Ş¼Òµå È£Ãâ½Ã¸¶´Ù ³Ö¾îÁØ´Ù
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	HttpServletRequest request;
+	
 			
-      	return "redirect:../board/list.do";
-      else
-    	  return "redirect:" +url;
-    	  
-      
-   }
+	
+	MemberDao member_dao;
 
-   
-   @RequestMapping("logout.do")
-   public String logout() {
-	   
-	   session.removeAttribute("user");;//ë¡œê·¸ì¸í•œ ë©¤ë²„ ë¸Œì´ì˜¤ ì •ë³´ë¥¼ í†µì§¸ë¡œ ë„£ìŒ
+	public void setMember_dao(MemberDao member_dao) {
+		this.member_dao = member_dao;
+	}
+	
+	//·Î±×ÀÎÆû ¶ç¿ì±â
+	@RequestMapping("login_form.do")
+	public String login_form() {
 		
-	   
+		return "member/member_login_form";
+	}
+	
+	
+	@RequestMapping("login.do")
+	public String login(String m_id,String m_pwd,String url,Model model) {
+		
+		// ¸Ş¼ÒµåÀÇ ÀÎÀÚ?  ÀÇ¹Ì? : DispatcherServlet¿¡ ´ëÇÑ ¿äÃ»»çÇ×
+		// Model¿ëµµ?
+		// 1.forward½Ã¿¡´Â  request binding ½ÃÅ²´Ù.
+		// 2.redirect½Ã¿¡´Â parameterº¯¼ö(query)·Î ÀÌ¿ëµÈ´Ù.
+	  
+		//3.m_id¿¡ ÇØ´çµÇ´Â MemberVo 1°Ç ¾ò¾î¿À±â
+		MemberVo user = member_dao.selectOne(m_id);
+		
+		if(user==null) { //ID°¡ ¾ø´Â°æ¿ì
+			//return "redirect:login_form.do?reason=fail_id";
+			
+			model.addAttribute("reason", "fail_id");
+			
+			return "redirect:login_form.do";
+		}
+		
+		//ºñ¹Ğ¹øÈ£ ºñ±³
+		if(user.getM_pwd().equals(m_pwd)==false) {
+			
+			model.addAttribute("reason", "fail_pwd");
+			return "redirect:login_form.do";
+		}
+		
+		//Á¤»óÀûÀÎ ·Î±×ÀÎ»óÅÂ
+		//ÇöÀç user°¡ »ç¿ëÇÒ¼ö ÀÖ´Â sessionÁ¤º¸ ±¸ÇÏ±â
+		session.setAttribute("user", user);
+			
+		//¸ŞÀÎÈ­¸éÀ¸·Î ÀÌµ¿
+		//ÇöÀçÀ§Ä¡ : /member/
+		//ÀÌµ¿À§Ä¡ : /board/
+		
+		if(url==null)url="";
+		
+		if(url.isEmpty())
+		    return "redirect:../board/list.do";
+		else
+			return "redirect:" + url;
+	}
+	
+	//·Î±×¾Æ¿ô
+	@RequestMapping("logout.do")
+	public String logout() {
+		
+		session.removeAttribute("user");
+		
 		return "redirect:../board/list.do";
-   }
-   
-   @RequestMapping("list.do")
-   public String list(Model model) {
-	   
-	 //íšŒì›ëª©ë¡ ì½ì–´ì˜¤ê¸°
-	List<MemberVo> list = member_dao.selectList();
-	
-	//request binding
-	model.addAttribute("list", list);
-	
-	return "member/member_list";
+	}
 	
 	
-   }
-   
-   @RequestMapping("modify.do")
-   public String modify(MemberVo vo) {
-	   
-	 //3.ipë°›ê¸°
-	String m_ip = request.getRemoteAddr();
-	vo.setM_ip(m_ip);
+	@RequestMapping("check_id.do")
+	@ResponseBody
+	public Map check_id(String m_id) {
+		
+		//  /member/check_id.do?m_id=hong
+	
+		//3.DB³»¿¡ m_idÁ¸Àç¿©ºÎ °Ë»ç
+		MemberVo  vo = member_dao.selectOne(m_id);
+		
+		Map map = new HashMap();
+		map.put("result", (vo==null));
+		
+		return map;
+	}
+		
+	
+	@RequestMapping("delete.do")
+	public String delete(int m_idx) {
+		
+		//2.DB delete
+		int res = member_dao.delete(m_idx);
+				
+		return "redirect:list.do";
+	}
+	
+	//Æû¶ç¿ì±â
+	@RequestMapping("insert_form.do")
+	public String insert_form() {
+		
+		return "member/meber_insert_form";
+	}
+
+
+	@RequestMapping("insert.do")
+	public String insert(MemberVo vo) {
+		
+		// /member/insert.do?m_name=¿À±æµ¿&m_id=five&m_pwd=1234&m_zipcode=08768&m_addr=¼­¿ï+°ü¾Ç±¸+½ÃÈï´ë·Î+552
+		
+		//3.ip¹Ş±â
+		String m_ip			= request.getRemoteAddr();
+		vo.setM_ip(m_ip);
+		
+		
+		//5.DB insert
+		int res = member_dao.insert(vo);
+		
+		return "redirect:login_form.do";
+	}
+	
+	@RequestMapping("list.do")
+	public String list(Model model) {
+		//È¸¿ø¸ñ·Ï ÀĞ¾î¿À±â
+		List<MemberVo> list = member_dao.selectList();
+			
+		//request binding
+		model.addAttribute("list", list);
+		
+		return "member/member_list";
+	}
 	
 	
+	@RequestMapping("modify_form.do")
+	public String modify_form(int m_idx,Model model) {
+		// /member/modify_form.do?m_idx=5
+		
+		//2.m_idx¿¡ ´ëÇÑ MemberVo¸¦ ¾ò¾î¿À±â
+		MemberVo vo = member_dao.selectOne(m_idx);
+		
+		//3.request binding
+		model.addAttribute("vo", vo);
+		
+		return "member/member_modify_form";
+	}
 	
-	//DB update
-	int res = member_dao.update(vo);
-	   
-	   
-	   return "redirect:list.do";
-   }
-   
-   @RequestMapping("modify_form.do")
-   public String modify_form(int m_idx,Model model) {
-	   
-	 //2.m_idxì— ëŒ€í•œ MemberVoë¥¼ ì–»ì–´ì˜¤ê¸°
-	MemberVo vo= member_dao.selectOne(m_idx);
+	@RequestMapping("modify.do")
+	public String modify(MemberVo vo,Model model) {
+		
+		// /member/modify.do?m_idx=5&m_name=¿À±æµ¿&m_id=five&m_pwd=1234&m_zipcode=08768&m_addr=¼­¿ï&m_grade=ÀÏ¹İ
+		//3.ip¹Ş±â
+		String m_ip			= request.getRemoteAddr();
+		vo.setM_ip(m_ip);
+		
+		//5.DB update
+		int res = member_dao.update(vo);
 	
-	//3.request binding
-	request.setAttribute("vo", vo);
-	   
-	   
-	   return "member_modify_form";
-   }
-   
-   @RequestMapping("insert.do")
-   public String insert( MemberVo vo) {
-	   
-	   //3. ipêµ¬í•˜ê¸°
-	   String m_ip = request.getRemoteAddr();
-	   vo.setM_ip(m_ip);
-	   
-	 //DB insert
-	 int res = member_dao.insert(vo);
-	   
-	   
-	   return "redirect:login_form.do";
-   }
-   
-   @RequestMapping("insert_form.do")
-   public String insert_form() {
-	   
-	   return "member/member_insert_form";
-   }
-   
-   @RequestMapping("delete.do")
-   public String delete(int m_idx) {
-	   
-	   int res = member_dao.delete(m_idx);
-	   
-	   return "redirect:list.do";
-   }
-   
-   //ì•„ì´ë””ì²´í¬
-   @RequestMapping("check_id.do")
-   @ResponseBody
-   public Map check_id(String m_id) {
-      
-      
-      MemberVo vo = member_dao.selectOne(m_id);
-      
-      Map map = new HashMap();
-      map.put("result", (vo==null));
-      
-      
-      
-      return map;
-   }
-   
- 
-   
-   
-   
-   
+		
+		return "redirect:list.do";
+	}
+	
+		
+		
+	
+	
 }

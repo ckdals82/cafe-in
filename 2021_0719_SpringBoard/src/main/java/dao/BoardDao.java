@@ -6,17 +6,25 @@ import java.util.Map;
 import vo.BoardVo;
 
 public interface BoardDao {
-	
+
 	List<BoardVo> selectList();
 	List<BoardVo> selectList(Map map);
-	BoardVo 	  selectOne(int b_idx);
-	//ì „ì²´ ê²Œì‹œë¬¼ ê°¯ìˆ˜
-	int			  selectRowTotal();
+	BoardVo       selectOne(int b_idx);
 	
-	int 		  insert(BoardVo vo) throws Exception;
-	int 		  reply(BoardVo vo) throws Exception;
-	int			  update_readhit(int b_idx) throws Exception;
-	int			  update_step(BoardVo vo) throws Exception; //ë‹µê¸€ë‹¬ê¸°ì „ ìž‘ì—…ë‚´ìš©
-	int			  update_use_yn(int b_idx) throws Exception;//ì‚­ì œëŒ€í•œì½”ë“œ
-	default int   delete(int b_idx) throws Exception { return 0;}
+	//ÀüÃ¼°Ô½Ã¹°°¹¼ö
+	int           selectRowTotal();
+	//°Ë»öÁ¶°Çº° °Ô½Ã¹°¼ö
+	int           selectRowTotal(Map map);
+	
+	
+	int 		  insert(BoardVo vo)  throws Exception;
+	int 		  reply(BoardVo vo)   throws Exception;
+	int           update(BoardVo vo)  throws Exception;
+	int           update_readhit(int b_idx)  throws Exception;
+	int           update_step(BoardVo vo)  throws Exception;  //´ä±Û´Þ±âÀü ÀÛ¾÷³»¿ë
+	int           update_use_yn(int b_idx) throws Exception;  //»èÁ¦´ëÇÑÄÚµå
+	default int  delete(int b_idx)  throws Exception { return 0; }
+	
+	
+	
 }

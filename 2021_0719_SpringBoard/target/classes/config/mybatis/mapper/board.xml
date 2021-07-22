@@ -3,92 +3,146 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
-	
-	<!-- 전체조회 -->
-   <select id="board_list" resultType="board">
-      select * from board order by b_ref desc, b_step asc
-   </select>
-   
-   <!-- 조건별조회 -->
-   <select id="board_list_condition" parameterType="Map" resultType="board">
+
+  <!-- 전체조회 -->
+  <select id="board_list"  resultType="board">
+     select * from board  order by b_ref desc, b_step asc
+  </select>
+  
+  <!-- 조건별 조회 -->
+  <select id="board_list_condition"  parameterType="Map" resultType="board">
 	select * from
 	(
 		select
 			rank() over(order by b_ref desc,b_step asc) as no,
 			b.*
-		from (select * from board ) b
+		from 
+		(  
+		     select * from board
+		     <trim prefix="where"  prefixOverrides="or">
+		         <if test="name!=null">
+		            m_name like '%' || #{ name } || '%'
+		         </if>
+		         <if test="subject!=null">
+		            b_subject like '%' || #{ subject } || '%'
+		         </if>
+		         <if test="content!=null">
+		            or b_content like '%' || #{ content } || '%'
+		         </if>
+		      </trim> 
+		) b
 	)
 	where no between #{ start } and #{ end }
-   </select>
-   
-   <!-- 전체게시물수 구하기 -->
-   <select id="board_row_total" resultType="int">
-   		select nvl(count(*),0) from board
-   </select>
-	
-	<!-- b_idx에 해당되는 게시불 1 건 -->
-	<select id="board_one" parameterType="int" resultType="board">
-		select * from board where b_idx=#{ b_idx }
-	</select>
-	
-	<!-- 새글쓰기 -->
-	<insert id="board_insert" parameterType="board" >
-		insert into board values(seq_board_b_idx.nextVal,
-													#{ b_subject },
-  													#{ b_content },
-  													0,
-  													#{ b_ip },
-  													sysdate,
-  													'y',
-  													#{ m_idx },
-  													#{ m_name},
-  													seq_board_b_idx.currVal,
-  													0,
-  													0
-  													)
-	</insert>
-	
-	<!-- 답글쓰기 -->
-	<insert id="board_reply" parameterType="board" >
-		insert into board values(seq_board_b_idx.nextVal,
-													#{ b_subject },
-  													#{ b_content },
-  													0,
-  													#{ b_ip },
-  													sysdate,
-  													'y',
-  													#{ m_idx },
-  													#{ m_name},
-  													#{ b_ref },
-  													#{ b_step },
-  													#{ b_depth }
-  													)
-	</insert>
+  
+  </select>
+  
+  
+  <!-- 검색조건별 게시물 수 -->
+  <!-- Dynamic Query -->
+  <select id="board_condition_row_total"  parameterType="Map"  resultType="int">
+      select nvl( count(*) ,0) from board
+      
+      <trim prefix="where"  prefixOverrides="or">
+         <if test="name!=null">
+            m_name like '%' || #{ name } || '%'
+         </if>
+         <if test="subject!=null">
+            b_subject like '%' || #{ subject } || '%'
+         </if>
+         <if test="content!=null">
+            or b_content like '%' || #{ content } || '%'
+         </if>
+      </trim> 
+       
+  </select>
+  
+  
+  
+  <!-- 전체게시물수 구하기 -->
+  <select id="board_row_total" resultType="int">
+      select nvl( count(*) ,0) from board  
+  </select>
+  
+  
+  <!-- b_idx에 해당되는 게시물 1건  -->
+  <select id="board_one"  parameterType="int"  resultType="board">
+     select * from board where b_idx=#{ b_idx }  
+  </select>
+  
+  
+  
+  
+  
+  
+  <!-- 새글쓰기 -->
+  <insert id="board_insert"  parameterType="board">
+      insert into  board values(seq_board_b_idx.nextVal,
+                            #{ b_subject },
+                            #{ b_content },
+                            0,
+                            #{ b_ip },
+                            sysdate,
+                            'y',
+                            #{ m_idx },
+                            #{ m_name },
+                            seq_board_b_idx.currVal,
+                            0,
+                            0
+                            )
+  </insert>
+  
+  <!-- 답글쓰기 -->
+  <insert id="board_reply"  parameterType="board">
+      insert into  board values(seq_board_b_idx.nextVal,
+                            #{ b_subject },
+                            #{ b_content },
+                            0,
+                            #{ b_ip },
+                            sysdate,
+                            'y',
+                            #{ m_idx },
+                            #{ m_name },
+                            #{ b_ref },
+                            #{ b_step },
+                            #{ b_depth }
+                            )
+  </insert>
+  
+  
+  
+  <!-- 조회수 증가 -->
+  <update id="board_update_readhit" parameterType="int">
+       update board set b_readhit = b_readhit + 1
+       where b_idx=#{ b_idx }
+  </update>
+  
+  <!-- step증가 -->
+  <update id="board_update_step"  parameterType="board">
+       update board set b_step = b_step + 1
+       where  b_ref=#{ b_ref } and b_step > #{ b_step } 
+  </update>
 
 
-	<!-- 조회수 증가 -->
-   <update id="board_update_readhit" parameterType="int">
-      update board set b_readhit = b_readhit + 1
-      where b_idx = #{ b_idx }
-   </update>
-	
-	
-	<!-- step증가 -->
-	<update id="board_update_step" parameterType="board">
-		update board set b_step = b_step + 1
-		where b_ref=#{ b_ref } and b_step > #{ b_step }
-	</update>
-	
-	<!-- 삭제 use_yn='n'-->
-	<update id="board_update_use_yn" parameterType="int">
-			update board set b_use_yn='n'
-			where b_idx=#{ b_idx }
-	</update>
-	
-	
+  <!-- 삭제 : b_use_yn='n' -->
+  <update id="board_update_use_yn"  parameterType="int">
+        update board set b_use_yn='n'
+        where b_idx=#{ b_idx }
+  </update>
+
+  <!-- 수정 -->
+  <update id="board_update"  parameterType="board">
+        update board set  b_subject = #{ b_subject },
+                          b_content = #{ b_content },
+                          b_ip      = #{ b_ip },
+                          b_regdate = sysdate,
+                          m_idx     = #{ m_idx },
+                          m_name    = #{ m_name }
+        where b_idx=#{ b_idx }                   
+  </update>
+
 </mapper>
 
-	
+
 
 
 

@@ -1,34 +1,33 @@
 package vo;
 
 public class BoardVo {
+
+	int    no;
 	
-	
-	int no;
-	
-	int b_idx;
+	int    b_idx;
 	String b_subject;
 	String b_content;
-	int b_readhit;
-	String b_ip;
-	String b_regdate;
-	String b_use_yn;
-	
-	int m_idx;
-	String m_name;
-	
-	int b_ref;
-	int b_step;
-	int b_depth;
-	
-	
-	
-	
+    int    b_readhit;
+    String b_ip;
+    String b_regdate;
+    String b_use_yn;
+    
+    int    m_idx;
+    String m_name;
+    
+    int    b_ref;
+    int    b_step;
+    int    b_depth;
+    
+        
+    
 	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
 	}
+	
 	public int getB_idx() {
 		return b_idx;
 	}
@@ -101,6 +100,8 @@ public class BoardVo {
 	public void setB_depth(int b_depth) {
 		this.b_depth = b_depth;
 	}
-	
-	
+    
+    
+    
+    
 }

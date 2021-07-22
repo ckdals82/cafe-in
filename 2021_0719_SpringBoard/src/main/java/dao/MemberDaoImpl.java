@@ -6,111 +6,74 @@ import org.apache.ibatis.session.SqlSession;
 
 import vo.MemberVo;
 
-public class MemberDaoImpl implements MemberDao {
-	
+public class MemberDaoImpl implements MemberDao{
+
 	
 	SqlSession sqlSession;
 	
-	
-	//ì…‹í„° ì¸ì ì…˜ 
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 
-	//ì „ì²´ëª©ë¡ ë³´ê¸°
+	//ÀüÃ¼¸ñ·Ï º¸±â
 	public List<MemberVo> selectList() {
 
 		List<MemberVo> list = null;
-
-		
-
-		
-		//2.ì‘ì—…ìˆ˜í–‰ (sqlë¬¸ìœ¼ë¡œ ì…€ë ‰íŠ¸ ë¦¬ìŠ¤íŠ¸)
+	
 		list = sqlSession.selectList("member.member_list");
-				
 		
 		return list;
 	}
 	
-	//m_idxì— í•´ë‹¹ë˜ëŠ” íšŒì›ì •ë³´ 1ê±´
+	//m_idx¿¡ ÇØ´çµÇ´Â È¸¿øÁ¤º¸ 1°Ç
 	public MemberVo selectOne(int m_idx) {
 
 		MemberVo vo = null;
-
 		
-
-		//String sql = "select * from member where m_idx=?";
+		vo = sqlSession.selectOne("member.member_one_m_idx",m_idx);
 		
-		
-		//2.ì‘ì—…ìˆ˜í–‰
-		vo=sqlSession.selectOne("member.member_one_m_idx", m_idx);
-		
-				
 		return vo;
 	}
-	//m_idì— í•´ë‹¹ë˜ëŠ” íšŒì›ì •ë³´ 1ê±´ ì–»ì–´ì˜¤ê¸°
+	
+	//m_id¿¡ ÇØ´çµÇ´Â È¸¿øÁ¤º¸ 1°Ç ¾ò¾î¿À±â
 	public MemberVo selectOne(String m_id) {
 
 		MemberVo vo = null;
 
-
+		vo = sqlSession.selectOne("member.member_one_m_id",m_id);
 		
-		//2.ì‘ì—…ìˆ˜í–‰
-		vo=sqlSession.selectOne("member.member_one_m_id", m_id);
-		
-		
-		
-
-		//String sql = "select * from member where m_id=?";
-
-				return vo;
+		return vo;
 	}
-	//ì¶”ê°€ 
+	
+	//Ãß°¡
 	public int insert(MemberVo vo) {
 
 		int res = 0;
-		
-				
-				//ì‘ì—…ìˆ˜í–‰ 				mapper_id			parameter
-		res = sqlSession.insert("member.member_insert",vo);
-				
-		
-		
-		//String sql = "insert into member values(seq_member_m_idx.nextVal,?,?,?,?,?,?,sysdate,sysdate,default)";
 
-		
+		res = sqlSession.insert("member.member_insert",vo);
+
 		return res;
 	}
-	//ì‚­ì œ
+
+	//»èÁ¦
 	public int delete(int m_idx) {
 
-	      int res = 0;
-	      
-			
-			//2.ì‘ì—…ìˆ˜í–‰ 				mapper_id			parameter
-		res = sqlSession.delete("member.member_delete",m_idx);
-			
-			
-			
+		int res = 0;
 
+		res = sqlSession.insert("member.member_delete",m_idx);
 
-	      return res;
-	   }
-	
-	//ìˆ˜ì •
+		return res;
+	}
+
+	//¼öÁ¤
 	public int update(MemberVo vo) {
 
 		int res = 0;
-		
-		//2.ì‘ì—…ìˆ˜í–‰ 				mapper_id			parameter
-		res = sqlSession.update("member.member_update",vo);
 
-		
-		//String sql =          //  1      2       3          4        5      6         7                                 8
-		//"update member set m_name=?,m_id=?,m_pwd=?,m_zipcode=?,m_addr=?,m_ip=?,m_grade=?, m_modifydate=sysdate where m_idx=?";
-
+		res = sqlSession.insert("member.member_update",vo);
 		
 		return res;
 	}
+	
 	
 }

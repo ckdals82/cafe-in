@@ -4,12 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="board_dao" class="dao.BoardDaoImpl">
-		<property name="sqlSession" ref="sqlSession"></property>
+	 <!-- MemberDaoImpl생성  -->
+    <bean id="member_dao"   class="dao.MemberDaoImpl">
+    	<property name="sqlSession"  ref="sqlSession"/>
+    </bean>	
+    
+	
+	<bean  id="board_dao"  class="dao.BoardDaoImpl">
+	   <property name="sqlSession"  ref="sqlSession"/>
 	</bean>
 	
-	<bean id="member_dao" class="dao.MemberDaoImpl">
-		<property name="sqlSession" ref="sqlSession"/>
-	</bean>
 		
 </beans>

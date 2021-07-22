@@ -1,23 +1,25 @@
 package mycommon;
 
-//
-//		camelí‘œê¸°ë²• : 
+//           pascalÇ¥±â¹ý   : MyConstant  <= class¸í
+//           camelÇ¥±â¹ý    : int myMoney <= º¯¼ö/¸Þ¼Òµå¸í
+//           snakeÇ¥±â¹ý    : int my_money<= º¯¼ö/¸Þ¼Òµå¸í
+//           Çë°¡¸®¾ðÇ¥±â¹ý : booean bOk   int  nNumber
+
 public class MyConstant {
-	
-	//ê²Œì‹œíŒ ìƒìˆ˜
+
+	//°Ô½ÃÆÇ »ó¼ö
 	public static class Board{
 		
-		public static final int BLOCK_LIST = 5;//1í™”ë©´ë‹¹ ëª©ë¡ìˆ˜
-		public static final int BLOCK_PAGE = 3;//1í™”ë©´ë‹¹ íŽ˜ì´ì§€ìˆ˜
-		
+		public static final int BLOCK_LIST  = 5; //1È­¸é´ç º¸¿©Áú ¸ñ·Ï¼ö
+		public static final int BLOCK_PAGE  = 3; //1È­¸é´ç º¸¿©Áú ÆäÀÌÁö¼ö
 	}
-	//ê³µì§€ì‚¬í•­ ìƒìˆ˜
-		public static class Notice{
-			
-			public static final int BLOCK_LIST = 5;//1í™”ë©´ë‹¹ ëª©ë¡ìˆ˜
-			public static final int BLOCK_PAGE = 3;//1í™”ë©´ë‹¹ íŽ˜ì´ì§€ìˆ˜
-			
-		}
+	
+	//°øÁö»çÇ× »ó¼ö
+	public static class Notice{
+		
+		public static final int BLOCK_LIST  = 5; //1È­¸é´ç º¸¿©Áú ¸ñ·Ï¼ö
+		public static final int BLOCK_PAGE  = 5; //1È­¸é´ç º¸¿©Áú ÆäÀÌÁö¼ö
+	}
 	
 	
 }

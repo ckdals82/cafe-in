@@ -1,86 +1,210 @@
 package util;
 /*
-        nowPage:í˜„ì¬í˜ì´ì§€
-        rowTotal:ì „ì²´ë°ì´í„°ê°¯ìˆ˜
-        blockList:í•œí˜ì´ì§€ë‹¹ ê²Œì‹œë¬¼ìˆ˜
-        blockPage:í•œí™”ë©´ì— ë‚˜íƒ€ë‚¼ í˜ì´ì§€ ëª©ë¡ìˆ˜
+        nowPage:ÇöÀçÆäÀÌÁö
+        rowTotal:ÀüÃ¼µ¥ÀÌÅÍ°¹¼ö
+        blockList:ÇÑÆäÀÌÁö´ç °Ô½Ã¹°¼ö
+        blockPage:ÇÑÈ­¸é¿¡ ³ªÅ¸³¾ ÆäÀÌÁö ¸ñ·Ï¼ö
  */
 public class Paging {
-   public static String getPaging(String pageURL,int nowPage, int rowTotal,int blockList, int blockPage){
-      
-      int totalPage/*ì „ì²´í˜ì´ì§€ìˆ˜*/,
-            startPage/*ì‹œì‘í˜ì´ì§€ë²ˆí˜¸*/,
-            endPage;/*ë§ˆì§€ë§‰í˜ì´ì§€ë²ˆí˜¸*/
+	
+	public static String getPaging(
+			String pageURL,
+			int nowPage, 
+			int rowTotal,
+			int blockList, 
+			int blockPage){
+		
+		int totalPage/*ÀüÃ¼ÆäÀÌÁö¼ö*/,
+            startPage/*½ÃÀÛÆäÀÌÁö¹øÈ£*/,
+            endPage;/*¸¶Áö¸·ÆäÀÌÁö¹øÈ£*/
 
-      boolean  isPrevPage,isNextPage;
-      StringBuffer sb; //ëª¨ë“  ìƒí™©ì„ íŒë‹¨í•˜ì—¬ HTMLì½”ë“œë¥¼ ì €ì¥í•  ê³³
-      
-      
-      isPrevPage=isNextPage=false;
-      //ì…ë ¥ëœ ì „ì²´ ìì›ì„ í†µí•´ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¥¼ êµ¬í•œë‹¤..
-      totalPage = (int)(rowTotal/blockList);
-      if(rowTotal%blockList!=0)totalPage++;
-      
+		boolean  isPrevPage,isNextPage;
+		StringBuffer sb; //¸ğµç »óÈ²À» ÆÇ´ÜÇÏ¿© HTMLÄÚµå¸¦ ÀúÀåÇÒ °÷
+		
+		
+		isPrevPage=isNextPage=false;
+		
+		//ÀÔ·ÂµÈ ÀüÃ¼ ÀÚ¿øÀ» ÅëÇØ ÀüÃ¼ ÆäÀÌÁö ¼ö¸¦ ±¸ÇÑ´Ù..
+		totalPage = rowTotal/blockList;
+		if(rowTotal%blockList!=0)totalPage++;
+		
 
-      //ë§Œì•½ ì˜ëª»ëœ ì—°ì‚°ê³¼ ì›€ì§ì„ìœ¼ë¡œ ì¸í•˜ì—¬ í˜„ì¬ í˜ì´ì§€ ìˆ˜ê°€ ì „ì²´ í˜ì´ì§€ ìˆ˜ë¥¼
-      //ë„˜ì„ ê²½ìš° ê°•ì œë¡œ í˜„ì¬í˜ì´ì§€ ê°’ì„ ì „ì²´ í˜ì´ì§€ ê°’ìœ¼ë¡œ ë³€ê²½
-      if(nowPage > totalPage)nowPage = totalPage;
-      
+		//¸¸¾à Àß¸øµÈ ¿¬»ê°ú ¿òÁ÷ÀÓÀ¸·Î ÀÎÇÏ¿© ÇöÀç ÆäÀÌÁö ¼ö°¡ ÀüÃ¼ ÆäÀÌÁö ¼ö¸¦
+		//³ÑÀ» °æ¿ì °­Á¦·Î ÇöÀçÆäÀÌÁö °ªÀ» ÀüÃ¼ ÆäÀÌÁö °ªÀ¸·Î º¯°æ
+		if(nowPage > totalPage)nowPage = totalPage;
+		
 
-      //ì‹œì‘ í˜ì´ì§€ì™€ ë§ˆì§€ë§‰ í˜ì´ì§€ë¥¼ êµ¬í•¨.
-      startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
-      endPage = startPage + blockPage - 1; //
-      
-      //ë§ˆì§€ë§‰ í˜ì´ì§€ ìˆ˜ê°€ ì „ì²´í˜ì´ì§€ìˆ˜ë³´ë‹¤ í¬ë©´ ë§ˆì§€ë§‰í˜ì´ì§€ ê°’ì„ ë³€ê²½
-      if(endPage > totalPage)endPage = totalPage;
-      
-      //ë§ˆì§€ë§‰í˜ì´ì§€ê°€ ì „ì²´í˜ì´ì§€ë³´ë‹¤ ì‘ì„ ê²½ìš° ë‹¤ìŒ í˜ì´ì§•ì´ ì ìš©í•  ìˆ˜ ìˆë„ë¡
-      //booleaní˜• ë³€ìˆ˜ì˜ ê°’ì„ ì„¤ì •
-      if(endPage < totalPage) isNextPage = true;
-      //ì‹œì‘í˜ì´ì§€ì˜ ê°’ì´ 1ë³´ë‹¤ ì‘ìœ¼ë©´ ì´ì „í˜ì´ì§• ì ìš©í•  ìˆ˜ ìˆë„ë¡ ê°’ì„¤ì •
-      if(startPage > 1)isPrevPage = true;
-      
-      //HTMLì½”ë“œë¥¼ ì €ì¥í•  StringBufferìƒì„±=>ì½”ë“œìƒì„±
-      sb = new StringBuffer();
-//-----ê·¸ë£¹í˜ì´ì§€ì²˜ë¦¬ ì´ì „ --------------------------------------------------------------------------------------------      
-      if(isPrevPage){
-         sb.append("<a href ='"+pageURL+"?page=");
-         sb.append(startPage - 1);
-         sb.append("'>â—€</a>");
-      }
-      else
-         sb.append("â—€");
-      
-//------í˜ì´ì§€ ëª©ë¡ ì¶œë ¥ -------------------------------------------------------------------------------------------------
-      sb.append("|");
-      for(int i=startPage; i<= endPage ;i++){
-         if(i>totalPage)break;
-         if(i == nowPage){ //í˜„ì¬ ìˆëŠ” í˜ì´ì§€
-            sb.append("&nbsp;<b><font color='#91b72f'>");
-            sb.append(i);
-            sb.append("</font></b>");
-         }
-         else{//í˜„ì¬ í˜ì´ì§€ê°€ ì•„ë‹ˆë©´
-            sb.append("&nbsp;<a href='"+pageURL+"?page=");
-            sb.append(i);
-            sb.append("'>");
-            sb.append(i);
-            sb.append("</a>");
-         }
-      }// end for
-      
-      sb.append("&nbsp;|");
-      
-//-----ê·¸ë£¹í˜ì´ì§€ì²˜ë¦¬ ë‹¤ìŒ ----------------------------------------------------------------------------------------------
-      if(isNextPage){
-         sb.append("<a href='"+pageURL+"?page=");
-         sb.append(endPage+1);
-         sb.append("'>â–¶</a>");
-      }
-      else
-         sb.append("â–¶");
-//---------------------------------------------------------------------------------------------------------------------       
+		//½ÃÀÛ ÆäÀÌÁö¿Í ¸¶Áö¸· ÆäÀÌÁö¸¦ ±¸ÇÔ.
+		startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
+		endPage = startPage + blockPage - 1; //
+		
+		//¸¶Áö¸· ÆäÀÌÁö ¼ö°¡ ÀüÃ¼ÆäÀÌÁö¼öº¸´Ù Å©¸é ¸¶Áö¸·ÆäÀÌÁö °ªÀ» º¯°æ
+		if(endPage > totalPage)endPage = totalPage;
+		
+		//¸¶Áö¸·ÆäÀÌÁö°¡ ÀüÃ¼ÆäÀÌÁöº¸´Ù ÀÛÀ» °æ¿ì ´ÙÀ½ ÆäÀÌÂ¡ÀÌ Àû¿ëÇÒ ¼ö ÀÖµµ·Ï
+		//booleanÇü º¯¼öÀÇ °ªÀ» ¼³Á¤
+		if(endPage < totalPage) isNextPage = true;
+		//½ÃÀÛÆäÀÌÁöÀÇ °ªÀÌ 1º¸´Ù ÀÛÀ¸¸é ÀÌÀüÆäÀÌÂ¡ Àû¿ëÇÒ ¼ö ÀÖµµ·Ï °ª¼³Á¤
+		if(startPage > 1)isPrevPage = true;
+		
+		//HTMLÄÚµå¸¦ ÀúÀåÇÒ StringBuffer»ı¼º=>ÄÚµå»ı¼º
+		sb = new StringBuffer();
+//-----±×·ìÆäÀÌÁöÃ³¸® ÀÌÀü --------------------------------------------------------------------------------------------		
+		if(isPrevPage){
+			sb.append("<a href ='"+pageURL+"?page=");
+			sb.append(startPage-1);
+			sb.append("'>¢¸</a>");
+		}
+		else
+			sb.append("¢¸");
+		
+//------ÆäÀÌÁö ¸ñ·Ï Ãâ·Â -------------------------------------------------------------------------------------------------
+		sb.append("|");
+		
+		for(int i=startPage; i<= endPage ;i++){
+			
+			if(i>totalPage)break;
+			
+			if(i == nowPage){ //ÇöÀç ÀÖ´Â ÆäÀÌÁö
+				sb.append("&nbsp;<b><font color='red'>");
+				sb.append(i);
+				sb.append("</font></b>");
+			}
+			else{//ÇöÀç ÆäÀÌÁö°¡ ¾Æ´Ï¸é
+				sb.append("&nbsp;<a href='"+pageURL+"?page=");
+				sb.append(i);
+				sb.append("'>");
+				sb.append(i);
+				sb.append("</a>");
+			}
+		}// end for
+		
+		sb.append("&nbsp;|");
+		
+//-----±×·ìÆäÀÌÁöÃ³¸® ´ÙÀ½ ----------------------------------------------------------------------------------------------
+		if(isNextPage){
+			sb.append("<a href='"+pageURL+"?page=");
+			sb.append(endPage+1);
+			sb.append("'>¢º</a>");
+		}
+		else
+			sb.append("¢º");
+//---------------------------------------------------------------------------------------------------------------------	    
 
-      return sb.toString();
-   }
+		return sb.toString();
+		
+	}//end-getPaging()
+	
+	
+	public static String getPaging(
+			String pageURL,
+			int nowPage, 
+			int rowTotal,
+			String searchFilter,
+			int blockList, 
+			int blockPage){
+		
+		int totalPage/*ÀüÃ¼ÆäÀÌÁö¼ö*/,
+            startPage/*½ÃÀÛÆäÀÌÁö¹øÈ£*/,
+            endPage;/*¸¶Áö¸·ÆäÀÌÁö¹øÈ£*/
+
+		boolean  isPrevPage,isNextPage;
+		StringBuffer sb; //¸ğµç »óÈ²À» ÆÇ´ÜÇÏ¿© HTMLÄÚµå¸¦ ÀúÀåÇÒ °÷
+		
+		
+		isPrevPage=isNextPage=false;
+		
+		//ÀÔ·ÂµÈ ÀüÃ¼ ÀÚ¿øÀ» ÅëÇØ ÀüÃ¼ ÆäÀÌÁö ¼ö¸¦ ±¸ÇÑ´Ù..
+		totalPage = rowTotal/blockList;
+		if(rowTotal%blockList!=0)totalPage++;
+		
+
+		//¸¸¾à Àß¸øµÈ ¿¬»ê°ú ¿òÁ÷ÀÓÀ¸·Î ÀÎÇÏ¿© ÇöÀç ÆäÀÌÁö ¼ö°¡ ÀüÃ¼ ÆäÀÌÁö ¼ö¸¦
+		//³ÑÀ» °æ¿ì °­Á¦·Î ÇöÀçÆäÀÌÁö °ªÀ» ÀüÃ¼ ÆäÀÌÁö °ªÀ¸·Î º¯°æ
+		if(nowPage > totalPage)nowPage = totalPage;
+		
+
+		//½ÃÀÛ ÆäÀÌÁö¿Í ¸¶Áö¸· ÆäÀÌÁö¸¦ ±¸ÇÔ.
+		startPage = (int)(((nowPage-1)/blockPage)*blockPage+1);
+		endPage = startPage + blockPage - 1; //
+		
+		//¸¶Áö¸· ÆäÀÌÁö ¼ö°¡ ÀüÃ¼ÆäÀÌÁö¼öº¸´Ù Å©¸é ¸¶Áö¸·ÆäÀÌÁö °ªÀ» º¯°æ
+		if(endPage > totalPage)endPage = totalPage;
+		
+		//¸¶Áö¸·ÆäÀÌÁö°¡ ÀüÃ¼ÆäÀÌÁöº¸´Ù ÀÛÀ» °æ¿ì ´ÙÀ½ ÆäÀÌÂ¡ÀÌ Àû¿ëÇÒ ¼ö ÀÖµµ·Ï
+		//booleanÇü º¯¼öÀÇ °ªÀ» ¼³Á¤
+		if(endPage < totalPage) isNextPage = true;
+		//½ÃÀÛÆäÀÌÁöÀÇ °ªÀÌ 1º¸´Ù ÀÛÀ¸¸é ÀÌÀüÆäÀÌÂ¡ Àû¿ëÇÒ ¼ö ÀÖµµ·Ï °ª¼³Á¤
+		if(startPage > 1)isPrevPage = true;
+		
+		//HTMLÄÚµå¸¦ ÀúÀåÇÒ StringBuffer»ı¼º=>ÄÚµå»ı¼º
+		sb = new StringBuffer();
+//-----±×·ìÆäÀÌÁöÃ³¸® ÀÌÀü --------------------------------------------------------------------------------------------		
+		if(isPrevPage){
+			sb.append("<a href ='"+pageURL+"?page=");
+			sb.append(startPage-1);
+			
+			sb.append(searchFilter);
+			
+			
+			sb.append("'>¢¸</a>");
+		}
+		else
+			sb.append("¢¸");
+		
+//------ÆäÀÌÁö ¸ñ·Ï Ãâ·Â -------------------------------------------------------------------------------------------------
+		sb.append("|");
+		
+		for(int i=startPage; i<= endPage ;i++){
+			
+			if(i>totalPage)break;
+			
+			if(i == nowPage){ //ÇöÀç ÀÖ´Â ÆäÀÌÁö
+				sb.append("&nbsp;<b><font color='red'>");
+				sb.append(i);
+				sb.append("</font></b>");
+			}
+			else{//ÇöÀç ÆäÀÌÁö°¡ ¾Æ´Ï¸é
+				sb.append("&nbsp;<a href='"+pageURL+"?page=");
+				sb.append(i);
+				
+				sb.append(searchFilter);
+				
+				sb.append("'>");
+				sb.append(i);
+				sb.append("</a>");
+			}
+		}// end for
+		
+		sb.append("&nbsp;|");
+		
+//-----±×·ìÆäÀÌÁöÃ³¸® ´ÙÀ½ ----------------------------------------------------------------------------------------------
+		if(isNextPage){
+			sb.append("<a href='"+pageURL+"?page=");
+			sb.append(endPage+1);
+			
+			sb.append(searchFilter);
+			
+			sb.append("'>¢º</a>");
+		}
+		else
+			sb.append("¢º");
+//---------------------------------------------------------------------------------------------------------------------	    
+
+		return sb.toString();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

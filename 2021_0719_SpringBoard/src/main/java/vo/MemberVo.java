@@ -1,8 +1,8 @@
 package vo;
 
 public class MemberVo {
-	
-	int m_idx;
+
+	int    m_idx;
 	String m_name;
 	String m_id;
 	String m_pwd;
@@ -13,42 +13,44 @@ public class MemberVo {
 	String m_modifydate;
 	String m_grade;
 	
-	//password -> ì™¸ë¶€ì¶œë ¥ìš©
+	//password-> ¿ÜºÎÃâ·Â¿ë
 	String m_pwd_mask;
-	
 	
 	public String getM_pwd_mask() {
 		
-		//1.original pwdì˜ 1/2ë§Œ ë…¸ì¶œ ë‚˜ë¨¸ì§€ëŠ” ***
-		// ex) m_pwd="123456" => "123***"
-		int len =m_pwd.length();//ë¹„ë²ˆê¸¸ì´
+		//1.original pwdÀÇ 1/2¸¸ ³ëÃâ ³ª¸ÓÁö´Â ***
+		//             012345  <=index
+		//  ex) m_pwd="123456" =>  "123***"
+	    //  ex) m_pwd="123456" =>  "12**56"
+	    //  ex) m_pwd="123456" =>  "1*3*5*"
+		int len  = m_pwd.length();//ºñ¹ø±æÀÌ
 		int half = len/2;
 		StringBuffer sb = new StringBuffer();
-		// ex) m_pwd="123456" => "123***"
-		// ex) m_pwd="123456" => "12**56"
-		// ex) m_pwd="123456" => "1*3*5*"
-		//
-		//ë°©ë²•1
-//		for(int i=0;i<len;i++) {
-//			if(i<half)
-//				sb.append(m_pwd.charAt(i));
-//			else 
-//				sb.append("*");
-//		}
-		//ë°©ë²•2
-		sb.append(m_pwd.substring(0,half));
 		
-		for(int i=0;i<(len-half);i++)
+		//¹æ¹ı1)
+		/*
+		for(int i=0;i<len;i++) {
+			if(i<half)
+				sb.append(m_pwd.charAt(i));
+			else
+				sb.append("*");		
+		}*/
+		
+		//¹æ¹ı2)
+		sb.append(m_pwd.substring(0, half));
+		
+		for(int i=0;i<(len-half) ;i++)
 			sb.append("*");
+		
 		
 		return sb.toString();
 	}
-
+	
+	
 	public MemberVo() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	//ì¶”ê°€
+	//Ãß°¡
 	public MemberVo(String m_name, String m_id, String m_pwd, String m_zipcode, String m_addr, String m_ip,
 			String m_grade) {
 		super();
@@ -70,8 +72,7 @@ public class MemberVo {
 		this.m_addr = m_addr;
 		this.m_ip = m_ip;
 	}
-
-	//ìˆ˜ì •
+	//¼öÁ¤
 	public MemberVo(int m_idx, String m_name, String m_id, String m_pwd, String m_zipcode, String m_addr, String m_ip,
 			String m_grade) {
 		super();
@@ -85,7 +86,6 @@ public class MemberVo {
 		this.m_grade = m_grade;
 	}
 	
-
 	
 	
 	public int getM_idx() {
@@ -93,7 +93,6 @@ public class MemberVo {
 	}
 	
 	
-
 	public void setM_idx(int m_idx) {
 		this.m_idx = m_idx;
 	}
@@ -151,6 +150,9 @@ public class MemberVo {
 	public void setM_grade(String m_grade) {
 		this.m_grade = m_grade;
 	}
+	
+	
+	
 	
 	
 }
