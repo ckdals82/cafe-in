@@ -14,5 +14,8 @@
 	   <property name="sqlSession"  ref="sqlSession"/>
 	</bean>
 	
+	<bean  id="comment_dao"  class="dao.CommentDaoImpl">
+	   <property name="sqlSession"  ref="sqlSession"/>
+	</bean>
 		
 </beans>

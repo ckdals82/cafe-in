@@ -1,32 +1,32 @@
 /*
 
---ÀÏ·Ã¹øÈ£ °ü¸®°´Ã¼
+--ï¿½Ï·Ã¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼
 create sequence  seq_board_b_idx
 
 
---Å×ÀÌºí
+--ï¿½ï¿½ï¿½Ìºï¿½
 create table board
 (
-   b_idx 			int,			--ÀÏ·Ã¹øÈ£
-   b_subject		varchar2(500),	--Á¦¸ñ
-   b_content		clob,			--³»¿ë
-   b_readhit		int,			--Á¶È¸¼ö
-   b_ip				varchar2(100),	--¾ÆÀÌÇÇ
-   b_regdate		date,			--µî·ÏÀÏÀÚ
-   b_use_yn			char(1),		--»ç¿ëÀ¯¹«(y or n)
-   m_idx			int,			--È¸¿ø¹øÈ£
-   m_name			varchar2(100),	--È¸¿ø¸í
+   b_idx 			int,			--ï¿½Ï·Ã¹ï¿½È£
+   b_subject		varchar2(500),	--ï¿½ï¿½ï¿½ï¿½
+   b_content		clob,			--ï¿½ï¿½ï¿½ï¿½
+   b_readhit		int,			--ï¿½ï¿½È¸ï¿½ï¿½
+   b_ip				varchar2(100),	--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   b_regdate		date,			--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   b_use_yn			char(1),		--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(y or n)
+   m_idx			int,			--È¸ï¿½ï¿½ï¿½ï¿½È£
+   m_name			varchar2(100),	--È¸ï¿½ï¿½ï¿½ï¿½
    
-   b_ref			int,			--ÂüÁ¶±Û¹øÈ£
-   b_step			int,			--±×·ì±ÛÀÇ ¼öÁ÷Àû À§Ä¡
-   b_depth			int				--±ÛÀÇ ±íÀÌ(´ä±ÛÀÇÁ¤µµ)
+   b_ref			int,			--ï¿½ï¿½ï¿½ï¿½ï¿½Û¹ï¿½È£
+   b_step			int,			--ï¿½×·ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+   b_depth			int				--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 )
 
---±âº»Å° ¼³Á¤
+--ï¿½âº»Å° ï¿½ï¿½ï¿½ï¿½
 alter table board
   add constraint pk_board_b_idx primary key(b_idx);
   
---¿Ü·¡Å° ¼³Á¤
+--ï¿½Ü·ï¿½Å° ï¿½ï¿½ï¿½ï¿½
 alter table board
   add constraint fk_board_m_idx  foreign key(m_idx)
                                  references member(m_idx);
@@ -34,59 +34,59 @@ alter table board
 select * from member                                                                  
                                  
 --sample data
---1.»õ±Û¾²±â
+--1.ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½
   insert into  board values(seq_board_b_idx.nextVal,
-                            '³»°¡1µîÀÌ´Ù',
-                            'ÀÌ¹ø¿¡µµ 1µîÀÌ³×',
+                            'ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½Ì´ï¿½',
+                            'ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½Ì³ï¿½',
                             0,
                             '127.0.0.1',
                             sysdate,
                             'y',
                             2,
-                            'È«±æµ¿',
+                            'È«ï¿½æµ¿',
                             seq_board_b_idx.currVal,
                             0,
                             0
                             );  
    
-   --»èÁ¦±Û µî·Ï                         
+   --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½                         
    insert into  board values(seq_board_b_idx.nextVal,
-                            '³»°¡10µîÀÌ´Ù',
-                            'ÀÌ¹ø¿¡µµ 10µîÀÌ³×',
+                            'ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½Ì´ï¿½',
+                            'ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½Ì³ï¿½',
                             0,
                             '127.0.0.1',
                             sysdate,
                             'n',
                             2,
-                            'È«±æµ¿',
+                            'È«ï¿½æµ¿',
                             seq_board_b_idx.currVal,
                             0,
                             0
                             );                                                            
- --2.´ä±Û¾²±â                                
+ --2.ï¿½ï¿½Û¾ï¿½ï¿½ï¿½                                
    insert into  board values(seq_board_b_idx.nextVal,
-                            '¾Æ½±³× 1µî ³õÃÆ³×',
-                            'ÀÌ¹ø¿¡µµ 2µîÀÌ³×',
+                            'ï¿½Æ½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½Æ³ï¿½',
+                            'ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½Ì³ï¿½',
                             0,
                             '127.0.0.1',
                             sysdate,
                             'y',
                             3,
-                            '¹Ú±æµ¿',
+                            'ï¿½Ú±æµ¿',
                             1,
                             1,
                             1
                             );   
    
    insert into  board values(seq_board_b_idx.nextVal,
-                            '´ÙÀ½¿¡ ÀßÇÏ¸é µÇÁö',
-                            '´ÙÀ½¿¡´Â 1µîÇØ!!',
+                            'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½',
+                            'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½!!',
                             0,
                             '127.0.0.1',
                             sysdate,
                             'y',
                             2,
-                            'È«±æµ¿',
+                            'È«ï¿½æµ¿',
                             1,
                             2,
                             2
@@ -100,7 +100,7 @@ select * from member
   commit
   
   
-  -- PagingÃ³¸®¸¦ À§ÇÑ SQL¹®Àå
+  -- PagingÃ³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ SQLï¿½ï¿½ï¿½ï¿½
   select * from board  order by b_ref desc,b_step asc 
   
   

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment">
+	
+	<!-- 전체조회 -->
+	<select id="comment_list"  parameterType="int" resultType="comment">
+		select * from comment_tb 
+		where b_idx=#{ b_idx }
+		order by c_idx desc
+	</select>
+  	
+  	<!-- 댓글추가 -->
+  	<insert id="comment_insert" parameterType="comment">
+  	insert into comment_tb values(seq_comment_tb_c_idx.nextVal,
+								  #{ c_content},
+								  #{ c_ip },
+								  sysdate,
+								  #{ b_idx },
+								  #{ m_idx },
+								  #{ m_name }
+								  )
+  	</insert>
+  	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

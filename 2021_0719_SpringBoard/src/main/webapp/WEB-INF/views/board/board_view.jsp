@@ -34,7 +34,12 @@
   input[type='button']{
       width: 100px;
   }
-
+	textarea{
+		width: 490px;
+		resize: none;
+	
+	}
+	
 </style>
 
 <!-- bootstrap을 사용하기 위한 설정 -->
@@ -108,7 +113,94 @@
 	   
    }//end-modify_form
    
+   function add_comment(){
+	   
+	 	//로그인여부 체크
+	   if('${ empty user }'=='true'){
+		   
+		   Swal.fire({
+			   title: '댓글쓰기',
+			   html: "<h5>댓글쓰기는 로그인후 이용가능합니다<br>로그인 하시겠습니까?</h5>",
+			   icon: 'warning',
+			   showCancelButton: true,
+			   confirmButtonColor: '#3085d6',
+			   cancelButtonColor: '#d33',
+			   confirmButtonText: '예',
+			   cancelButtonText : "아니오"
+			 }).then((result) => {
+			   if (result.isConfirmed) {
+			     
+				  //현재경로 : /board/list.do
+				  location.href='${ pageContext.request.contextPath }/member/login_form.do?url=' + location.href;
+			   }
+			 });
+		   
+		  
+	   }else{
+		   //로그인된 상태면...
+		   
+		   //입력값 읽어오기
+		   var c_content = $("#c_content").val().trim();
+		   
+		   if(c_content==''){
+			   alert('댓글내용을 입력하세요!!');
+			   $("#c_content").val("");
+			   $("#c_content").focus();
+			   return;
+		   }
+		   
+		   //ajax전송
+		   $.ajax({
+			   url : '../comment/insert.do',
+			   data: {'c_content': c_content,
+				      'b_idx': '${ param.b_idx }',
+				      'm_idx': '${ user.m_idx }',
+				      'm_name': '${ user.m_name}'
+				      },
+				dataType: 'json',
+				success : function(result_data){
+					//result_data = {}
+					
+					//이전작성내용 지우기
+					 $("#c_content").val("");
+					
+					if(result_data.result == "success"){
+						
+						comment_list(1);
+					}else{
+						alert("댓글쓰기 실패!!");
+					}
+				},
+				error   : function(err){
+					alert(err.responseText);
+				}
+			   
+		   });//end-ajax
+	   }
+	   
+   }//end add_comment
    
+   function comment_list(page){
+	   
+	   //Ajax로 요청
+	   $.ajax({
+		   url : "../comment/list.do",
+		   data: {'b_idx' : '${ vo.b_idx}' },
+		   success: function(result_data){
+			   //수신된 결과데이터(댓글목록) disp에 출력
+			   $("#disp").html(result_data);
+		   },
+		   err    : function(err){
+			   alert(err.responseText);
+		   }
+	   });
+   }
+   
+   //JQuery초기화
+   $(document).ready(function(){
+	 	//댓글목록 출력
+	   comment_list(1);
+   });
 
 
 </script>
@@ -166,7 +258,28 @@
 			
 			</div>
 		</div>
-
+		
+		<hr>
+		<!-- 댓글입력창 -->
+		<div>
+				<div>
+					<c:if test="${ empty user }">
+						댓글은 로그인 하신후 작성가능합니다
+					</c:if>
+					
+					<c:if test="${ not empty user }">
+						작성자:${ user.m_name }	
+					</c:if>
+				</div>
+				<div>
+					<textarea id="c_content" rows="3" cols=""></textarea>
+					<input class="btn btn-primary" style=" float:right; height: 60px;" type="button" value="댓글쓰기"
+						onclick="add_comment();" >
+				</div>
+		</div>
+		
+		<div id="disp" ></div>
+		
 	</div>
 </body>
 </html>
