@@ -91,7 +91,7 @@
       			 		<td colspan="2" align= "center"> 
       			 		<input class="btn btn-primary" type="button" value="사진등록" onclick="send(this.form);"> 
       			 		<input class="btn btn-success" type="button" value="메인화면" 
-      			 				onclick="location.href='list.do'"> 
+      			 				onclick="location.href='detail_insert_form.do'"> 
       			 		</td>
       			 	</tr>
       			 </table>
