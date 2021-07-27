@@ -58,80 +58,80 @@
  
   //jQuery초기화
   $(document).ready(function(){
-	 
-	  if('${ not empty param.search }'=='true'){
-	  	$("#search").val('${param.search}');
-	  	
-	  	//전체보기면 검색어 지워라..
-	  	if("${param.search eq 'all'}"=="true"){
-	  		$("#search_text").val("");
-	  	}
-	  	
-	  }
-	  
-	  
-	  
+    
+     if('${ not empty param.search }'=='true'){
+        $("#search").val('${param.search}');
+        
+        //전체보기면 검색어 지워라..
+        if("${param.search eq 'all'}"=="true"){
+           $("#search_text").val("");
+        }
+        
+     }
+     
+     
+     
   });
  
  
  
   //새글쓰기폼띄우기
   function insert_form() {
-	  //로그인여부 체크
-	   if('${ empty user }'=='true'){
-		   
-		   Swal.fire({
-			   title: '새글쓰기',
-			   html: "새글쓰기는 로그인후 이용가능합니다<br>로그인 하시겠습니까?",
-			   icon: 'warning',
-			   showCancelButton: true,
-			   confirmButtonColor: '#3085d6',
-			   cancelButtonColor: '#d33',
-			   confirmButtonText: '예',
-			   cancelButtonText : "아니오"
-			 }).then((result) => {
-			   if (result.isConfirmed) {
-			     
-				  //현재경로 : /board/list.do
-				  location.href='${ pageContext.request.contextPath }/member/login_form.do';
-			   }
-			 });
-		   
-		  
-	   }else{
-		   //로그인된 상태면...
-		   //글쓰기 폼으로 이동
-		   location.href = 'insert_form.do'; 
-	   }
-	  
+     //로그인여부 체크
+      if('${ empty user }'=='true'){
+         
+         Swal.fire({
+            title: '새글쓰기',
+            html: "새글쓰기는 로그인후 이용가능합니다<br>로그인 하시겠습니까?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '예',
+            cancelButtonText : "아니오"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+              //현재경로 : /board/list.do
+              location.href='${ pageContext.request.contextPath }/member/login_form.do';
+            }
+          });
+         
+        
+      }else{
+         //로그인된 상태면...
+         //글쓰기 폼으로 이동
+         location.href = 'insert_form.do'; 
+      }
+     
   }//end-insert_form
   
   //검색버튼 클릭시
   function find(){
-	  
-	  var search      = $("#search").val();
-	  var search_text = $("#search_text").val().trim();
-	  
-	  //전체검색이면 검색창내용 지워라..
-	  if(search=='all'){
-		  $("#search_text").val("");
-	  }
-	  
-	  if(search!='all' && search_text==''){
-		  
-		  alert('검색어를 입력하세요');
-		  $("#search_text").val("");//값 지우기
-		  $("#search_text").focus();
-		  return;
-	  }
-	  
-	  
-	  //자바스크립트 이용 요청
-	  //encodeURIComponent(search_text,"utf-8") 
-	  //  : search_text 한글또는 특수문자인경우 인코딩해서 넘겨야 서버가 제대로 인식한다
-	  location.href = "list.do?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8") ;
+     
+     var search      = $("#search").val();
+     var search_text = $("#search_text").val().trim();
+     
+     //전체검색이면 검색창내용 지워라..
+     if(search=='all'){
+        $("#search_text").val("");
+     }
+     
+     if(search!='all' && search_text==''){
+        
+        alert('검색어를 입력하세요');
+        $("#search_text").val("");//값 지우기
+        $("#search_text").focus();
+        return;
+     }
+     
+     
+     //자바스크립트 이용 요청
+     //encodeURIComponent(search_text,"utf-8") 
+     //  : search_text 한글또는 특수문자인경우 인코딩해서 넘겨야 서버가 제대로 인식한다
+     location.href = "list.do?search=" + search + "&search_text=" + encodeURIComponent(search_text,"utf-8") ;
 
-	  
+     
   }//end-find
   
   
@@ -206,12 +206,12 @@
                      
                      <!--사용가능한 게시글일때  -->
                      <c:if test="${ vo.b_use_yn eq 'y' }">
-                     	<a href="view.do?b_idx=${ vo.b_idx }&page=${ (empty param.page) ? 1 :  param.page }&search=${ (empty param.search) ? 'all' : param.search }&search_text=${ param.search_text }">${ vo.b_subject }</a>
+                        <a href="view.do?b_idx=${ vo.b_idx }&page=${ (empty param.page) ? 1 :  param.page }&search=${ (empty param.search) ? 'all' : param.search }&search_text=${ param.search_text }">${ vo.b_subject }</a>
                      </c:if>
                         
                      <!-- 삭제된 게시글일때 -->
                      <c:if test="${ vo.b_use_yn eq 'n' }">
-                     	<span style="color:red;">삭제된 글입니다(${ vo.b_subject })</span>
+                        <span style="color:red;">삭제된 글입니다(${ vo.b_subject })</span>
                      </c:if>    
                         
                  </td>

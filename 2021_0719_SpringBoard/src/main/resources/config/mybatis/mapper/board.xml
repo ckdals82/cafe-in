@@ -15,7 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	(
 		select
 			rank() over(order by b_ref desc,b_step asc) as no,
-			b.*
+			b.*,
+			(select count(*) from comment_tb where b_idx = b.b_idx) as comment_count
 		from 
 		(  
 		     select * from board

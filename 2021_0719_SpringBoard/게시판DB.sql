@@ -108,7 +108,8 @@ select * from member
   (
 	  select
 	     rank() over(order by b_ref desc,b_step asc) as no,
-	     b.*
+	     b.*,
+	     (select count(*) from comment_tb where b_idx = b.b_idx) as comment_count
 	  from (select * from board) b
   )
   where no between 1  and  5

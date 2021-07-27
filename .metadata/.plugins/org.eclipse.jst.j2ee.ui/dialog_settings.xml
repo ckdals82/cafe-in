@@ -6,12 +6,12 @@
 		<item value="Apache Tomcat v8.5"/>
 	</list>
 	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="/Users/hwangchangmin/Documents/cafe_in_teamp.war"/>
 		<item value="/Users/hwangchangmin/Desktop/2021_0623_PhotoGallery_Mybatis.war"/>
 		<item value="/Users/hwangchangmin/Desktop/2021_0628_Shop.war"/>
 		<item value="/Users/hwangchangmin/Desktop/2021_0623_Visit_Ajax_Mybatis.war"/>
 		<item value="/Users/hwangchangmin/Desktop/TeamP.war"/>
 		<item value="/Users/hwangchangmin/Desktop/2021_0617_PhotoGallery.war"/>
-		<item value="/Users/hwangchangmin/Desktop/2021_0610_Visit_Ajax.war"/>
 	</list>
 	<list key="J2EE_IMPORT_null">
 		<item value="/Users/hwangchangmin/Desktop/2021_0623_PhotoGallery_Mybatis.war"/>
