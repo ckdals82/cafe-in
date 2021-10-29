@@ -1,8 +1,8 @@
 
 
 ###  Cafe-in
-TeamProject
-spring을 이용한 카페 추천사이트
+## TeamProject
+🍃 spring을 이용한 카페 추천사이트
 
 <hr>
 
