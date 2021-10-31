@@ -23,7 +23,6 @@
 >카페등록시에 분위기 디저트 등 여려가지 데이터를  받기 위해서
 파라미터를 배열로 받았고  아래 화면 처럼 
 for문을  돌려 디저트등 여러가지 데이터등을 insert 가능하게 만들었습니다.<br>
-<img width="1224" alt="스크린샷 2021-10-29 오후 3 22 22" src="https://user-images.githubusercontent.com/81973067/139385866-a9b6c2b3-ef50-4d57-8156-52c010fceb7d.png">
 <img width="1224" alt="스크린샷 2021-10-29 오후 3 22 34" src="https://user-images.githubusercontent.com/81973067/139385880-60653ba6-f619-44da-929e-0b10628d40c7.png">
 <br>
 <br>
@@ -35,7 +34,6 @@ for문을  돌려 디저트등 여러가지 데이터등을 insert 가능하게 
 이유는 디저트나 분위기 형식이 덮어씌어지면 기존에 데이터 남아있어
 수정하기를해도 전에 데이터가 출력 되게 때문입니다.
 하단 xml 코드를 보면 delete문으로 작성되어있는것을 확인하실수 있습니다.
-<img width="1276" alt="스크린샷 2021-10-29 오후 3 42 38" src="https://user-images.githubusercontent.com/81973067/139388212-1f5f1dfe-ddad-4d82-b081-74d7e02e9e62.png">
 <img width="1276" alt="스크린샷 2021-10-29 오후 3 42 42" src="https://user-images.githubusercontent.com/81973067/139388221-d0bf95b9-491a-4030-9fb3-42e60839f2e0.png">
 
 <br>
@@ -49,10 +47,12 @@ for문을  돌려 디저트등 여러가지 데이터등을 insert 가능하게 
 무드 필터 디저트 필터 정보 또한 가지고 있지 않습니다.
 그래서 무드 무드필터 그리고 디저트 디저트 필터등을 조인시켰고 가상테이블인  cafe filter view를 만들어 필터 검색이 가능하게끔 만든것입니다.
 <br>
-<img width="1276" alt="스크린샷 2021-10-29 오후 3 27 58" src="https://user-images.githubusercontent.com/81973067/139386511-c2451ec4-a721-4f3f-83c4-8d2a4598341c.png">
 <img width="1224" alt="스크린샷 2021-10-29 오후 2 50 21" src="https://user-images.githubusercontent.com/81973067/139386515-b8ff1d20-e7bd-4bbb-8076-2cb90c9e7044.png">
+<br>
+ppt첨부
+<br>
 
-
+[Cafein(5조 오서지 변재영 장경령 정기덕 황창민) (1).zip](https://github.com/ckdals82/cafe-in/files/7448330/Cafein.5.1.zip)
 
 
 
